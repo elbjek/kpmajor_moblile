@@ -25,6 +25,7 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'phone_number' => $faker->phoneNumber,
         'city' => $faker->city,
+        'online'=> $faker->numberBetween(0,1),
         // 'profile_picture' => $faker->imageUrl($width = 640, $height = 480);
         'remember_token' => Str::random(10),
     ];

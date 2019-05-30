@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Category extends Model
 {
     protected $fillable = [
-        'message_content','seen','user_id'
+        'title'
     ];
 }
