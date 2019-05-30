@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_number');
             $table->string('city');
             $table->boolean('online')->nullable();
-            // $table->string('profile_picture');
+            $table->string('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

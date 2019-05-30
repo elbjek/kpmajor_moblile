@@ -22,6 +22,17 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 Vue.component(
+    'user-profile',
+    require('./components/Profile.vue').default
+);
+
+
+Vue.component(
+    'single-product',
+    require('./components/Product.vue').default
+);
+
+Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default
 );

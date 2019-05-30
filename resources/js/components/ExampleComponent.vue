@@ -6,9 +6,13 @@
                     <div class="card-header">{{product.title}}</div>
 
                     <div class="card-body">
+                        <p>{{product.name}} {{product.lastname}}</p>
+                        <p>{{product.title}}</p>
                         <p>{{product.description}}</p>
                         <p>{{product.price}}RSD</p>
+                    <a :href="'/products/' + product.id">View product</a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -24,12 +28,15 @@
         },
         mounted() {
             this.fetchData()
+           
+
         },
         methods:{
             fetchData(){
                 axios.get('/api/products')
                 .then(response => {
                     this.products = response.data
+                    console.log(this.products)
                 })
             }
         }

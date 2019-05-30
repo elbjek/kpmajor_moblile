@@ -27,6 +27,7 @@ $factory->define(User::class, function (Faker $faker) {
         'city' => $faker->city,
         'online'=> $faker->numberBetween(0,1),
         // 'profile_picture' => $faker->imageUrl($width = 640, $height = 480);
+        'profile_picture' => $faker->image(storage_path('app/public/assets/user_images'), 300, 300, null, false),
         'remember_token' => Str::random(10),
     ];
 });
