@@ -11,6 +11,7 @@ class ApiProductsController extends Controller
         $user = \Auth::id();
         $products = Product::join('users', 'users.id', '=', 'products.user_id')
         ->select('products.*','users.name','users.lastname')
+        ->latest('products.id')
         ->get();
         return response()->json($products);
     }
@@ -24,5 +25,20 @@ class ApiProductsController extends Controller
         ->where('products.id',$selectedProduct)
         ->get();
         return response()->json($product);
+    }
+    public function create(Product $Product)
+    {
+        $user = \Auth::id();
+        return  compact('user');  
+    }
+    public function store(Request $request)
+    {
+        Product::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'user_id' => \Auth::id()
+            ]);
+            return redirect('/home');
     }
 }

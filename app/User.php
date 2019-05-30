@@ -33,7 +33,17 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function products() 
+    {
+        return $this->hasMany(\App\Product::class);
+    }
+
+    public function messages() 
+    {
+        return $this->hasMany(\App\Message::class);
+    }
 }

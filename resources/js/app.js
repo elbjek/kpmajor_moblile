@@ -26,6 +26,11 @@ Vue.component(
     require('./components/Profile.vue').default
 );
 
+Vue.component(
+    'create-product',
+    require('./components/CreateProduct.vue').default
+);
+
 
 Vue.component(
     'single-product',

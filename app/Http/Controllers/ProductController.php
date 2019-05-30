@@ -14,4 +14,8 @@ class ProductController extends Controller
     {
         return view('product');
     }
+    public function create()
+    {
+        return view('create_product');
+    }
 }
