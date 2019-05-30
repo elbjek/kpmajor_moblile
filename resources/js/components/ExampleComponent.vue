@@ -2,11 +2,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
+                <div class="card" v-for="product in products" :key="product.id">
+                    <div class="card-header">{{product.title}}</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <p>{{product.description}}</p>
+                        <p>{{product.price}}RSD</p>
                     </div>
                 </div>
             </div>
@@ -16,8 +17,21 @@
 
 <script>
     export default {
+        data() {
+            return {
+                'products': []   
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            this.fetchData()
+        },
+        methods:{
+            fetchData(){
+                axios.get('/api/products')
+                .then(response => {
+                    this.products = response.data
+                })
+            }
         }
     }
 </script>
