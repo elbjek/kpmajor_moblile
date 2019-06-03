@@ -33,10 +33,12 @@ class ApiProductsController extends Controller
     }
     public function store(Request $request)
     {
+        // $imageName = time().'.'.$request->image->getClientOriginalExtension();
         Product::create([
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
+            'image'=> $request->image,
             'user_id' => \Auth::id()
             ]);
             return redirect('/home');

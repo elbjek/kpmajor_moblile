@@ -6,7 +6,7 @@
                 <p>{{user.lastname}}</p>
                 <p>{{user.phone_number}}</p>
                 <p>{{user.city}}</p>
-                <img :src="'../../../storage/app/public/assets/user_images/' + user.profile_picture" alt="Profile Picture">
+                 <img :src="'/storage/app/assets/user_images/' + user.profile_picture" width="30">
             </div>
         </div>
     </div>

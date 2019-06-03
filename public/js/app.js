@@ -1799,11 +1799,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateProduct",
   data: function data() {
     return {
       userid: '',
+      image: '',
+      title: '',
+      description: '',
+      price: '',
       fields: {},
       errors: {}
     };
@@ -1812,6 +1823,21 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchData();
   },
   methods: {
+    onFileChange: function onFileChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
+    createImage: function createImage(file) {
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.image = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
     fetchData: function fetchData() {
       var _this = this;
 
@@ -1825,7 +1851,16 @@ __webpack_require__.r(__webpack_exports__);
     formSubmit: function formSubmit() {
       var _this2 = this;
 
-      axios.post('/api/products/', this.fields)["catch"](function (error) {
+      this.fields = {
+        'image': this.image,
+        'title': this.title,
+        'description': this.description,
+        'price': this.price
+      };
+      console.log(this.fields);
+      axios.post('/api/products/', this.fields, {
+        image: this.image
+      })["catch"](function (error) {
         if (error.response.status === 422) {
           _this2.errors = error.response.data.errors || {};
         }
@@ -38808,13 +38843,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "appointments" }, [
+      _c("div", { staticClass: "products" }, [
         _c("h2", [_vm._v("Add new Appointment")]),
         _vm._v(" "),
         _c(
           "form",
           {
-            attrs: { method: "POST", action: "/api/appointments" },
+            attrs: {
+              method: "POST",
+              action: "/api/products",
+              enctype: "multipart/form-data"
+            },
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -38831,19 +38870,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.fields.title,
-                    expression: "fields.title"
+                    value: _vm.title,
+                    expression: "title"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text", name: "title" },
-                domProps: { value: _vm.fields.title },
+                domProps: { value: _vm.title },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.fields, "title", $event.target.value)
+                    _vm.title = $event.target.value
                   }
                 }
               })
@@ -38859,19 +38898,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.fields.description,
-                    expression: "fields.description"
+                    value: _vm.description,
+                    expression: "description"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text", name: "description" },
-                domProps: { value: _vm.fields.description },
+                domProps: { value: _vm.description },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.fields, "description", $event.target.value)
+                    _vm.description = $event.target.value
                   }
                 }
               })
@@ -38885,22 +38924,39 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.fields.price,
-                    expression: "fields.price"
+                    value: _vm.price,
+                    expression: "price"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "number", name: "price" },
-                domProps: { value: _vm.fields.price },
+                domProps: { value: _vm.price },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.fields, "price", $event.target.value)
+                    _vm.price = $event.target.value
                   }
                 }
               })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "col-md-2" }, [
+                _c("img", {
+                  staticClass: "img-responsive",
+                  attrs: { src: _vm.image }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: { type: "file" },
+                  on: { change: _vm.onFileChange }
+                })
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -38915,7 +38971,7 @@ var render = function() {
               "a",
               {
                 staticClass: "btn btn-primary",
-                attrs: { href: "/home" },
+                attrs: { href: "#" },
                 on: { click: _vm.formSubmit }
               },
               [_vm._v("Add")]
@@ -39062,10 +39118,8 @@ var render = function() {
         _vm._v(" "),
         _c("img", {
           attrs: {
-            src:
-              "../../../storage/app/public/assets/user_images/" +
-              _vm.user.profile_picture,
-            alt: "Profile Picture"
+            src: "/storage/app/assets/user_images/" + _vm.user.profile_picture,
+            width: "30"
           }
         })
       ])
