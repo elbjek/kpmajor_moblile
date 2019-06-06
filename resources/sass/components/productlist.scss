@@ -33,6 +33,11 @@
             width:70px;
             background-color:$light-gray;
             border-radius:8px;
+            overflow:hidden;
+            img{
+                height:100%;
+                width:auto;
+            }
         }
         .star{
             color:$orange;

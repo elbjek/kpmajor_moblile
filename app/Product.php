@@ -9,7 +9,7 @@ class Product extends Model
     use Searchable;
 
     protected $fillable = [
-        'title','description','price','category_id','user_id'
+        'title','description','image','price','category_id','user_id'
     ];
 
     public function users() 

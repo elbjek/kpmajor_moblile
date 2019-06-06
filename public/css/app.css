@@ -55,9 +55,100 @@ body {
   padding: 0px 15px;
 }
 
+.search-component .search-bar .input-wrap {
+  padding: 0px;
+}
+
 .search-component .search-bar input {
+  transition: 0.2s ease-in-out;
   background: transparent;
   border: none;
+  width: 100%;
+  padding: 5px;
+}
+
+.search-component .search-bar input[type=text]:focus {
+  outline: none;
+}
+
+.search-component .search-bar .cancel {
+  -webkit-transform: translateX(15px), scaleX(0.8);
+          transform: translateX(15px), scaleX(0.8);
+}
+
+.search-component .search-bar .cancel i {
+  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+  background-color: #003368;
+  font-weight: 900;
+  padding: 10px 12px;
+  border-radius: 20px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.search-component .filters-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.search-component .filter-buttons {
+  display: flex;
+}
+
+.search-component .filter-buttons .checkbox {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-left: 20px;
+  color: #003368;
+  margin-right: 10px;
+}
+
+.search-component .filter-buttons .checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.search-component .filter-buttons .checkbox .checkmark {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #f4f4f4;
+  border: 2px solid #007ec3;
+  border-radius: 4px;
+}
+
+.search-component .filter-buttons .checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.search-component .filter-buttons .checkbox input:checked ~ .checkmark {
+  background-color: #007ec3;
+}
+
+.enlarge-search {
+  padding: 10px 0px !important;
+  transition: 0.2s ease-in-out;
+}
+
+.show {
+  visibility: visible !important;
+  -webkit-transform: scale(1) !important;
+          transform: scale(1) !important;
+  transition: 0.2s ease-in-out;
 }
 
 .latest-products-wrap h1 {
@@ -92,6 +183,12 @@ body {
   width: 130px;
   background-color: #f4f4f4;
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.latest-products-wrap .product .img img {
+  height: 100%;
+  width: auto;
 }
 
 .products-list-wrap {
@@ -138,6 +235,12 @@ body {
   width: 70px;
   background-color: #f4f4f4;
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.products-list-wrap .product .img img {
+  height: 100%;
+  width: auto;
 }
 
 .products-list-wrap .product .star {

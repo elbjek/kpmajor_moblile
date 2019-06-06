@@ -4,6 +4,7 @@
         <a :href="'products/'+ product.id" v-for="product in products" :key="product.id" class="product">
            <div class="product-heading">
                 <div class="img">
+                <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_1193,w_2121,x_0,y_175/f_auto,q_auto,w_1100/v1554921998/shape/mentalfloss/549585-istock-909106260.jpg">
                 </div>
                 <div class="product-content">
                     <h6>{{product.title}}</h6>

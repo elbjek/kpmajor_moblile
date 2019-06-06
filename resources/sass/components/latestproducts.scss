@@ -25,6 +25,11 @@
             width:130px;
             background-color: $light-gray;
             border-radius:8px;
+            overflow: hidden;
+            img{
+                height:100%;
+                width:auto;
+            }
         }  
     } 
 }

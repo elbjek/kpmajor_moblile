@@ -3,37 +3,37 @@
     <div class="alert alert-danger" role="alert" v-if="error">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     @{{ error }}
-</div>
-        <div class="form-group">
-        <div class="search-bar">
-            <div class="">
-                <input type="text" placeholder="Pretraga"  v-model="query">
+    </div>
+    <div class="form-group">
+        <div class="search-bar" id="search">
+            <div class="col-11 input-wrap">
+                <input type="text" class="input" placeholder="Pretraga" @click="showFilters"  v-model="query">
             </div>
-            <span class="">
-            <button class="btn " type="button" @click="search()" v-if="!loading">Search!</button>
-                <button class="btn" type="button" disabled="disabled" v-if="loading">Searching...</button>
-            </span>
+            <!-- <div class="searchicon" v-show="hide">
+                <i class="fas fa-search"></i>
+            </div> -->
+           <div class="cancel" v-show="show">
+                <i @click="removeFilters" v-bind:class="{show:show}" class="fas fa-times"></i>
+           </div>
+        </div>
+
+        <div class="filters-wrap" v-show="show" v-bind:class="{filtertransition:show}">
+         <div class="filter-buttons" >
+            <label class="checkbox">Naslov
+                <input type="checkbox" >
+                <span class="checkmark"></span>
+            </label>
+            <label class="checkbox">Tekst oglasa
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+          <div class="filter">
+              <span>Filteri</span>
+                <i class="fas fa-sliders-h"></i>
+          </div>
         </div>
     </div>
-        <div id="products" class="row list-group">
-        <div class="item col-xs-4 col-lg-4" v-for="product in products" :key="product.id">
-            <div class="thumbnail">
-                <!-- <img class="group list-group-image" :src="product.image" alt="{{ product.title }}" /> -->
-            <div class="caption">
-                <h4 class="group inner list-group-item-heading">{{ product.title }}</h4>
-                <p class="group inner list-group-item-text">{{ product.description }}</p>
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                            <p class="lead">{{ product.price }}</p>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <a class="btn btn-success" href="#">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-    </div>
-</div>
-        </div>
 </div>
 </template>
 
@@ -44,28 +44,53 @@ export default {
                 products: [],
                 loading: false,
                 error: false,
-                query: ''
+                query: '',
+                show:false,
+                hide:true,
         }
     },
-    methods:{
- search: function() {
-        // Clear the error message.
-        // this.error = '';
-        // // Empty the products array so we can fill it with the new products.
-        // this.products = [];
-        // // Set the loading property to true, this will display the "Searching..." button.
-        // this.loading = true;
-
-        // Making a get request to our API and passing the query to it.
-        axios.get('/api/products/search?q=' + this.query).then((response) => {
-            // If there was an error set the error message, if not fill the products array.
-            response.body.error ? this.error = response.body.error : this.products = response.body;
-            // The request is finished, change the loading to false again.
-            this.loading = false;
-            // Clear the query.
-            this.query = '';
-        });
-    }                  
+    mounted(){
+    this.$anime
+    },
+    methods:{        
+        removeFilters(e){
+            this.$anime({
+                targets: '.cancel',
+                translateX: 15,
+                keyframes: [
+                    {translateX: 20,
+                    scaleX:0.9
+                    },
+                    {translateX: 20,
+                    scaleX:0.8},
+                ],
+                easing: 'cubicBezier(.5, .05, .1, .3)',
+            });
+            this.show = false;
+            this.hide = true;
+            $('.input').removeClass('enlarge-search')
+        } ,
+        showFilters(){
+            $('.input').addClass('enlarge-search')
+            this.show = true;
+            this.hide = false;
+            this.cancel()       
+             },
+        cancel(){
+            var animation = this.$anime({
+                targets: '.cancel',
+                duration:420,
+                keyframes: [
+                    {translateX: 20,
+                    scaleX:0.9
+                    },
+                    {translateX: 0,
+                    scaleX:1},
+                ],
+                 easing: 'cubicBezier(.5, .05, .1, .3)',
+            })
+            animation.play()
+        }               
     }
 
 }
