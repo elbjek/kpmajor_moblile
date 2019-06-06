@@ -19,39 +19,29 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-Vue.component(
-    'user-profile',
-    require('./components/Profile.vue').default
-);
-
-Vue.component(
-    'create-product',
-    require('./components/CreateProduct.vue').default
-);
 
 
-Vue.component(
-    'single-product',
-    require('./components/Product.vue').default
-);
 
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
-);
+Vue.component('logo-component', require('./components/shared/logo.vue').default)
 
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
-);
+//products pages
+Vue.component('new-products',require('./components/NewProducts.vue').default);
+Vue.component('single-product',require('./components/Product.vue').default);
+Vue.component('products-list', require('./components/ProductsList.vue').default);
+Vue.component('create-product',require('./components/CreateProduct.vue').default);
 
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
-);
+//global components 
+Vue.component('search-bar',require('./components/shared/Search.vue').default);
 
+Vue.component('passport-clients',require('./components/passport/Clients.vue').default);
+
+Vue.component('passport-authorized-clients',require('./components/passport/AuthorizedClients.vue').default);
+
+Vue.component('passport-personal-access-tokens',require('./components/passport/PersonalAccessTokens.vue').default);
+
+
+//user
+Vue.component('user-profile',require('./components/Profile.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

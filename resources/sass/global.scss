@@ -1,0 +1,37 @@
+.mylogo{
+    font-weight: 900 !important;
+    color:$darkblue !important;
+}
+body{
+    background-color:white;
+}
+
+.navigation{
+    background-color:$light-gray;
+    .whole-word{
+        letter-spacing:0px;
+    }
+    span{
+        letter-spacing: -3px;
+    }
+    .logo-orange{
+        color:$orange;
+    }
+    .logo-green{
+        color:$green;
+    }
+    .logo-red{
+        color:$red
+    }
+    .logo-lightblue{
+        color:$lightblue;
+    }
+    .logo-darkblue{
+        color:$darkblue;
+    }
+}
+
+.clear{
+    margin:0 auto;
+    padding:0;
+}

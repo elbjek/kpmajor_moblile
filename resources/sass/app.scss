@@ -1,8 +1,16 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,900&display=swap');
 
 // Variables
 @import 'variables';
+@import 'global';
+@import './shared/search-bar.scss';
 
+@import './components/latestproducts.scss';
+@import './components/productlist.scss';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+

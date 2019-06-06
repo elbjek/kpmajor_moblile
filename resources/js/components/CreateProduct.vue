@@ -22,14 +22,15 @@
             <option v-for="(value,key) in clients" :key="key" :value="key"> {{value}}</option>
             </select> 
         </div> -->
-            <div class="form-group">
-            <div class="col-md-2">
-                <img :src="image" class="img-responsive">
-            </div>
-            <div class="col-md-8">
-                <input type="file" v-on:change="onFileChange" class="form-control">
-            </div>
-            </div>
+         <div class="form-group">
+                <div >
+                    <img :src="image" class="img-responsive">
+                </div>
+                <div>
+                    <input type="file" v-on:change="onFileChange" class="form-control">
+                </div>
+        </div>
+
         <div class="form-group">
             <!-- <label for="user_id">User Id</label> -->
             <input type="hidden"  class="form-control"  name="user_id" :value="userid" />
@@ -52,7 +53,8 @@
                 description:'',
                 price:'',
                 fields:{},
-                errors:{}
+                errors:{},
+                image: '',
             }
         },
         mounted() {
@@ -96,3 +98,9 @@
         }
 }
 </script>
+
+<style  scoped>
+    img{
+        max-height:36px
+    }
+</style>

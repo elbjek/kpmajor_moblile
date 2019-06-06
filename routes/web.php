@@ -22,4 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'ProfileController');
 Route::resource('products', 'ProductController');
 
+Route::get('/chat', 'MessagesController@index')->name('home');
+
+
 

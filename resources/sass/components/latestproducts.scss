@@ -1,0 +1,30 @@
+.latest-products-wrap{
+    h1{
+        color:$darkblue;
+        font-weight:700;
+        font-size:18px;
+    }
+    .product{
+        margin:10px;
+        color:$darkblue;
+        .product-content{
+            margin-top:15px;
+            h6{
+                font-size:16px;
+                font-weight:700;
+                color:$darkblue;
+                text-transform: capitalize;
+            }
+            p{
+                margin:0;
+                color:$darkblue;
+            }
+        }
+        .img{
+            height:160px;
+            width:130px;
+            background-color: $light-gray;
+            border-radius:8px;
+        }  
+    } 
+}

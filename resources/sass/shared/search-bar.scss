@@ -1,0 +1,14 @@
+.search-component{
+    .search-bar{
+        background-color:$light-gray;
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        border-radius:20px;
+        padding:0px 15px;
+        input{
+            background: transparent;
+            border:none;
+        }
+    }
+}
