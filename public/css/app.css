@@ -46,6 +46,22 @@ body {
   padding: 0;
 }
 
+.online,
+.offline {
+  height: 8px;
+  width: 8px;
+  display: block;
+  border-radius: 10px;
+}
+
+.offline {
+  background-color: #fe1e00;
+}
+
+.online {
+  background-color: #8cc63f;
+}
+
 .search-component .search-bar {
   background-color: #f4f4f4;
   display: flex;
@@ -390,6 +406,96 @@ body {
 .products-list-wrap .product .star {
   color: #FECD00;
   font-size: 16px;
+}
+
+.single-product-wrap .img {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+
+.single-product-wrap .img img {
+  width: 100%;
+  height: auto;
+}
+
+.single-product-wrap .single-product-heading-wrap {
+  padding: 20px 0px;
+}
+
+.single-product-wrap .single-product-heading-wrap .single-product-info-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-product-wrap .single-product-heading-wrap .single-product-info-wrap .single-product-info h5 {
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #003368;
+}
+
+.single-product-wrap .single-product-heading-wrap .single-product-info-wrap .single-product-info p {
+  font-weight: 400;
+  color: #003368;
+  margin: 0;
+}
+
+.single-product-wrap .single-product-heading-wrap .single-product-info-wrap span {
+  font-size: 12px;
+  font-weight: 300;
+  color: #003368;
+}
+
+.single-product-wrap .single-product-heading-wrap p {
+  font-weight: 400;
+  color: #003368;
+  margin: 0;
+}
+
+.single-product-wrap .product-user-info-wrap {
+  background-color: #f4f4f4;
+  padding: 10px 7px;
+}
+
+.single-product-wrap .product-user-info-wrap .product-user-info-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-product-wrap .product-user-info-wrap .product-user-info-heading p {
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #003368;
+}
+
+.single-product-wrap .product-user-info-wrap .product-user-info-heading span {
+  font-weight: 300;
+  color: #003368;
+  font-size: 12px;
+}
+
+.single-product-wrap .product-user-info-wrap .product-user-information h5 {
+  font-weight: 900;
+  color: #003368;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.single-product-wrap .product-user-info-wrap .product-user-information p {
+  margin: 0;
+  color: #003368;
+  font-weight: 400;
+}
+
+.single-product-wrap .product-user-info-wrap .product-user-information button {
+  background-color: #007ec3;
+  color: #ffffff;
+  margin: 15px 0px 7px 0px;
+  border-radius: 8px;
 }
 
 /*!

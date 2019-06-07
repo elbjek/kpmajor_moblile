@@ -2803,7 +2803,7 @@ module.exports = function spread(callback) {
 
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
-var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js");
+var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
 
 /*global toString:true*/
 
@@ -3138,6 +3138,28 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/axios/node_modules/is-buffer/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CreateProduct.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CreateProduct.vue?vue&type=script&lang=js& ***!
@@ -3322,6 +3344,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-carousel */ "./node_modules/vue-carousel/dist/vue-carousel.min.js");
+/* harmony import */ var vue_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_carousel__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -3342,7 +3366,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    "carousel": vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Carousel"],
+    "slide": vue_carousel__WEBPACK_IMPORTED_MODULE_0__["Slide"]
+  },
   data: function data() {
     return {
       'product': [],
@@ -3523,6 +3572,9 @@ __webpack_require__.r(__webpack_exports__);
     this.$anime;
   },
   methods: {
+    swipeHandler: function swipeHandler() {
+      alert("hi");
+    },
     showModal: function showModal() {
       this.show = true; // this.scaleChat()
     },
@@ -9053,38 +9105,6 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/is-buffer/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/is-buffer/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
 
@@ -42069,29 +42089,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("p", [_vm._v("Naziv:" + _vm._s(_vm.product.title))]),
+  return _c(
+    "div",
+    { staticClass: "single-product-wrap" },
+    [
+      _c(
+        "carousel",
+        { attrs: { perPage: 1, paginationEnabled: false } },
+        [
+          _c("slide", [
+            _c("div", { staticClass: "img" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                  alt: ""
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("slide", [
+            _c("div", { staticClass: "img" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "https://www.love-mobility.co.uk/wp-content/uploads/2018/12/Scooterpac-Cabincar-Telford.jpg",
+                  alt: ""
+                }
+              })
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "single-product-heading-wrap" }, [
+        _c("div", { staticClass: "single-product-info-wrap" }, [
+          _c("div", { staticClass: "single-product-info" }, [
+            _c("h5", [_vm._v(_vm._s(_vm.product.title))]),
+            _vm._v(" "),
+            _c("p", [_vm._v("Cena: " + _vm._s(_vm.product.price) + " RSD")])
+          ]),
+          _vm._v(" "),
+          _c("span", [_vm._v("Vidjen:9 puta")])
+        ]),
         _vm._v(" "),
-        _c("p", [_vm._v("Opis" + _vm._s(_vm.product.description))]),
+        _c("p", [_vm._v(_vm._s(_vm.product.description))])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "product-user-info-wrap" }, [
+        _c("div", { staticClass: "product-user-info-heading" }, [
+          _c("p", [_vm._v("Informacije o korisniku:")]),
+          _vm._v(" "),
+          _c("span", [_vm._v("Clan od:" + _vm._s(_vm.product.created_at))])
+        ]),
         _vm._v(" "),
-        _c("p", [_vm._v("Cena:" + _vm._s(_vm.product.price) + "RSD")])
+        _c("div", { staticClass: "product-user-information" }, [
+          _c("h5", [
+            _vm._v(
+              _vm._s(_vm.product.name) + " " + _vm._s(_vm.product.lastname)
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", {
+            staticClass: "offline",
+            class: (_vm.online = _vm.product.online)
+          }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Lokacija:" + _vm._s(_vm.product.city))]),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn" }, [_vm._v("Posalji poruku")])
+        ])
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("h4", [_vm._v("User info:")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Ime" + _vm._s(_vm.product.name))]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Prezime:" + _vm._s(_vm.product.lastname))]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Phone number:" + _vm._s(_vm.product.phone_number))])
-      ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -42242,22 +42315,40 @@ var render = function() {
       [_c("i", { staticClass: "far fa-comment" })]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "chat-wrap" }, [
-      _c("div", { staticClass: "chat" }, [
-        _c("div", { staticClass: "chat-heading" }, [
-          _c("i", {
-            staticClass: "fas fa-chevron-down",
-            on: { click: _vm.closeModal }
-          }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Vaše konverzacije")])
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1)
-      ])
-    ])
+    _vm.show
+      ? _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "touch",
+                rawName: "v-touch:swipe.left",
+                value: _vm.swipeHandler,
+                expression: "swipeHandler",
+                arg: "swipe",
+                modifiers: { left: true }
+              }
+            ],
+            staticClass: "chat-wrap"
+          },
+          [
+            _c("div", { staticClass: "chat" }, [
+              _c("div", { staticClass: "chat-heading" }, [
+                _c("i", {
+                  staticClass: "fas fa-chevron-down",
+                  on: { click: _vm.closeModal }
+                }),
+                _vm._v(" "),
+                _c("p", [_vm._v("Vaše konverzacije")])
+              ]),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [

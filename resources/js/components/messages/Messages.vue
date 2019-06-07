@@ -3,7 +3,7 @@
     <div class="message-button" @click="showModal" v-bind:class="{ messageButtonWhite: show }">
         <i class="far fa-comment"></i>
     </div>
-    <div class="chat-wrap">
+    <div class="chat-wrap" v-if="show" v-touch:swipe.left="swipeHandler">
        <div class="chat">
         <div class="chat-heading">
             <i @click="closeModal" class="fas fa-chevron-down"></i>
@@ -46,7 +46,10 @@ export default {
     mounted(){
     this.$anime
     },
-    methods:{        
+    methods:{   
+        swipeHandler(){
+            alert("hi")
+        },
         showModal(){
             this.show =true
             // this.scaleChat()

@@ -35,3 +35,16 @@ body{
     margin:0 auto;
     padding:0;
 }
+
+.online,.offline{
+    height:8px;
+    width:8px;
+    display:block;
+    border-radius:10px;
+}
+.offline{
+    background-color:$red;
+}
+.online{
+    background-color:$green;
+}

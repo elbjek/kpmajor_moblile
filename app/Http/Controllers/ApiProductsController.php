@@ -21,7 +21,7 @@ class ApiProductsController extends Controller
         $user = \Auth::id();
         $selectedProduct = $Product->id;
         $product = Product::join('users','users.id','=','products.user_id')
-        ->select('products.*','name','lastname','phone_number')
+        ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
         ->where('products.id',$selectedProduct)
         ->get();
         return response()->json($product);
