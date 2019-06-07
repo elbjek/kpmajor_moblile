@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "hammerjs": "^2.0.8",
         "laravel-echo": "^1.5.3",
         "perf_hooks": "0.0.1",
         "pusher-js": "^4.4.0",
@@ -32,6 +33,8 @@
         "vue-agile": "^1.0.10",
         "vue-animejs": "^2.1.1",
         "vue-carousel": "^0.18.0",
-        "vue-slick": "^1.1.15"
+        "vue-slick": "^1.1.15",
+        "vue2-hammer": "^2.1.2",
+        "vue2-touch-events": "^2.0.0"
     }
 }

@@ -17,6 +17,9 @@
         <div class="products-list">
             <products-list></products-list>
         </div>
+        <div class="chat">
+            <chat-component></chat-component>
+        </div>
     </div>
 </div>
 @endsection

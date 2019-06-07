@@ -12,8 +12,13 @@ window.Vue = require('vue');
 import VueAnime from 'vue-animejs';
 Vue.use(VueAnime)
 
-import jQuery from 'jquery'
-window.jQuery = jQuery
+import Vue from 'vue'
+import Vue2TouchEvents from 'vue2-touch-events'
+ 
+Vue.use(Vue2TouchEvents)
+
+import jQuery from 'jquery';
+window.jQuery = jQuery;
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -32,6 +37,9 @@ Vue.component('new-products',require('./components/NewProducts.vue').default);
 Vue.component('single-product',require('./components/Product.vue').default);
 Vue.component('products-list', require('./components/ProductsList.vue').default);
 Vue.component('create-product',require('./components/CreateProduct.vue').default);
+
+//messages 
+Vue.component('chat-component',require('./components/messages/Messages.vue').default);
 
 //global components 
 Vue.component('search-bar',require('./components/shared/Search.vue').default);
