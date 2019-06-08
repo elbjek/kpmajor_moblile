@@ -1,6 +1,7 @@
 <template>
     <div class="products-list-wrap">
         <h2>Svi oglasi</h2>
+        <div v-if="products.length === 0">Loading...</div>
         <a :href="'products/'+ product.id" v-for="product in products" :key="product.id" class="product">
            <div class="product-heading">
                 <div class="img">
@@ -16,14 +17,14 @@
                &#9734;
            </div>
        </a>
-    </div>
+       </div>
 </template>
 
 <script>
     export default {
         data() {
             return {
-                'products': []   
+                'products': [],
             }
         },
         mounted() {
@@ -34,7 +35,6 @@
                 axios.get('/api/products')
                 .then(response => {
                     this.products = response.data
-                    console.log(this.products)
                 })
             }
         }

@@ -1,6 +1,6 @@
 <template>
     <div class="single-product-wrap">
-        <carousel :perPage="1" :paginationEnabled="false">
+        <carousel :perPage="1" :paginationEnabled="true">
             <slide>
             <div class="img">
                 <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
@@ -26,11 +26,13 @@
        <div class="product-user-info-wrap">
            <div class="product-user-info-heading">
                <p>Informacije o korisniku:</p>
-               <span>Clan od:{{product.created_at}}</span>
+               <span>Clan od:{{formatTime}}</span>
            </div>
            <div class="product-user-information">
-               <h5>{{product.name}} {{product.lastname}}</h5>
-               <span v-bind:class="online=product.online" class="offline"></span>
+              <div class="user">
+                    <h5>{{product.name}} {{product.lastname}}</h5>
+                    <span v-bind:class="online=product.online" class="offline"></span>
+              </div>
                <p>Lokacija:{{product.city}}</p>
                <button class="btn">Posalji poruku</button>
            </div>
@@ -40,6 +42,7 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
+import moment from 'moment';
     export default {
         components: {
             "carousel": Carousel,
@@ -59,10 +62,15 @@ import { Carousel, Slide } from 'vue-carousel';
                 axios.get('/api'+ this.currentUrl)
                 .then(response => {
                     this.product = response.data[0]
-                    console.log(this.product)
                 })
             }
-            
+        },
+        computed:{
+            formatTime(){
+                var moment = require('moment');
+                var time = this.product.created_at;
+               return moment(time).format("MMM Do YY");
+            }
         }
     }
 </script>

@@ -27,6 +27,7 @@
     "dependencies": {
         "hammerjs": "^2.0.8",
         "laravel-echo": "^1.5.3",
+        "moment": "^2.24.0",
         "perf_hooks": "0.0.1",
         "pusher-js": "^4.4.0",
         "slick-carousel": "^1.8.1",

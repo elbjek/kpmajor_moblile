@@ -17,6 +17,7 @@ import Vue2TouchEvents from 'vue2-touch-events'
  
 Vue.use(Vue2TouchEvents)
 
+
 import jQuery from 'jquery';
 window.jQuery = jQuery;
 /**
@@ -38,6 +39,8 @@ Vue.component('single-product',require('./components/Product.vue').default);
 Vue.component('products-list', require('./components/ProductsList.vue').default);
 Vue.component('create-product',require('./components/CreateProduct.vue').default);
 
+Vue.component('products-carousel',require('./components/products/ProductsCarousel.vue').default)
+
 //messages 
 Vue.component('chat-component',require('./components/messages/Messages.vue').default);
 
@@ -52,7 +55,7 @@ Vue.component('passport-personal-access-tokens',require('./components/passport/P
 
 
 //user
-Vue.component('user-profile',require('./components/Profile.vue').default);
+Vue.component('user-profile',require('./components/user_profile/Profile.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
