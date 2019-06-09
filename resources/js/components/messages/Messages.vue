@@ -1,17 +1,16 @@
 <template>
-<div class="messages-wrap">
-    <div class="message-button" @click="showModal" v-bind:class="{ messageButtonWhite: show }">
+<div class="messages-wrap"  >
+    <button v-touch="handleModal" v-bind:class="{messageButtonWhite:show}" class="message-button">
         <i class="far fa-comment"></i>
-    </div>
-    <div class="chat-wrap" v-if="show" v-touch:swipe.left="swipeHandler">
-       <div class="chat">
+    </button>
+    <div class="transparent-bg" v-touch="closeModal"></div>
+    <div class="chat-wrap">
+       <div class="chat-box">
         <div class="chat-heading">
-            <i @click="closeModal" class="fas fa-chevron-down"></i>
+            <i v-touch:tap="handleModal" class="fas fa-chevron-down"></i>
             <p>Vaše konverzacije</p>
         </div>
-        <div class="search">
-            <input type="text" placeholder="Pretraga">
-        </div>
+        <div style="overflow:scroll; height:70%" >
         <div class="users-wrap">
             <div class="image-wrap">
                 <div class="img">
@@ -30,6 +29,134 @@
                 </div>
             </div>
         </div>
+         <div class="users-wrap">
+            <div class="image-wrap">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+                </div>
+                <span class="online"></span>
+            </div>
+            <div class="message-wrap">
+                <div class="user-info">
+                    <h6>Jovana Milicevic</h6>
+                    <h6 class="time">14:40</h6>
+                </div>
+                <div class="time">
+                    <span class="message">latest message</span>
+                    <span class="new"></span>
+                </div>
+            </div>
+        </div>
+          <div class="users-wrap">
+            <div class="image-wrap">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+                </div>
+                <span class="online"></span>
+            </div>
+            <div class="message-wrap">
+                <div class="user-info">
+                    <h6>Jovana Milicevic</h6>
+                    <h6 class="time">14:40</h6>
+                </div>
+                <div class="time">
+                    <span class="message">latest message</span>
+                    <span class="new"></span>
+                </div>
+            </div>
+        </div>
+          <div class="users-wrap">
+            <div class="image-wrap">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+                </div>
+                <span class="online"></span>
+            </div>
+            <div class="message-wrap">
+                <div class="user-info">
+                    <h6>Jovana Milicevic</h6>
+                    <h6 class="time">14:40</h6>
+                </div>
+                <div class="time">
+                    <span class="message">latest message</span>
+                    <span class="new"></span>
+                </div>
+            </div>
+        </div>
+         <div class="users-wrap">
+            <div class="image-wrap">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+                </div>
+                <span class="online"></span>
+            </div>
+            <div class="message-wrap">
+                <div class="user-info">
+                    <h6>Jovana Milicevic</h6>
+                    <h6 class="time">14:40</h6>
+                </div>
+                <div class="time">
+                    <span class="message">latest message</span>
+                    <span class="new"></span>
+                </div>
+            </div>
+        </div>
+          <div class="users-wrap">
+            <div class="image-wrap">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+                </div>
+                <span class="online"></span>
+            </div>
+            <div class="message-wrap">
+                <div class="user-info">
+                    <h6>Jovana Milicevic</h6>
+                    <h6 class="time">14:40</h6>
+                </div>
+                <div class="time">
+                    <span class="message">latest message</span>
+                    <span class="new"></span>
+                </div>
+            </div>
+        </div>
+         <div class="users-wrap">
+            <div class="image-wrap">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+                </div>
+                <span class="online"></span>
+            </div>
+            <div class="message-wrap">
+                <div class="user-info">
+                    <h6>Jovana Milicevic</h6>
+                    <h6 class="time">14:40</h6>
+                </div>
+                <div class="time">
+                    <span class="message">latest message</span>
+                    <span class="new"></span>
+                </div>
+            </div>
+        </div>
+                 <div class="users-wrap">
+            <div class="image-wrap">
+                <div class="img">
+                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
+                </div>
+                <span class="online"></span>
+            </div>
+            <div class="message-wrap">
+                <div class="user-info">
+                    <h6>Jovana Milicevic</h6>
+                    <h6 class="time">14:40</h6>
+                </div>
+                <div class="time">
+                    <span class="message">latest message</span>
+                    <span class="new"></span>
+                </div>
+            </div>
+        </div>            
+        </div>
+        
        </div>
     </div>
 </div>
@@ -44,59 +171,24 @@ export default {
         }
     },
     mounted(){
-    this.$anime
+    this.$anime,
+    $( ".messages-wrap" ).scroll(function( event ) {
+    event.stopPropagation();//Do not bubble up the DOM, do not scroll document.
+    });
     },
-    methods:{   
-        swipeHandler(){
-            alert("hi")
-        },
-        showModal(){
-            this.show =true
-            // this.scaleChat()
+    methods:{
+        handleModal(){
+            this.show=!this.show
+            $('.chat-box').toggleClass('chat-show')
+            $('body').toggleClass('overflow')
+            $('.transparent-bg').toggleClass('modal-background')
         },
         closeModal(){
-            $('.chat-wrap').addClass('wrapper-opacity')
-            this.test()
-        },   
-        test(){
-            this.$anime({
-                    targets: '.chat-wrap',
-                    delay: 1000,
-                    keyframes: [
-                        {
-                        scale:1,
-                        translate:0,
-                        transformOrigin:'bottom right'
-                        },
-                        {
-                        scale:0.5,
-                        translateZ:'-400px',
-                        translateY:'200px',
-                        translateX:'200px',
-                        transformOrigin:'bottom right'
-                        },
-                        {
-                            //  scale(0.2) translateZ(-700px) translateY(1400px) translateX(600px)
-                        scale:0.0,
-                        // translateZ:'-700px',
-                        // translateY:'1300px',
-                        // translateX:'600px',
-                        // transformOrigin:'bottom right'
-                        },
-                    ],
-                    easing: 'cubicBezier(.5, .05, .1, .3)',
-                    transformOrigin:"bottom right"
-                })
-        },
-        scaleChat(){
-            this.$anime({
-                targets: '.chat',
-                duration:720,
-                rotate:"22deg",
-                easing: 'cubicBezier(.5, .05, .1, .3)',
-
-            })
+            $('.chat-box').removeClass('chat-show');
+            $('body').removeClass('overflow')
+            $('.transparent-bg').removeClass('modal-background')
         }
     }
+
 }
 </script>

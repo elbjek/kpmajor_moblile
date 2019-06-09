@@ -3308,6 +3308,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3526,6 +3527,133 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3534,52 +3662,21 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.$anime;
+    this.$anime, $(".messages-wrap").scroll(function (event) {
+      event.stopPropagation(); //Do not bubble up the DOM, do not scroll document.
+    });
   },
   methods: {
-    swipeHandler: function swipeHandler() {
-      alert("hi");
-    },
-    showModal: function showModal() {
-      this.show = true; // this.scaleChat()
+    handleModal: function handleModal() {
+      this.show = !this.show;
+      $('.chat-box').toggleClass('chat-show');
+      $('body').toggleClass('overflow');
+      $('.transparent-bg').toggleClass('modal-background');
     },
     closeModal: function closeModal() {
-      $('.chat-wrap').addClass('wrapper-opacity');
-      this.test();
-    },
-    test: function test() {
-      this.$anime({
-        targets: '.chat-wrap',
-        delay: 1000,
-        keyframes: [{
-          scale: 1,
-          translate: 0,
-          transformOrigin: 'bottom right'
-        }, {
-          scale: 0.5,
-          translateZ: '-400px',
-          translateY: '200px',
-          translateX: '200px',
-          transformOrigin: 'bottom right'
-        }, {
-          //  scale(0.2) translateZ(-700px) translateY(1400px) translateX(600px)
-          scale: 0.0 // translateZ:'-700px',
-          // translateY:'1300px',
-          // translateX:'600px',
-          // transformOrigin:'bottom right'
-
-        }],
-        easing: 'cubicBezier(.5, .05, .1, .3)',
-        transformOrigin: "bottom right"
-      });
-    },
-    scaleChat: function scaleChat() {
-      this.$anime({
-        targets: '.chat',
-        duration: 720,
-        rotate: "22deg",
-        easing: 'cubicBezier(.5, .05, .1, .3)'
-      });
+      $('.chat-box').removeClass('chat-show');
+      $('body').removeClass('overflow');
+      $('.transparent-bg').removeClass('modal-background');
     }
   }
 });
@@ -59769,19 +59866,21 @@ var render = function() {
         },
         _vm._l(_vm.products, function(product) {
           return _c("slide", { key: product.id, staticClass: "product" }, [
-            _c("div", { staticClass: "img" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "https://images2.minutemediacdn.com/image/upload/c_crop,h_1193,w_2121,x_0,y_175/f_auto,q_auto,w_1100/v1554921998/shape/mentalfloss/549585-istock-909106260.jpg"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "product-content" }, [
-              _c("h6", [_vm._v(_vm._s(product.title))]),
+            _c("a", { attrs: { href: "/products/" + product.id } }, [
+              _c("div", { staticClass: "img" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "https://images2.minutemediacdn.com/image/upload/c_crop,h_1193,w_2121,x_0,y_175/f_auto,q_auto,w_1100/v1554921998/shape/mentalfloss/549585-istock-909106260.jpg"
+                  }
+                })
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(product.price))])
+              _c("div", { staticClass: "product-content" }, [
+                _c("h6", [_vm._v(_vm._s(product.title))]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(product.price))])
+              ])
             ])
           ])
         }),
@@ -59991,49 +60090,56 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "messages-wrap" }, [
     _c(
-      "div",
+      "button",
       {
+        directives: [
+          {
+            name: "touch",
+            rawName: "v-touch",
+            value: _vm.handleModal,
+            expression: "handleModal"
+          }
+        ],
         staticClass: "message-button",
-        class: { messageButtonWhite: _vm.show },
-        on: { click: _vm.showModal }
+        class: { messageButtonWhite: _vm.show }
       },
       [_c("i", { staticClass: "far fa-comment" })]
     ),
     _vm._v(" "),
-    _vm.show
-      ? _c(
-          "div",
-          {
+    _c("div", {
+      directives: [
+        {
+          name: "touch",
+          rawName: "v-touch",
+          value: _vm.closeModal,
+          expression: "closeModal"
+        }
+      ],
+      staticClass: "transparent-bg"
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat-wrap" }, [
+      _c("div", { staticClass: "chat-box" }, [
+        _c("div", { staticClass: "chat-heading" }, [
+          _c("i", {
             directives: [
               {
                 name: "touch",
-                rawName: "v-touch:swipe.left",
-                value: _vm.swipeHandler,
-                expression: "swipeHandler",
-                arg: "swipe",
-                modifiers: { left: true }
+                rawName: "v-touch:tap",
+                value: _vm.handleModal,
+                expression: "handleModal",
+                arg: "tap"
               }
             ],
-            staticClass: "chat-wrap"
-          },
-          [
-            _c("div", { staticClass: "chat" }, [
-              _c("div", { staticClass: "chat-heading" }, [
-                _c("i", {
-                  staticClass: "fas fa-chevron-down",
-                  on: { click: _vm.closeModal }
-                }),
-                _vm._v(" "),
-                _c("p", [_vm._v("Vaše konverzacije")])
-              ]),
-              _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _vm._m(1)
-            ])
-          ]
-        )
-      : _vm._e()
+            staticClass: "fas fa-chevron-down"
+          }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Vaše konverzacije")])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -60041,40 +60147,244 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "search" }, [
-      _c("input", { attrs: { type: "text", placeholder: "Pretraga" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "users-wrap" }, [
-      _c("div", { staticClass: "image-wrap" }, [
-        _c("div", { staticClass: "img" }, [
-          _c("img", {
-            attrs: {
-              src:
-                "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-              alt: ""
-            }
-          })
+    return _c("div", { staticStyle: { overflow: "scroll", height: "70%" } }, [
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "online" })
         ]),
         _vm._v(" "),
-        _c("span", { staticClass: "online" })
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "message-wrap" }, [
-        _c("div", { staticClass: "user-info" }, [
-          _c("h6", [_vm._v("Jovana Milicevic")]),
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
           _vm._v(" "),
-          _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          _c("span", { staticClass: "online" })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "time" }, [
-          _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
           _vm._v(" "),
-          _c("span", { staticClass: "new" })
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "online" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "online" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "online" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "online" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "online" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "users-wrap" }, [
+        _c("div", { staticClass: "image-wrap" }, [
+          _c("div", { staticClass: "img" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+                alt: ""
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "online" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "message-wrap" }, [
+          _c("div", { staticClass: "user-info" }, [
+            _c("h6", [_vm._v("Jovana Milicevic")]),
+            _vm._v(" "),
+            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time" }, [
+            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
+            _vm._v(" "),
+            _c("span", { staticClass: "new" })
+          ])
         ])
       ])
     ])
