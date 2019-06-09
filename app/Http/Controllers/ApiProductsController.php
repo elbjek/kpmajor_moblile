@@ -16,15 +16,31 @@ class ApiProductsController extends Controller
         return response()->json($products);
     }
 
+
     public function show(Product $Product)
     {
-        $user = \Auth::id();
+        // $user = \Auth::id();
         $selectedProduct = $Product->id;
+        // $product = Product::join('users','users.id','=','products.user_id')
+        // ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
+        // ->where('products.id',$selectedProduct)
+        // ->get();
+
         $product = Product::join('users','users.id','=','products.user_id')
         ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
         ->where('products.id',$selectedProduct)
-        ->get();
-        return response()->json($product);
+        ->first();
+        // find($Product->id);
+
+        // // get previous user id
+        $previous = Product::where('products.id', '<', $Product->id)->orderBy('products.id', 'desc')->first();
+    
+        // // get next user id
+        $next = Product::where('id', '>', $Product->id)->first();
+    
+        // return View::make('users.show')->with('previous', $previous)->with('next', $next);
+        $test=[$product,$previous,$next];
+        return $test;
     }
     public function create(Product $Product)
     {
@@ -43,7 +59,8 @@ class ApiProductsController extends Controller
             ]);
             return redirect('/home');
     }
-    public function latest(){
+    public function latest()
+    {
         $products = Product::join('users', 'users.id', '=', 'products.user_id')
         ->select('products.*','users.name','users.lastname')
         ->latest('products.id')

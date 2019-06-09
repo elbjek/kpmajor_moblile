@@ -1,5 +1,5 @@
 <template>
-    <div class="single-product-wrap">
+    <div class="single-product-wrap" v-touch:swipe.left="previousItem" v-touch:swipe.right="nextItem">
         <carousel :perPage="1" :paginationEnabled="true">
             <slide>
             <div class="img">
@@ -38,6 +38,7 @@
            </div>
        </div>
     </div>
+
 </template>
 
 <script>
@@ -51,18 +52,31 @@ import moment from 'moment';
         data() {
             return {
                 'product': [],
+                'next':[],
+                'previous':[],
                 'currentUrl': window.location.pathname
             }
         },
-        mounted() {
+        beforeMount() {
             this.fetchProducts()
         },
         methods:{
             fetchProducts(){
+                
                 axios.get('/api'+ this.currentUrl)
                 .then(response => {
-                    this.product = response.data[0]
+                    this.product = response.data[0],
+                    this.previous = response.data[1],
+                    this.next = response.data[2]
                 })
+            },
+            previousItem(){
+                var prev = this.product.id - 1
+                console.log(this.previous.id)
+            },
+            nextItem(){
+                console.log(this.next)
+                this.$router.push("/products/"+this.next.id)
             }
         },
         computed:{

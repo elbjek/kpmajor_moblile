@@ -6,7 +6,10 @@
 // Variables
 @import 'variables';
 @import 'global';
+@import './shared/navigation.scss';
 @import './shared/search-bar.scss';
+
+
 @import './components/messages.scss';
 @import './components/latestproducts.scss';
 @import './components/productlist.scss';

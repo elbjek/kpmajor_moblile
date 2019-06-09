@@ -1,11 +1,19 @@
 .mylogo{
     font-weight: 900 !important;
     color:$darkblue !important;
+    padding-left:1.5em;
 }
 body{
     background-color:white;
 }
-
+.nav-button{
+    border:none;
+    background: none;
+    padding: 0.5em 1.5em;
+    &:focus{
+        outline:none;
+    }
+}
 .navigation{
     background-color:$light-gray;
     .whole-word{
@@ -30,7 +38,10 @@ body{
         color:$darkblue;
     }
 }
-
+.navbar{
+    margin:0 !important;
+    padding:0 !important;
+}
 .clear{
     margin:0 auto;
     padding:0;

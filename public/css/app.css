@@ -3,10 +3,21 @@
 .mylogo {
   font-weight: 900 !important;
   color: #003368 !important;
+  padding-left: 1.5em;
 }
 
 body {
   background-color: white;
+}
+
+.nav-button {
+  border: none;
+  background: none;
+  padding: 0.5em 1.5em;
+}
+
+.nav-button:focus {
+  outline: none;
 }
 
 .navigation {
@@ -41,6 +52,11 @@ body {
   color: #003368;
 }
 
+.navbar {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .clear {
   margin: 0 auto;
   padding: 0;
@@ -60,6 +76,10 @@ body {
 
 .online {
   background-color: #8cc63f;
+}
+
+#menu {
+  color: red;
 }
 
 .search-component .search-bar {

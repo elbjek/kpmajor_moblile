@@ -9,5 +9,4 @@
 	<span class="logo-lightblue">m</span>
 	<span class="whole-word">prodajem</span>
 	</a>
-
 </template>

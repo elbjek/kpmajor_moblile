@@ -5,21 +5,23 @@
  */
 
 require('./bootstrap');
+import Vue from 'vue';
 
-window.Vue = require('vue');
-
+window.Vue = Vue;
+window.VueRouter = VueRouter;
+import VueRouter from 'vue-router';
+import router from './router'
 
 import VueAnime from 'vue-animejs';
 Vue.use(VueAnime)
 
-import Vue from 'vue'
 import Vue2TouchEvents from 'vue2-touch-events'
  
 Vue.use(Vue2TouchEvents)
 
-
 import jQuery from 'jquery';
 window.jQuery = jQuery;
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -64,4 +66,5 @@ Vue.component('user-profile',require('./components/user_profile/Profile.vue').de
 
 const app = new Vue({
     el: '#app',
+    router
 });
