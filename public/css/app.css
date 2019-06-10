@@ -653,6 +653,18 @@ body {
   cursor: pointer;
 }
 
+.showproduct {
+  visibility: visible !important;
+  -webkit-transform: scale(1) !important;
+          transform: scale(1) !important;
+}
+
+.singleproduct {
+  visibility: hidden;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

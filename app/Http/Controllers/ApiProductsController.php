@@ -19,28 +19,24 @@ class ApiProductsController extends Controller
 
     public function show(Product $Product)
     {
-        // $user = \Auth::id();
-        $selectedProduct = $Product->id;
-        // $product = Product::join('users','users.id','=','products.user_id')
-        // ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
-        // ->where('products.id',$selectedProduct)
-        // ->get();
 
+        $selectedProduct = $Product->id;
         $product = Product::join('users','users.id','=','products.user_id')
         ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
         ->where('products.id',$selectedProduct)
         ->first();
-        // find($Product->id);
 
-        // // get previous user id
         $previous = Product::where('products.id', '<', $Product->id)->orderBy('products.id', 'desc')->first();
-    
-        // // get next user id
+        
+        $all = Product::join('users','users.id','=','products.user_id')
+        ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
+        ->latest('products.id')
+        ->get();
+
         $next = Product::where('id', '>', $Product->id)->first();
-    
-        // return View::make('users.show')->with('previous', $previous)->with('next', $next);
-        $test=[$product,$previous,$next];
-        return $test;
+
+        $items=[$product,$previous,$next,$all];
+        return $items;
     }
     public function create(Product $Product)
     {

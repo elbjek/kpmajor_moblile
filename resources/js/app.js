@@ -37,11 +37,13 @@ Vue.component('logo-component', require('./components/shared/logo.vue').default)
 
 //products pages
 Vue.component('new-products',require('./components/NewProducts.vue').default);
-Vue.component('single-product',require('./components/Product.vue').default);
+// Vue.component('single-product',require('./components/Product.vue').default);
 Vue.component('products-list', require('./components/ProductsList.vue').default);
 Vue.component('create-product',require('./components/CreateProduct.vue').default);
 
 Vue.component('products-carousel',require('./components/products/ProductsCarousel.vue').default)
+Vue.component('single-product',require('./components/products/SingleProduct.vue').default)
+
 
 //messages 
 Vue.component('chat-component',require('./components/messages/Messages.vue').default);
