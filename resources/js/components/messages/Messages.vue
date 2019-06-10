@@ -180,12 +180,14 @@ export default {
         handleModal(){
             this.show=!this.show
             $('.chat-box').toggleClass('chat-show')
+            $('.chat-wrap').toggleClass('chat-height')
             $('body').toggleClass('overflow')
             $('.transparent-bg').toggleClass('modal-background')
         },
         closeModal(){
             $('.chat-box').removeClass('chat-show');
-            $('body').removeClass('overflow')
+            $('.chat-wrap').toggleClass('chat-height');
+            $('body').removeClass('overflow');
             $('.transparent-bg').removeClass('modal-background')
         }
     }

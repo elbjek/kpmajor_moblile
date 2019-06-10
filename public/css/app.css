@@ -212,6 +212,15 @@ body {
   background: rgba(0, 0, 0, 0.2);
   top: 0;
   left: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.chat-height {
+  -webkit-transform: translateY(0px) !important;
+          transform: translateY(0px) !important;
 }
 
 .messages-wrap {
@@ -259,6 +268,8 @@ body {
   align-items: flex-end;
   margin: 0 auto;
   z-index: 999;
+  -webkit-transform: translateY(400px);
+          transform: translateY(400px);
 }
 
 .messages-wrap .chat-wrap .chat-box {

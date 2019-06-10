@@ -3578,11 +3578,13 @@ __webpack_require__.r(__webpack_exports__);
     handleModal: function handleModal() {
       this.show = !this.show;
       $('.chat-box').toggleClass('chat-show');
+      $('.chat-wrap').toggleClass('chat-height');
       $('body').toggleClass('overflow');
       $('.transparent-bg').toggleClass('modal-background');
     },
     closeModal: function closeModal() {
       $('.chat-box').removeClass('chat-show');
+      $('.chat-wrap').toggleClass('chat-height');
       $('body').removeClass('overflow');
       $('.transparent-bg').removeClass('modal-background');
     }
