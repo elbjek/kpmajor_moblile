@@ -377,10 +377,10 @@ body {
   color: #003368;
   font-weight: 700;
   font-size: 18px;
+  margin-botton: 1rem;
 }
 
 .latest-products-wrap .product {
-  margin: 10px;
   color: #003368;
 }
 
@@ -402,7 +402,7 @@ body {
 
 .latest-products-wrap .product .img {
   height: 160px;
-  width: 130px;
+  width: 125px;
   background-color: #f4f4f4;
   border-radius: 8px;
   overflow: hidden;

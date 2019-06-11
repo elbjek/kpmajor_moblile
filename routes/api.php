@@ -22,4 +22,3 @@ Route::get('products/latest', 'ApiProductsController@latest');
 
 Route::resource('products', 'ApiProductsController');
 Route::middleware('auth:api')->resource('users', 'ApiUsersController');
-

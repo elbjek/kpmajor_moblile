@@ -3,9 +3,10 @@
         color:$darkblue;
         font-weight:700;
         font-size:18px;
+        margin-botton:1rem;
     }
     .product{
-        margin:10px;
+        // margin:10px;
         color:$darkblue;
         .product-content{
             margin-top:15px;
@@ -22,7 +23,7 @@
         }
         .img{
             height:160px;
-            width:130px;
+            width:125px;
             background-color: $light-gray;
             border-radius:8px;
             overflow: hidden;

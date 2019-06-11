@@ -3329,6 +3329,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/products/latest').then(function (response) {
         _this.products = response.data;
+        console.log(_this.products);
       });
     }
   }
@@ -59894,18 +59895,13 @@ var render = function() {
       _vm._v(" "),
       _c(
         "carousel",
-        {
-          attrs: { perPage: 3, paginationEnabled: false, scrollPerPage: true }
-        },
+        { attrs: { perPage: 2.5, loop: true, paginationEnabled: false } },
         _vm._l(_vm.products, function(product) {
           return _c("slide", { key: product.id, staticClass: "product" }, [
             _c("a", { attrs: { href: "/products/" + product.id } }, [
               _c("div", { staticClass: "img" }, [
                 _c("img", {
-                  attrs: {
-                    src:
-                      "https://images2.minutemediacdn.com/image/upload/c_crop,h_1193,w_2121,x_0,y_175/f_auto,q_auto,w_1100/v1554921998/shape/mentalfloss/549585-istock-909106260.jpg"
-                  }
+                  attrs: { src: "/storage/products/" + product.image }
                 })
               ]),
               _vm._v(" "),
