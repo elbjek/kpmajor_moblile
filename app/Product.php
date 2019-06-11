@@ -3,13 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use \App\Image;
 class Product extends Model 
 {
 
 
     protected $fillable = [
-        'title','description','image','price','category_id','user_id'
+        'title','description','price','category_id','user_id','image_id'
     ];
 
     public function users() 
@@ -21,10 +21,9 @@ class Product extends Model
     {
         return $this->belongsTo(\App\Category::class);
     }
-    public function getSearchResult(): SearchResult
+
+    public function images()
     {
-       $url = route('products.show', $this->id);
-         
-       return new SearchResult($this, $this->title, $url);
+        return $this->hasMany(\App\Image::class);
     }
 }

@@ -25,6 +25,7 @@
         data() {
             return {
                 'products': [],
+                'singleproduct':''
             }
         },
         mounted() {

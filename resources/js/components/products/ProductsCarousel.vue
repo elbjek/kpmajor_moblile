@@ -1,10 +1,13 @@
 <template>
-   <carousel v-on:transitionStart="transitionStart" v-on:transitionEnd="transitionEnd" :loop="true" :navigateTo="product.id"  v-on:pageChange="pageChange" :paginationEnabled="false"  :perPage="1">
-    <div v-if="allProducts.length === 0">Loading...</div>
-    <slide v-for="product in allProducts" :key="product.id">
-        <singleproduct class="singleproduct" v-bind:class="{showproduct:show}" :product="product"></singleproduct>
-    </slide>     
+   <div>
+    <carousel v-on:transitionStart="transitionStart" v-on:transitionEnd="transitionEnd" :loop="true" :navigateTo="product.id"  :paginationEnabled="false"  :perPage="1">
+        <div v-if="allProducts.length === 0">Loading...</div>
+        <slide v-for="product in allProducts" :key="product.id">
+            <singleproduct class="singleproduct" v-bind:class="{showproduct:show}" :product="product"></singleproduct>
+        </slide>     
    </carousel>
+
+   </div>
 </template>
 
 <script>
@@ -37,11 +40,12 @@ import singleproduct from './SingleProduct';
                 .then(response => {
                     this.product = response.data[0]
                     this.allProducts = response.data[3]
+                    console.log(this.product)
                 })
             },
-            pageChange(){
-              this.$router.push('/products/'+this.product.id)
-            },
+            // pageChange(){
+            //   this.$router.push('/products/'+this.product.id)
+            // },
             transitionStart(){
                 console.log('started')
             },

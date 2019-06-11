@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = [
-        'image','user_id','product_id'
+        'image','product_id' 
+        // 'imageable_id', 'imageable_type'
     ];
     
     public function users() 
@@ -15,7 +16,7 @@ class Image extends Model
         return $this->belongsTo(\App\User::class);
     }
 
-    public function products() 
+    public function products()
     {
         return $this->belongsTo(\App\Product::class);
     }

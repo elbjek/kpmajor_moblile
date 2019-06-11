@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "hammerjs": "^2.0.8",
+        "hooper": "^0.2.0",
         "laravel-echo": "^1.5.3",
         "moment": "^2.24.0",
         "perf_hooks": "0.0.1",

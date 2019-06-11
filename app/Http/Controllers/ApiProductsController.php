@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Image;
 class ApiProductsController extends Controller
 {
     public function index()
     {
         $user = \Auth::id();
-        $products = Product::join('users', 'users.id', '=', 'products.user_id')
-        ->select('products.*','users.name','users.lastname','users.city')
-        ->latest('products.id')
+        $products = Product::with('images')
+        ->join('users','users.id','=','products.user_id')
+        ->select('products.*','name','lastname','city')
         ->get();
         return response()->json($products);
     }
@@ -19,11 +20,11 @@ class ApiProductsController extends Controller
 
     public function show(Product $Product)
     {
-
         $selectedProduct = $Product->id;
         $product = Product::join('users','users.id','=','products.user_id')
         ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
         ->where('products.id',$selectedProduct)
+        ->with('images')
         ->first();
 
         $previous = Product::where('products.id', '<', $Product->id)->orderBy('products.id', 'desc')->first();
@@ -31,6 +32,7 @@ class ApiProductsController extends Controller
         $all = Product::join('users','users.id','=','products.user_id')
         ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
         ->latest('products.id')
+        ->with('images')
         ->get();
 
         $next = Product::where('id', '>', $Product->id)->first();
@@ -57,10 +59,9 @@ class ApiProductsController extends Controller
     }
     public function latest()
     {
-        $products = Product::join('users', 'users.id', '=', 'products.user_id')
-        ->select('products.*','users.name','users.lastname')
-        ->latest('products.id')
+        $products =  Product::join('images', 'images.product_id','products.id')
         ->take(6)
+        ->latest('products.id')
         ->get();
         return response()->json($products);
     }

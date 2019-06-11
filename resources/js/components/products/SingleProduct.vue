@@ -1,18 +1,10 @@
 <template>
     <div class="product-carousel-wrap">
        <div class="single-product-wrap">
-        <carousel :perPage="1" :paginationEnabled="true">
-            <slide>
-            <div class="img">
-                <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-            </div>
-            </slide>
-            <slide>
-            <div class="img">
-                <img src="https://www.love-mobility.co.uk/wp-content/uploads/2018/12/Scooterpac-Cabincar-Telford.jpg" alt="">
-            </div>   
-            </slide>
-        </carousel>
+           <!-- <div class="img" v-for="image in product.images" :key="image.id">
+               <img :src='"/storage/products/" + image.image' alt=""> {{image.image}}
+           </div> -->
+           <!-- {{image}} -->
        <div class="single-product-heading-wrap">
            <div class="single-product-info-wrap">
             <div class="single-product-info">
@@ -38,18 +30,19 @@
            </div>
        </div>
     </div>
-    </div>
+</div>
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel';
+// import { Carousel, Slide } from 'vue-carousel';
+import {Hooper,Slide} from 'hooper';
 import singleproduct from './SingleProduct';
  export default {
         components: {
-            "carousel": Carousel,
+            // "carousel": Carousel,
             "slide": Slide,
-            'single-product':singleproduct
-            // "hooper": Hooper
+            'single-product':singleproduct,
+            "hooper": Hooper
         },
         props:['product'],
         data() {
@@ -60,8 +53,8 @@ import singleproduct from './SingleProduct';
                 // 'currentUrl': window.location.pathname
             }
         },
-        created() {
-            // console.log(this.product)
+        mounted() {
+            console.log(this.product.images.slice(0,1)[0])
         },
         methods:{
             // fetchProducts(){ 
@@ -86,6 +79,9 @@ import singleproduct from './SingleProduct';
                 var moment = require('moment');
                 var time = this.product.created_at;
                return moment(time).format("MMM Do YY");
+            },
+            image() {
+                return this.product.images.slice(0,1)[0].image
             }
         }
     }

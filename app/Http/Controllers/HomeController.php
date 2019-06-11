@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 use App\Image;
 class HomeController extends Controller
 {
@@ -23,6 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $product = Product::join('images', 'images.product_id','products.id')
+        ->take(6)
+        ->get();
+        // dd($product);
+        // $product = Product::join('users','users.id','=','products.user_id')
+        // ->select('products.*','name','lastname','phone_number','city','online','users.created_at')
+        // ->with('images')
+        // ->fifinrst();
+
+        // dd($product->images);
+
         return view('home');
     }
 }

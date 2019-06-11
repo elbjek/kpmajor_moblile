@@ -4,13 +4,14 @@
         <carousel :perPage="2.5" :loop="true" :paginationEnabled="false" >
             <slide class="product" v-for=" product in products" :key="product.id">
                 <a :href='"/products/" + product.id'>
-                <div class="img">
-                    <img :src='"/storage/products/"+ product.image' >
-                </div>
-                <div class="product-content">
-                <h6>{{product.title}}</h6>
-                <p>{{product.price}}</p>
-                </div></a>
+                    <div class="img">
+                        <img :src='"/storage/products/" + product.image '>
+                    </div>
+                    <div class="product-content">
+                        <h6>{{product.title}}</h6>
+                        <p>{{product.price}}</p>
+                    </div>
+                    </a>
             </slide>
         </carousel>
     </div>
@@ -25,10 +26,11 @@ import { Carousel, Slide } from 'vue-carousel';
         },
         data() {
             return {
-                'products': []   
+                'products': [],
+                'images':[]   
             }
         },
-        mounted() {
+        beforeMount() {
             this.fetchData();
         },
         methods:{
@@ -39,6 +41,6 @@ import { Carousel, Slide } from 'vue-carousel';
                     console.log(this.products)
                 })
             },
-        }
+        },
     }
 </script>
