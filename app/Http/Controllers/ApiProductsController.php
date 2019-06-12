@@ -28,7 +28,7 @@ class ApiProductsController extends Controller
         ->with('images')
         ->first();
 
-        $previous = Product::where('products.id', '<', $Product->id)->orderBy('products.id', 'desc')->first();
+        $previous = Product::where('products.id', '<', $Product->id)->orderBy('products.id', 'desc')->with('images')->first();
         
         $all = Product::join('users','users.id','=','products.user_id')
         ->select('products.*','name','lastname','phone_number','city','online','users.created_at')

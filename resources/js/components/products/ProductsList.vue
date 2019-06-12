@@ -2,7 +2,7 @@
     <div class="products-list-wrap">
         <h2>Svi oglasi</h2>
         <div v-if="products.length === 0">Loading...</div>
-        <a :href="'products/'+ product.id" v-for="product in products" :key="product.id" class="product">
+        <router-link :to="'products/'+ product.id" v-for="product in products" :key="product.id" class="product">
             <div class="product-heading">
                     <div class="img">
                     <img :src="'/storage/products/'+product.image">
@@ -16,7 +16,7 @@
            <div class="star">
                &#9734;
            </div>
-       </a>
+       </router-link>
        </div>
 </template>
 

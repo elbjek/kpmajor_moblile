@@ -8,6 +8,7 @@
 
 body {
   background-color: white;
+  overflow: hidden !important;
 }
 
 .nav-button {
@@ -18,6 +19,36 @@ body {
 
 .nav-button:focus {
   outline: none;
+}
+
+.drop-navigaton {
+  width: 80%;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform: translateX(500px);
+          transform: translateX(500px);
+  position: absolute;
+  z-index: 99;
+  right: 0;
+  top: 50px;
+  background-color: #003368;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.show-nav {
+  visibility: visible !important;
+  -webkit-transform: translate(0px) !important;
+          transform: translate(0px) !important;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  transition: 0.5s ease-in-out;
+  box-shadow: 0 0 1px 1px rgba(128, 128, 128, 0.1);
+}
+
+.show-nav li a {
+  color: #ffffff;
 }
 
 .navigation {

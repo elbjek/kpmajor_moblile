@@ -19,8 +19,13 @@ import Vue2TouchEvents from 'vue2-touch-events'
  
 Vue.use(Vue2TouchEvents)
 
+import VueAgile from 'vue-agile'
+
+Vue.use(VueAgile)
+
 import jQuery from 'jquery';
 window.jQuery = jQuery;
+require('./functions');
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,13 +37,15 @@ window.jQuery = jQuery;
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+Vue.component('main-layout', require('./components/layout/Main.vue').default);
+
 
 Vue.component('logo-component', require('./components/shared/logo.vue').default);
 
 //products pages
-Vue.component('new-products',require('./components/LatestProducts.vue').default);
+// Vue.component('new-products',require('./components/LatestProducts.vue').default);
 // Vue.component('single-product',require('./components/Product.vue').default);
-Vue.component('products-list', require('./components/ProductsList.vue').default);
+// Vue.component('products-list', require('./components/ProductsList.vue').default);
 Vue.component('create-product',require('./components/CreateProduct.vue').default);
 Vue.component('single-image-modal', require('./components/products/SingleImageModal.vue').default);
 

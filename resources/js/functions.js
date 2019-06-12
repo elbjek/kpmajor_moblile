@@ -1,11 +1,18 @@
 
 
-    var menu = document.getElementById('menu')
-function test(){
+import anime from 'animejs';
 
-    menu.addEventListener('click',function(){
-        alert('hi')
+
+setTimeout(()=>{
+
+    $('.nav-button').on('click',function(){
+        $('.drop-navigaton').toggleClass('show-nav');
     })
-}
+},100)
 
-test()
+// var checkExist = setInterval(function() {
+//     if ($('.nav-button').length) {
+//        console.log("Exists!");
+//        clearInterval(checkExist);
+//     }
+//  }, 100); 

@@ -9,9 +9,9 @@
                <img :src='"/storage/products/" + product.image' alt=""> 
             </div>
 
-            <div class="images-modal-wrap" v-if="show">
+            <!-- <div class="images-modal-wrap" v-if="show">
                 <images-modal :images="images"></images-modal>
-            </div>            
+            </div>             -->
        <div class="single-product-heading-wrap">
            <div class="single-product-info-wrap">
             <div class="single-product-info">
