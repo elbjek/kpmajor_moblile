@@ -33,13 +33,14 @@ window.jQuery = jQuery;
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('logo-component', require('./components/shared/logo.vue').default)
+Vue.component('logo-component', require('./components/shared/logo.vue').default);
 
 //products pages
-Vue.component('new-products',require('./components/NewProducts.vue').default);
+Vue.component('new-products',require('./components/LatestProducts.vue').default);
 // Vue.component('single-product',require('./components/Product.vue').default);
 Vue.component('products-list', require('./components/ProductsList.vue').default);
 Vue.component('create-product',require('./components/CreateProduct.vue').default);
+Vue.component('single-image-modal', require('./components/products/SingleImageModal.vue').default);
 
 Vue.component('products-carousel',require('./components/products/ProductsCarousel.vue').default)
 Vue.component('single-product',require('./components/products/SingleProduct.vue').default)

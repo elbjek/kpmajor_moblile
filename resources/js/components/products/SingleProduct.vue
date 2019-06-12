@@ -5,6 +5,13 @@
                <img :src='"/storage/products/" + image.image' alt=""> {{image.image}}
            </div> -->
            <!-- {{image}} -->
+           <div class="img" @click="show=!show">
+               <img :src='"/storage/products/" + product.image' alt=""> 
+            </div>
+
+            <div class="images-modal-wrap" v-if="show">
+                <images-modal :images="images"></images-modal>
+            </div>            
        <div class="single-product-heading-wrap">
            <div class="single-product-info-wrap">
             <div class="single-product-info">
@@ -37,51 +44,31 @@
 // import { Carousel, Slide } from 'vue-carousel';
 import {Hooper,Slide} from 'hooper';
 import singleproduct from './SingleProduct';
+import singleimagemodal from './SingleImageModal';
+
  export default {
         components: {
             // "carousel": Carousel,
             "slide": Slide,
             'single-product':singleproduct,
-            "hooper": Hooper
+            "hooper": Hooper,
+            'images-modal':singleimagemodal
         },
         props:['product'],
         data() {
             return {
-                // 'product': [],
-                // 'next':[],
-                // 'previous':[],
-                // 'currentUrl': window.location.pathname
+                show:false,
+                images:[]
             }
         },
-        mounted() {
-            console.log(this.product.images.slice(0,1)[0])
-        },
-        methods:{
-            // fetchProducts(){ 
-            //     axios.get('/api'+ this.currentUrl)
-            //     .then(response => {
-            //         this.product = response.data[0],
-            //         this.previous = response.data[1],
-            //         this.next = response.data[2]
-            //     })
-            // },
-            // previousItem(){
-            //     var prev = this.product.id - 1
-            //     console.log(this.previous.id)
-            // },
-            // nextItem(){
-            //     console.log(this.next)
-            //     this.$router.push("/products/"+this.next.id)
-            // }
+        mount(){
+            this.images = this.product.images
         },
         computed:{
             formatTime(){
                 var moment = require('moment');
                 var time = this.product.created_at;
                return moment(time).format("MMM Do YY");
-            },
-            image() {
-                return this.product.images.slice(0,1)[0].image
             }
         }
     }

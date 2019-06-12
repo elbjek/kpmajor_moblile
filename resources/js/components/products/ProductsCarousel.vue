@@ -40,7 +40,6 @@ import singleproduct from './SingleProduct';
                 .then(response => {
                     this.product = response.data[0]
                     this.allProducts = response.data[3]
-                    console.log(this.product)
                 })
             },
             // pageChange(){

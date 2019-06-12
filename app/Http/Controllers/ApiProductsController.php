@@ -12,7 +12,8 @@ class ApiProductsController extends Controller
         $user = \Auth::id();
         $products = Product::with('images')
         ->join('users','users.id','=','products.user_id')
-        ->select('products.*','name','lastname','city')
+        ->select('products.*','city')
+        ->latest('products.id')
         ->get();
         return response()->json($products);
     }
@@ -59,7 +60,7 @@ class ApiProductsController extends Controller
     }
     public function latest()
     {
-        $products =  Product::join('images', 'images.product_id','products.id')
+        $products =  Product::with('images')
         ->take(6)
         ->latest('products.id')
         ->get();

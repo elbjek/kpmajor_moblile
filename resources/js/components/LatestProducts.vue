@@ -4,14 +4,14 @@
         <carousel :perPage="2.5" :loop="true" :paginationEnabled="false" >
             <slide class="product" v-for=" product in products" :key="product.id">
                 <a :href='"/products/" + product.id'>
-                    <div class="img">
-                        <img :src='"/storage/products/" + product.image '>
-                    </div>
+                    <div class="img" >
+                            <img :src="'/storage/products/'+ product.image" alt=""> 
+                    </div> 
                     <div class="product-content">
                         <h6>{{product.title}}</h6>
                         <p>{{product.price}}</p>
                     </div>
-                    </a>
+                </a>
             </slide>
         </carousel>
     </div>
@@ -27,7 +27,7 @@ import { Carousel, Slide } from 'vue-carousel';
         data() {
             return {
                 'products': [],
-                'images':[]   
+                'allImages':[]   
             }
         },
         beforeMount() {
@@ -38,6 +38,9 @@ import { Carousel, Slide } from 'vue-carousel';
                 axios.get('/api/products/latest')
                 .then((response) => {
                     this.products= response.data;
+                    this.products.forEach(element => {
+                        this.allImages.push(element.images)
+                    });
                     console.log(this.products)
                 })
             },
