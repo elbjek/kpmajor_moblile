@@ -17,7 +17,15 @@ Vue.use(VueAnime)
 
 import Vue2TouchEvents from 'vue2-touch-events'
  
-Vue.use(Vue2TouchEvents)
+Vue.use(Vue2TouchEvents, {
+    touchClass: '',
+    tapTolerance: 10,
+    swipeTolerance: 10,
+    longTapTimeInterval: 400
+})
+
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, {name: 'v-touch'})
 
 import VueAgile from 'vue-agile'
 
@@ -27,6 +35,7 @@ import jQuery from 'jquery';
 window.jQuery = jQuery;
 require('./functions');
 
+export const EventBus = new Vue();
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -39,6 +48,7 @@ require('./functions');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 Vue.component('main-layout', require('./components/layout/Main.vue').default);
 
+Vue.component('home-blade', require('./components/layout/Home.vue').default);
 
 Vue.component('logo-component', require('./components/shared/logo.vue').default);
 
@@ -50,7 +60,7 @@ Vue.component('create-product',require('./components/CreateProduct.vue').default
 Vue.component('single-image-modal', require('./components/products/SingleImageModal.vue').default);
 
 Vue.component('products-carousel',require('./components/products/ProductsCarousel.vue').default)
-Vue.component('single-product',require('./components/products/SingleProduct.vue').default)
+Vue.component('single-product',require('./components/products/SingleProduct.vue').default);
 
 
 //messages 

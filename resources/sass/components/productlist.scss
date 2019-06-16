@@ -1,5 +1,10 @@
 .products-list-wrap{
     margin:20px 0px;
+    .product-item{
+        display: flex;
+        justify-content: space-between;
+        width:100%
+    }
     h2{
         color:$darkblue;
         font-weight:700;

@@ -8,18 +8,8 @@
             {{ session('status') }}
         </div>
         @endif
-        <div class="search">
-            <search-bar></search-bar>
-        </div>
-        <div class="latest-products">
-            <new-products></new-products>
-        </div>
-        <div class="products-list">
-            <products-list></products-list>
-        </div>
-        <div class="chat">
-            <chat-component></chat-component>
-        </div>
-    </div>
+        <home-blade></home-blade>
+        {{-- <passport-authorized-clients></passport-authorized-clients>
+        <passport-clients></passport-clients> --}}
 </div>
 @endsection

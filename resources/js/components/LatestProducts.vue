@@ -3,7 +3,7 @@
         <h1>Najnoviji oglasi</h1>
         <carousel :perPage="2.5" :loop="true" :paginationEnabled="false" >
             <slide class="product" v-for=" product in products" :key="product.id">
-                <a  :href='"/products/" + product.id' @click="emitEvent">
+                <a :href='"/products/" + product.id'>
                     <div class="img" >
                             <img :src="'/storage/products/'+ product.image" alt=""> 
                     </div> 
@@ -19,7 +19,6 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel';
-import {EventBus} from '../../app';
     export default {
          components: {
             "carousel": Carousel,
@@ -28,8 +27,7 @@ import {EventBus} from '../../app';
         data() {
             return {
                 'products': [],
-                'allImages':[],
-                'message':"i got clickeed"  
+                'allImages':[]   
             }
         },
         beforeMount() {
@@ -46,9 +44,6 @@ import {EventBus} from '../../app';
                     console.log(this.products)
                 })
             },
-            emitEvent(){
-                EventBus.$emit('clicked',this.message)
-            }
         },
     }
 </script>

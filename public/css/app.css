@@ -8,7 +8,7 @@
 
 body {
   background-color: white;
-  overflow: hidden !important;
+  overflow-x: hidden;
 }
 
 .nav-button {
@@ -448,6 +448,12 @@ body {
   margin: 20px 0px;
 }
 
+.products-list-wrap .product-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .products-list-wrap h2 {
   color: #003368;
   font-weight: 700;
@@ -705,6 +711,22 @@ body {
   visibility: hidden;
   -webkit-transform: scale(0);
           transform: scale(0);
+}
+
+.swipe-options-wrap {
+  background-color: #003368;
+  visibility: hidden;
+  width: 0%;
+  -webkit-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+
+.swipe-options-wrap i {
+  color: #ffffff;
+}
+
+.visible {
+  visibility: visible !important;
 }
 
 /*!

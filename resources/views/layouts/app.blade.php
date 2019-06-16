@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
 </head>
 <body >
-    <div id="app">
+    <div id="app" style="overflow-x:hidden">
 <nav class="navigation navbar navbar-expand-md  navbar-light" id="nav3">
             <div class="container">
                 <logo-component></logo-component>
@@ -69,7 +69,7 @@
             </div>
         </nav>
         <main class="py-4">
-            <main-layout></main-layout>
+            @yield('content')
         </main> 
     </div>
 </body>

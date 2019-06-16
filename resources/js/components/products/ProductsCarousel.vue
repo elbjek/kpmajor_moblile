@@ -15,7 +15,9 @@
 <script>
 import { Carousel, Slide } from 'vue-carousel';
 import singleproduct from './SingleProduct';
-import { VueAgile } from 'vue-agile'
+import { VueAgile } from 'vue-agile';
+import {EventBus} from '../../app';
+
     export default {
         components: {
             "carousel": Carousel,
@@ -37,7 +39,10 @@ import { VueAgile } from 'vue-agile'
              this.index = this.currentUrl.substring(this.currentUrl.lastIndexOf('/') + 1);
         },
         mounted() {
-            this.fetchProducts()
+            this.fetchProducts();
+            EventBus.$on('clicked', (message)=>{
+                alert(message)
+            })
         },
         methods:{
             fetchProducts(){
@@ -49,9 +54,6 @@ import { VueAgile } from 'vue-agile'
                     console.log(this.previous)
                 })
             },
-            // pageChange(){
-            //   this.$router.push('/products/'+this.product.id)
-            // },
             swipeLeft(){
                 this.$router.push('/products/' + this.previous.id);
                 vm.$forceUpdate();

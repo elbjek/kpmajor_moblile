@@ -1,0 +1,108 @@
+.login-form-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background: #f4f4f4;
+  position: relative;
+  top: 60px;
+  padding: 40px 30px;
+  border-radius: 8px;
+  h2{
+    font-weight: 900;
+    font-size: 24px;
+    color:$darkblue;
+  }
+  .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .form-item{
+      display: flex;
+      flex-direction: column;
+      width:100%;
+      padding:15px 0px;
+      label{
+        font-size: 10px;
+        color:$medium-gray;
+      }
+      .bottom-border{
+        height:3px;
+        width:100%;
+        transform: scaleX(0);
+        transform-origin: 0% 100%;
+        transition:0.4s ease;
+        background-color: transparent
+      }
+      .input-form{
+        border:none;
+        border-bottom: 2px solid #d5d5d5;
+        border-top: none;
+        padding: 5px 10px;
+        transition: 0.4s ease;
+        background: white;
+        border-radius: 4px;
+        &::placeholder{
+          font-size: 12px;
+        }
+        &:-webkit-autofill{  
+          -webkit-text-fill-color: #003368;
+          font-weight: 700;
+          -webkit-box-shadow: 0 0 0 30px white inset !important;
+        }
+        &:focus{
+          transition: 0.2s ease;
+          outline:none;
+          padding:8px 12px;
+          border-bottom:0px solid transparent;
+        } 
+        &:focus + .bottom-border{
+          background:$darkblue;
+          transform:scaleX(1);
+          background: -moz-linear-gradient(-45deg, rgb(0,126,195) 1%, rgb(0,51,104) 100%); 
+          background: -webkit-linear-gradient(-45deg, rgb(0,126,195) 1%,rgb(0,51,104) 100%); 
+          background: linear-gradient(135deg, rgb(0,126,195) 1%,rgb(0,51,104) 100%);  
+          transition: 0.2 ease;
+        }
+      }
+    }
+    .submit{
+      padding:20px 0px;
+      .button{
+        background: -moz-linear-gradient(-45deg, rgb(0,126,195) 1%, rgb(0,51,104) 100%); 
+        background: -webkit-linear-gradient(-45deg, rgb(0,126,195) 1%,rgb(0,51,104) 100%); 
+        background: linear-gradient(135deg, rgb(0,126,195) 1%,rgb(0,51,104) 100%);  
+        border-radius:30px;
+        border:none;
+        padding:12px 38px;
+        color:white;
+        font-weight: 900;
+        font-size: 13px;
+        margin-top:20px;
+        &:focus, &:active, &:focus-within, &:hover{
+          opacity:0.9;
+          transform:scale(0.9)
+        }
+      }
+      .additional-btn{
+        color:$red;
+        margin:0px 15px;
+        font-size:13px;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
+
+  }
+.error{
+  color:$red;
+  font-size: 10px;
+} 
+
+}
+
