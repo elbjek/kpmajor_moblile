@@ -1,13 +1,30 @@
 .swipe-options-wrap{
   background-color:$darkblue;
   visibility: hidden;
-  // transform: translate(20px) scaleX(0);
-  // position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #f4f4f4;
+  border-radius: 8px;
   width:0%;
-  // right:20px;
+  // transform: translateX(20px);
+  position: relative;
+  right: 0;
   transform-origin: 100% 100%;
+  .call{
+    transform: translateX(13px);
+  }
+  .message{
+    transform: translateX(-11px)
+  }
+  .option{
+    visibility: hidden;
+  }
   i{
-    color:$white;
+    color: $white;
+    background:$darkblue;
+    padding: 5px;
+    border-radius: 13px;
   }
 }
 .visible{

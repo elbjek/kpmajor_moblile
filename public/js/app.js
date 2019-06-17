@@ -4417,9 +4417,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4548,6 +4545,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -4570,9 +4569,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/products').then(function (response) {
-        _this.products = response.data, console.log(_this.products);
-
-        _this.products.forEach(function (id) {
+        _this.products = response.data, _this.products.forEach(function (id) {
           _this.product_id.push(id.id);
         });
       });
@@ -4580,16 +4577,38 @@ __webpack_require__.r(__webpack_exports__);
     showOptions: function showOptions(product, event) {
       var _this2 = this;
 
+      console.log(event);
       this.product_id.forEach(function (el) {
         if (product.id == el) {
           $(event.target.nextElementSibling).addClass("visible");
+          $(event.target.nextElementSibling.childNodes).addClass("visible");
 
           _this2.$anime({
             targets: event.target.nextElementSibling,
-            scaleX: 1,
-            translateX: "0px",
-            easing: 'easeInOutSine',
-            width: '20%'
+            // scaleX:1,
+            translateX: 0,
+            easing: 'easeInSine',
+            width: '30%',
+            duration: 300
+          });
+
+          _this2.$anime({
+            targets: '.call',
+            translateX: 0,
+            duration: 300
+          });
+
+          _this2.$anime({
+            targets: '.message',
+            translateX: 0,
+            duration: 300
+          });
+
+          _this2.$anime({
+            targets: event.target,
+            translateX: -20,
+            easing: 'easeInSine',
+            duration: 300
           });
         }
       });
@@ -4601,10 +4620,29 @@ __webpack_require__.r(__webpack_exports__);
         if (product.id == el) {
           _this3.$anime({
             targets: event.target.nextElementSibling,
-            scaleX: 0,
-            translateX: "-20px",
-            easing: 'easeInOutSine',
-            width: 0
+            translateX: "50px",
+            easing: 'easeOutSine',
+            width: '0',
+            duration: 300
+          });
+
+          _this3.$anime({
+            targets: event.target,
+            translateX: 0,
+            easing: 'easeOutSine',
+            duration: 300
+          });
+
+          _this3.$anime({
+            targets: '.call',
+            translateX: 13,
+            duration: 300
+          });
+
+          _this3.$anime({
+            targets: '.message',
+            translateX: -11,
+            duration: 300
           });
         }
       });
@@ -9447,7 +9485,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -9466,7 +9504,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-enter-active[data-v-a16304ba]{\n  transition:all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\n  transition:  all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],.page-leave-to[data-v-a16304ba]{\n  opacity:0;\n}\n.page-enter[data-v-a16304ba] {\n  -webkit-transform: translateX(40%);\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba]{\n  -webkit-transform:translateX(-40%);\n          transform:translateX(-40%)\n}\n", ""]);
+exports.push([module.i, "\n.page-enter-active[data-v-a16304ba]{\r\n  transition:all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\r\n  transition:  all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],.page-leave-to[data-v-a16304ba]{\r\n  opacity:0;\n}\n.page-enter[data-v-a16304ba] {\r\n  -webkit-transform: translateX(40%);\r\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba]{\r\n  -webkit-transform:translateX(-40%);\r\n          transform:translateX(-40%)\n}\r\n", ""]);
 
 // exports
 
@@ -9542,7 +9580,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -66867,16 +66905,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "swipe-options-wrap" }, [
-      _c("div", { staticClass: "call" }, [
+      _c("div", { staticClass: "call option" }, [
         _c("i", { staticClass: "fas fa-phone-alt" })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "message" }, [
+      _c("div", { staticClass: "message option" }, [
         _c("i", { staticClass: "fas fa-comment" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "view" }, [
-        _c("i", { staticClass: "far fa-eye" })
       ])
     ])
   }
@@ -66966,7 +67000,6 @@ var render = function() {
             key: product.id,
             ref: "target",
             refInFor: true,
-            staticClass: "product",
             attrs: { test: product.id },
             on: {
               swipeleft: function($event) {
@@ -66980,31 +67013,37 @@ var render = function() {
             }
           },
           [
-            _c("div", { staticClass: "product-item" }, [
-              _c("div", { staticClass: "product-heading" }, [
-                _c("div", { staticClass: "img" }, [
-                  _c("img", {
-                    attrs: { src: "/storage/products/" + product.image }
-                  })
+            _c(
+              "a",
+              { staticClass: "product", attrs: { href: "#" } },
+              [
+                _c("div", { staticClass: "product-item" }, [
+                  _c("div", { staticClass: "product-heading" }, [
+                    _c("div", { staticClass: "img" }, [
+                      _c("img", {
+                        attrs: { src: "/storage/products/" + product.image }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "product-content" }, [
+                      _c("h6", [_vm._v(_vm._s(product.title))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(product.city))]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v(_vm._s(product.price) + " RSD")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "star" }, [
+                    _vm._v("\n                    ☆\n                ")
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "product-content" }, [
-                  _c("h6", [_vm._v(_vm._s(product.title))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(product.city))]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(product.price) + " RSD")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "star" }, [
-                _vm._v("\n                ☆\n            ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("options")
-          ],
-          1
+                _c("options")
+              ],
+              1
+            )
+          ]
         )
       })
     ],
@@ -67151,7 +67190,7 @@ var render = function() {
               staticClass: "glyphicon glyphicon-exclamation-sign",
               attrs: { "aria-hidden": "true" }
             }),
-            _vm._v("\n    @" + _vm._s(_vm.error) + "\n    ")
+            _vm._v("\r\n    @" + _vm._s(_vm.error) + "\r\n    ")
           ]
         )
       : _vm._e(),
@@ -67232,14 +67271,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filter-buttons" }, [
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Naslov\n                "),
+        _vm._v("Naslov\r\n                "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
       ]),
       _vm._v(" "),
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Tekst oglasa\n                "),
+        _vm._v("Tekst oglasa\r\n                "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
@@ -84344,8 +84383,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\kpmajor\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\kpmajor\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
