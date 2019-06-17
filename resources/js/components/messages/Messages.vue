@@ -6,157 +6,30 @@
     <div class="transparent-bg" v-touch="closeModal"></div>
     <div class="chat-wrap">
        <div class="chat-box">
-        <div class="chat-heading">
-            <i v-touch:tap="handleModal" class="fas fa-chevron-down"></i>
-            <p>Vaše konverzacije</p>
-        </div>
-        <div style="overflow:scroll; height:70%" >
-        <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
+            <div class="chat-heading">
+                <i v-touch:tap="handleModal" class="fas fa-chevron-down"></i>
+                <p>Vaše konverzacije</p>
             </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
+            <div style="overflow:scroll; height:70%" >
+                <div class="users-wrap" v-for="(conversation, index) in messages" :key="conversation.id">
+                    <div class="image-wrap">
+                        <div class="img">
+                            <img :src="'/storage/user_images/' + conversation.profile_picture">
+                        </div>
+                        <span v-bind:class="{ online: conversation.online }"></span>
+                    </div>
+                    <div class="message-wrap">
+                        <div class="user-info">
+                            <h6>{{conversation.name}} {{conversation.lastname}}</h6>
+                            <h6 class="time">14:40</h6>
+                        </div>
+                        <div class="time">
+                            <span class="message">{{conversation.message_content}}</span>
+                            <span v-bind:class="{new:conversation.seen}" ></span>
+                        </div>
+                    </div>
+                </div>        
             </div>
-        </div>
-         <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
-            </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
-            </div>
-        </div>
-          <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
-            </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
-            </div>
-        </div>
-          <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
-            </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
-            </div>
-        </div>
-         <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
-            </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
-            </div>
-        </div>
-          <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
-            </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
-            </div>
-        </div>
-         <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
-            </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
-            </div>
-        </div>
-                 <div class="users-wrap">
-            <div class="image-wrap">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-                </div>
-                <span class="online"></span>
-            </div>
-            <div class="message-wrap">
-                <div class="user-info">
-                    <h6>Jovana Milicevic</h6>
-                    <h6 class="time">14:40</h6>
-                </div>
-                <div class="time">
-                    <span class="message">latest message</span>
-                    <span class="new"></span>
-                </div>
-            </div>
-        </div>            
-        </div>
-        
        </div>
     </div>
 </div>
@@ -175,6 +48,7 @@ export default {
     $( ".messages-wrap" ).scroll(function( event ) {
     event.stopPropagation();//Do not bubble up the DOM, do not scroll document.
     });
+    this.fetchData()
     },
     methods:{
         handleModal(){
@@ -189,7 +63,14 @@ export default {
             $('.chat-wrap').toggleClass('chat-height');
             $('body').removeClass('overflow');
             $('.transparent-bg').removeClass('modal-background')
-        }
+        },
+        fetchData(){
+            axios.get('/api/messages')
+            .then(response => {
+                this.messages = response.data,
+                console.log(this.messages)
+            })
+        },        
     }
 
 }

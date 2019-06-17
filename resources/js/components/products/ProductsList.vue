@@ -3,7 +3,7 @@
         <h2>Svi oglasi</h2>
         <div v-if="products.length === 0">Loading...</div>
         <v-touch v-on:swipeleft.prevent="showOptions(product,$event)" v-on:swiperight.prevent="hideOptions(product,$event)" ref="target" v-for="product in products" :test="product.id" :key="product.id" >
-            <a href="#" class="product">
+            <a :href="'/products/'+product.id" class="product">
                 <div class="product-item" >
                     <div class="product-heading">
                             <div class="img">

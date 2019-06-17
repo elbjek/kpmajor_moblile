@@ -477,6 +477,11 @@ body {
   overflow: hidden;
 }
 
+.products-list-wrap .product:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .products-list-wrap .product:focus {
   text-decoration: none;
 }

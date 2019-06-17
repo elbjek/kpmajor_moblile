@@ -3394,133 +3394,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3532,6 +3405,7 @@ __webpack_require__.r(__webpack_exports__);
     this.$anime, $(".messages-wrap").scroll(function (event) {
       event.stopPropagation(); //Do not bubble up the DOM, do not scroll document.
     });
+    this.fetchData();
   },
   methods: {
     handleModal: function handleModal() {
@@ -3546,6 +3420,13 @@ __webpack_require__.r(__webpack_exports__);
       $('.chat-wrap').toggleClass('chat-height');
       $('body').removeClass('overflow');
       $('.transparent-bg').removeClass('modal-background');
+    },
+    fetchData: function fetchData() {
+      var _this = this;
+
+      axios.get('/api/messages').then(function (response) {
+        _this.messages = response.data, console.log(_this.messages);
+      });
     }
   }
 });
@@ -9485,7 +9366,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -9504,7 +9385,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-enter-active[data-v-a16304ba]{\r\n  transition:all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\r\n  transition:  all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],.page-leave-to[data-v-a16304ba]{\r\n  opacity:0;\n}\n.page-enter[data-v-a16304ba] {\r\n  -webkit-transform: translateX(40%);\r\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba]{\r\n  -webkit-transform:translateX(-40%);\r\n          transform:translateX(-40%)\n}\r\n", ""]);
+exports.push([module.i, "\n.page-enter-active[data-v-a16304ba]{\n  transition:all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\n  transition:  all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],.page-leave-to[data-v-a16304ba]{\n  opacity:0;\n}\n.page-enter[data-v-a16304ba] {\n  -webkit-transform: translateX(40%);\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba]{\n  -webkit-transform:translateX(-40%);\n          transform:translateX(-40%)\n}\n", ""]);
 
 // exports
 
@@ -9580,7 +9461,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -65492,259 +65373,58 @@ var render = function() {
           _c("p", [_vm._v("Vaše konverzacije")])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c(
+          "div",
+          { staticStyle: { overflow: "scroll", height: "70%" } },
+          _vm._l(_vm.messages, function(conversation, index) {
+            return _c(
+              "div",
+              { key: conversation.id, staticClass: "users-wrap" },
+              [
+                _c("div", { staticClass: "image-wrap" }, [
+                  _c("div", { staticClass: "img" }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/storage/user_images/" + conversation.profile_picture
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { class: { online: conversation.online } })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "message-wrap" }, [
+                  _c("div", { staticClass: "user-info" }, [
+                    _c("h6", [
+                      _vm._v(
+                        _vm._s(conversation.name) +
+                          " " +
+                          _vm._s(conversation.lastname)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "time" }, [
+                    _c("span", { staticClass: "message" }, [
+                      _vm._v(_vm._s(conversation.message_content))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { class: { new: conversation.seen } })
+                  ])
+                ])
+              ]
+            )
+          }),
+          0
+        )
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticStyle: { overflow: "scroll", height: "70%" } }, [
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "users-wrap" }, [
-        _c("div", { staticClass: "image-wrap" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "https://images.unsplash.com/photo-1507007727303-1532f71109cf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-                alt: ""
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "online" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "message-wrap" }, [
-          _c("div", { staticClass: "user-info" }, [
-            _c("h6", [_vm._v("Jovana Milicevic")]),
-            _vm._v(" "),
-            _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "time" }, [
-            _c("span", { staticClass: "message" }, [_vm._v("latest message")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "new" })
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -67015,7 +66695,10 @@ var render = function() {
           [
             _c(
               "a",
-              { staticClass: "product", attrs: { href: "#" } },
+              {
+                staticClass: "product",
+                attrs: { href: "/products/" + product.id }
+              },
               [
                 _c("div", { staticClass: "product-item" }, [
                   _c("div", { staticClass: "product-heading" }, [
@@ -67190,7 +66873,7 @@ var render = function() {
               staticClass: "glyphicon glyphicon-exclamation-sign",
               attrs: { "aria-hidden": "true" }
             }),
-            _vm._v("\r\n    @" + _vm._s(_vm.error) + "\r\n    ")
+            _vm._v("\n    @" + _vm._s(_vm.error) + "\n    ")
           ]
         )
       : _vm._e(),
@@ -67271,14 +66954,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filter-buttons" }, [
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Naslov\r\n                "),
+        _vm._v("Naslov\n                "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
       ]),
       _vm._v(" "),
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Tekst oglasa\r\n                "),
+        _vm._v("Tekst oglasa\n                "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
@@ -84383,8 +84066,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\kpmajor\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\kpmajor\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

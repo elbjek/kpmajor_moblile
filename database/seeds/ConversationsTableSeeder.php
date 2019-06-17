@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MessagesTableSeeder extends Seeder
+class ConversationsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,7 @@ class MessagesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Message::class, 50)->create();
+        factory(App\Conversation::class, 30)->create();   
+        
     }
 }

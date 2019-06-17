@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('products/search', 'ApiProductsController@search');
+Route::middleware('auth:api')->resource('messages', 'ApiMessageController');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
