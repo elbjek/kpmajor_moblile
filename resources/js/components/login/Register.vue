@@ -89,7 +89,7 @@ import messages from '../messages/Messages'
     methods:{
       register(){
         axios.post('/register',this.fields)
-        .then(this.$router.push('/home'))
+        .then(this.$router.push('/login'))
         .catch(error => {
           if (error.response.status === 422) {
           this.errors = error.response.data.errors || {};

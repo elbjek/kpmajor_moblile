@@ -86,7 +86,7 @@
                     })
             },
             formSubmit() {
-                this.fields = {'image':this.image,'title':this.title,'description':this.description,'price':this.price}
+                this.fields = {'image':this.image,'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid}
                 console.log(this.fields)
                 axios.post('/api/products/', this.fields, {image:this.image})
                 .catch(error => {
