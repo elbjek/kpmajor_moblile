@@ -11,6 +11,17 @@ window.Vue = Vue;
 window.VueRouter = VueRouter;
 import VueRouter from 'vue-router';
 import router from './router'
+import VueAuth from '@websanova/vue-auth'
+
+Vue.router = router;
+
+Vue.use(VueAuth, {
+    auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
+    http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
+    router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
+    rolesVar: 'role'
+  });
+
 
 import VueAnime from 'vue-animejs';
 Vue.use(VueAnime)

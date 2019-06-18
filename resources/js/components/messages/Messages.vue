@@ -11,7 +11,7 @@
                 <p>Vaše konverzacije</p>
             </div>
             <div style="overflow:scroll; height:70%" >
-                <div class="users-wrap" v-for="(conversation, index) in messages" :key="conversation.id">
+                <div class="users-wrap" v-for="conversation in messages" :key="conversation.id">
                     <div class="image-wrap">
                         <div class="img">
                             <img :src="'/storage/user_images/' + conversation.profile_picture">

@@ -3,7 +3,7 @@
         <h1>Najnoviji oglasi</h1>
         <carousel :perPage="2.5" :loop="true" :paginationEnabled="false" >
             <slide class="product" v-for=" product in products" :key="product.id">
-                <a  :href='"/products/" + product.id' @click="emitEvent">
+                <router-link  :to='"/products/" + product.id' @click="emitEvent">
                     <div class="img" >
                             <img :src="'/storage/products/'+ product.image" alt=""> 
                     </div> 
@@ -11,7 +11,7 @@
                         <h6>{{product.title}}</h6>
                         <p>{{product.price}}</p>
                     </div>
-                </a>
+                </router-link>
             </slide>
         </carousel>
     </div>
