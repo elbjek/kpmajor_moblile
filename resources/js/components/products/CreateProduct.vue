@@ -63,24 +63,8 @@
         methods:{
 			onFileChange(e) {
                 const file = e.target.files[0];
-                // this.url = URL.createObjectURL(file);
                 this.image = file;
 			},
-			// saveBook() {
-			// 	const fd = new FormData();
-			// 	fd.append('image', this.selected_cover, this.selected_cover.name)
-			// 	console.log(this.selected_cover);
-			// 	var book_details = {
-			// 		'title': this.book_title,
-			// 		'description': this.book_description,
-			// 		'book_cover': this.selected_cover,
-			// 		'tags': this.selected_tags
-			// 	};
-				
-			// 	axios.post('/admin/saveBook', book_details).then(function(result){
-			// 		console.log('done')
-			// 	})
-			// },
             fetchData:function () {
                 axios.get('/api/products/create')
                     .then(response => {

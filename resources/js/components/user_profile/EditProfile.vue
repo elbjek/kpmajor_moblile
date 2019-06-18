@@ -7,12 +7,16 @@
            <h5>{{user.name}} {{user.lastname}}</h5>
            <p>{{formatTime}}</p>
        </div>
-       <router-link to="/products/edit">Edit</router-link>
        <div class="user-info">
            <label for="email">
                E-mail
                <p>{{user.email}}</p>
            </label>
+          <div class="form-item">
+              <label for="email">Email</label>
+              <input id="email" type="email" v-model="fields.email" placeholder="Email" class="input-form" name="email" value="email" required autocomplete="email"  autofocus>
+              <span class="bottom-border"></span>
+          </div>           
             <label for="city">
                 Mesto/Grad
                <p>{{user.city}}</p>
@@ -43,26 +47,20 @@
                     <i class="fas fa-toggle-on" v-show="show" @click="reverseToggle"></i>
                     <i class="fas fa-toggle-off" v-show="hide" @click="showToggle"></i>
                 </div>
-           </div>  
-           <user-products-list :products="products"></user-products-list>         
+           </div>           
        </div>
     </div>
 </template>
 
 <script>
-import UserProduct from './UserProducts';
     export default {
-        components:{
-            'user-products-list':UserProduct
-        },
         data() {
             return {
                 'user': [],
                 'currentUrl': window.location.pathname,
                 toggle:'fa-toggle-on',
                 show:false,
-                hide:true,
-                products:''
+                hide:true
             }
         },
         mounted() {
@@ -73,7 +71,7 @@ import UserProduct from './UserProducts';
                 axios.get('/api'+ this.currentUrl)
                 .then(response => {
                     this.user = response.data[0]
-                    this.products = this.user.products
+                    console.log(this.user)
                 })
             },
             showToggle(){

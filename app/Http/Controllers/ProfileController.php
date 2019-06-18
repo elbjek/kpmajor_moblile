@@ -17,7 +17,7 @@ class ProfileController extends Controller
         ->where('messages.user_id',$user)
         ->latest('messages.id')
         ->get();
-        dd($conv);
+        // dd($conv);
         return view('profile');
     }
 }

@@ -20,13 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('products/latest', 'ApiProductsController@latest');
-Route::middleware('auth:api')->get('products/create', 'ApiProductsController@create')->name('products.create');
-
-Route::middleware('auth:api')->post('products', 'ApiProductsController@store')->name('products.store');
-
 Route::get('products', 'ApiProductsController@index')->name('products.index');
 Route::get('products/{product}', 'ApiProductsController@show')->name('products.show');
 
+Route::middleware('auth:api')->get('products/create', 'ApiProductsController@create')->name('products.create');
+Route::middleware('auth:api')->post('products', 'ApiProductsController@store')->name('products.store');
+Route::middleware('auth:api')->get('products/{product}/edit', 'ApiProductsController@edit')->name('products.edit');
 
 // Route::resource('products', 'ApiProductsController');
 Route::middleware('auth:api')->resource('users', 'ApiUsersController');

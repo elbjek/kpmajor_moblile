@@ -10,7 +10,7 @@ class ApiUsersController extends Controller
     public function show()
     {
         $user = \Auth::id();
-        $users = User::where('id', $user)->get();
+        $users = User::where('id', $user)->with('products')->get();
         return response()->json($users);
     }
 }
