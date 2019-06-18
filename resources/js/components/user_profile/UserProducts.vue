@@ -11,7 +11,7 @@
                             </div>
                             <div class="product-content">
                                 <h6>{{product.title}}</h6>
-                                <p>{{product.city}}</p>
+                                <p class="description">{{product.description}}</p>
                                 <p>{{product.price}} RSD</p>
                             </div>
                     </div>        

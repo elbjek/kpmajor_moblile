@@ -67251,7 +67251,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "time" }, [
-                        _c("span", { staticClass: "message" }, [
+                        _c("span", { staticClass: "last-message" }, [
                           _vm._v(_vm._s(conversation.message_content))
                         ]),
                         _vm._v(" "),
@@ -69342,7 +69342,9 @@ var render = function() {
                     _c("div", { staticClass: "product-content" }, [
                       _c("h6", [_vm._v(_vm._s(product.title))]),
                       _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(product.city))]),
+                      _c("p", { staticClass: "description" }, [
+                        _vm._v(_vm._s(product.description))
+                      ]),
                       _vm._v(" "),
                       _c("p", [_vm._v(_vm._s(product.price) + " RSD")])
                     ])
@@ -86457,6 +86459,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var animejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! animejs */ "./node_modules/animejs/lib/anime.es.js");
 
 setTimeout(function () {
+  $('.navigation-item').on('click', function () {
+    // $('.drop-navigation').removeClass('show-nav')
+    $(this).parent().parent().removeClass('show-nav');
+  });
   $('.nav-button').on('click', function () {
     $('.drop-navigaton').toggleClass('show-nav');
   });

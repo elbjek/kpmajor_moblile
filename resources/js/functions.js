@@ -5,6 +5,10 @@ import anime from 'animejs';
 
 setTimeout(()=>{
 
+    $('.navigation-item').on('click', function(){
+        // $('.drop-navigation').removeClass('show-nav')
+        $(this).parent().parent().removeClass('show-nav')
+    })
     $('.nav-button').on('click',function(){
         $('.drop-navigaton').toggleClass('show-nav');
     })

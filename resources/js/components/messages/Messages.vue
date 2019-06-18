@@ -24,7 +24,7 @@
                             <h6 class="time">14:40</h6>
                         </div>
                         <div class="time">
-                            <span class="message">{{conversation.message_content}}</span>
+                            <span class="last-message">{{conversation.message_content}}</span>
                             <span v-bind:class="{new:conversation.seen}" ></span>
                         </div>
                     </div>
