@@ -44,8 +44,8 @@
                     <i class="fas fa-toggle-off" v-show="hide" @click="showToggle"></i>
                 </div>
            </div>  
-           <user-products-list :products="products"></user-products-list>         
        </div>
+           <user-products-list :products="products" :ids="ids"></user-products-list>         
     </div>
 </template>
 
@@ -62,7 +62,8 @@ import UserProduct from './UserProducts';
                 toggle:'fa-toggle-on',
                 show:false,
                 hide:true,
-                products:''
+                products:'',
+                ids:[]
             }
         },
         mounted() {
@@ -73,7 +74,10 @@ import UserProduct from './UserProducts';
                 axios.get('/api'+ this.currentUrl)
                 .then(response => {
                     this.user = response.data[0]
-                    this.products = this.user.products
+                    this.products = this.user.products,
+                    this.products.forEach(id => {
+                        this.ids.push(id.id)
+                    });
                 })
             },
             showToggle(){
