@@ -4590,7 +4590,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/login', this.fields).then(function (result) {
         _this.response = result;
-        console.log(result);
+
+        _this.$router.go('/');
       });
     }
   }
@@ -4648,7 +4649,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       show: false,
-      messages: ''
+      messages: '',
+      user: ''
     };
   },
   mounted: function mounted() {
@@ -4675,7 +4677,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/messages').then(function (response) {
-        _this.messages = response.data, console.log(_this.messages);
+        _this.user = response.data[0];
+        _this.messages = response.data[1];
       });
     }
   }
@@ -66590,104 +66593,111 @@ var render = function() {
   return _c("div", { staticClass: "login-form-wrap" }, [
     _c("h2", [_vm._v("Prijavi se")]),
     _vm._v(" "),
-    _c("form", { staticClass: "form", attrs: { action: "post" } }, [
-      _c("div", { staticClass: "form-item" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.email,
-              expression: "fields.email"
-            }
-          ],
-          staticClass: "input-form",
-          attrs: {
-            id: "email",
-            type: "email",
-            placeholder: "Email",
-            name: "email",
-            value: "email",
-            required: "",
-            autocomplete: "email",
-            autofocus: ""
-          },
-          domProps: { value: _vm.fields.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.fields, "email", $event.target.value)
-            }
+    _c(
+      "form",
+      {
+        staticClass: "form",
+        attrs: { action: "post" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.login($event)
           }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "bottom-border" })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-item" }, [
-        _c("label", { attrs: { for: "email" } }, [_vm._v("Password")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fields.password,
-              expression: "fields.password"
-            }
-          ],
-          staticClass: "input-form",
-          attrs: {
-            id: "password",
-            type: "password",
-            placeholder: "Password",
-            name: "password",
-            value: "password",
-            required: "",
-            autocomplete: "password",
-            autofocus: ""
-          },
-          domProps: { value: _vm.fields.password },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.fields, "password", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "bottom-border" })
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "submit" },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "button",
-              attrs: { href: "#" },
-              on: { click: _vm.login }
-            },
-            [_vm._v("\n           Prijavi se\n       ")]
-          ),
+        }
+      },
+      [
+        _c("div", { staticClass: "form-item" }, [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
           _vm._v(" "),
-          _c(
-            "router-link",
-            { staticClass: "additional-btn", attrs: { to: "/register" } },
-            [_vm._v("Registruj se")]
-          )
-        ],
-        1
-      )
-    ])
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.email,
+                expression: "fields.email"
+              }
+            ],
+            staticClass: "input-form",
+            attrs: {
+              id: "email",
+              type: "email",
+              placeholder: "Email",
+              name: "email",
+              value: "email",
+              required: "",
+              autocomplete: "email",
+              autofocus: ""
+            },
+            domProps: { value: _vm.fields.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "email", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "bottom-border" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-item" }, [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("Password")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fields.password,
+                expression: "fields.password"
+              }
+            ],
+            staticClass: "input-form",
+            attrs: {
+              id: "password",
+              type: "password",
+              placeholder: "Password",
+              name: "password",
+              value: "password",
+              required: "",
+              autocomplete: "password",
+              autofocus: ""
+            },
+            domProps: { value: _vm.fields.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.fields, "password", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "bottom-border" })
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "submit" },
+          [
+            _c("button", { staticClass: "button" }, [
+              _vm._v("\n           Prijavi se\n       ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { staticClass: "additional-btn", attrs: { to: "/register" } },
+              [_vm._v("Registruj se")]
+            )
+          ],
+          1
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -66712,105 +66722,108 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "messages-wrap" }, [
-    _c(
-      "button",
-      {
-        directives: [
+  return _vm.user
+    ? _c("div", { staticClass: "messages-wrap" }, [
+        _c(
+          "button",
           {
-            name: "touch",
-            rawName: "v-touch",
-            value: _vm.handleModal,
-            expression: "handleModal"
-          }
-        ],
-        staticClass: "message-button",
-        class: { messageButtonWhite: _vm.show }
-      },
-      [_c("i", { staticClass: "far fa-comment" })]
-    ),
-    _vm._v(" "),
-    _c("div", {
-      directives: [
-        {
-          name: "touch",
-          rawName: "v-touch",
-          value: _vm.closeModal,
-          expression: "closeModal"
-        }
-      ],
-      staticClass: "transparent-bg"
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "chat-wrap" }, [
-      _c("div", { staticClass: "chat-box" }, [
-        _c("div", { staticClass: "chat-heading" }, [
-          _c("i", {
             directives: [
               {
                 name: "touch",
-                rawName: "v-touch:tap",
+                rawName: "v-touch",
                 value: _vm.handleModal,
-                expression: "handleModal",
-                arg: "tap"
+                expression: "handleModal"
               }
             ],
-            staticClass: "fas fa-chevron-down"
-          }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Vaše konverzacije")])
-        ]),
+            staticClass: "message-button",
+            class: { messageButtonWhite: _vm.show }
+          },
+          [_c("i", { staticClass: "far fa-comment" })]
+        ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticStyle: { overflow: "scroll", height: "70%" } },
-          _vm._l(_vm.messages, function(conversation) {
-            return _c(
+        _c("div", {
+          directives: [
+            {
+              name: "touch",
+              rawName: "v-touch",
+              value: _vm.closeModal,
+              expression: "closeModal"
+            }
+          ],
+          staticClass: "transparent-bg"
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-wrap" }, [
+          _c("div", { staticClass: "chat-box" }, [
+            _c("div", { staticClass: "chat-heading" }, [
+              _c("i", {
+                directives: [
+                  {
+                    name: "touch",
+                    rawName: "v-touch:tap",
+                    value: _vm.handleModal,
+                    expression: "handleModal",
+                    arg: "tap"
+                  }
+                ],
+                staticClass: "fas fa-chevron-down"
+              }),
+              _vm._v(" "),
+              _c("p", [_vm._v("Vaše konverzacije")])
+            ]),
+            _vm._v(" "),
+            _c(
               "div",
-              { key: conversation.id, staticClass: "users-wrap" },
-              [
-                _c("div", { staticClass: "image-wrap" }, [
-                  _c("div", { staticClass: "img" }, [
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/storage/user_images/" + conversation.profile_picture
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { class: { online: conversation.online } })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "message-wrap" }, [
-                  _c("div", { staticClass: "user-info" }, [
-                    _c("h6", [
-                      _vm._v(
-                        _vm._s(conversation.name) +
-                          " " +
-                          _vm._s(conversation.lastname)
-                      )
+              { staticStyle: { overflow: "scroll", height: "70%" } },
+              _vm._l(_vm.messages, function(conversation) {
+                return _c(
+                  "div",
+                  { key: conversation.id, staticClass: "users-wrap" },
+                  [
+                    _c("div", { staticClass: "image-wrap" }, [
+                      _c("div", { staticClass: "img" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "/storage/user_images/" +
+                              conversation.profile_picture
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { class: { online: conversation.online } })
                     ]),
                     _vm._v(" "),
-                    _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "time" }, [
-                    _c("span", { staticClass: "message" }, [
-                      _vm._v(_vm._s(conversation.message_content))
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { class: { new: conversation.seen } })
-                  ])
-                ])
-              ]
+                    _c("div", { staticClass: "message-wrap" }, [
+                      _c("div", { staticClass: "user-info" }, [
+                        _c("h6", [
+                          _vm._v(
+                            _vm._s(conversation.name) +
+                              " " +
+                              _vm._s(conversation.lastname)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "time" }, [
+                        _c("span", { staticClass: "message" }, [
+                          _vm._v(_vm._s(conversation.message_content))
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { class: { new: conversation.seen } })
+                      ])
+                    ])
+                  ]
+                )
+              }),
+              0
             )
-          }),
-          0
-        )
+          ])
+        ])
       ])
-    ])
-  ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true

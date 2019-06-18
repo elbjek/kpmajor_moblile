@@ -1,5 +1,5 @@
 <template>
-<div class="messages-wrap"  >
+<div class="messages-wrap" v-if="user" >
     <button v-touch="handleModal" v-bind:class="{messageButtonWhite:show}" class="message-button">
         <i class="far fa-comment"></i>
     </button>
@@ -40,14 +40,15 @@ export default {
     data(){
         return{
             show:false,
-            messages:''
+            messages:'',
+            user:''
         }
     },
     mounted(){
-    this.$anime,
-    $( ".messages-wrap" ).scroll(function( event ) {
-    event.stopPropagation();//Do not bubble up the DOM, do not scroll document.
-    });
+        this.$anime,
+        $( ".messages-wrap" ).scroll(function( event ) {
+        event.stopPropagation();//Do not bubble up the DOM, do not scroll document.
+        });
     this.fetchData()
     },
     methods:{
@@ -67,8 +68,8 @@ export default {
         fetchData(){
             axios.get('/api/messages')
             .then(response => {
-                this.messages = response.data,
-                console.log(this.messages)
+                this.user = response.data[0]
+                this.messages = response.data[1]
             })
         },        
     }

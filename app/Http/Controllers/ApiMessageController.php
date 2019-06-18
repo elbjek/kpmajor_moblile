@@ -9,6 +9,7 @@ class ApiMessageController extends Controller
     public function index() 
     {
         $user = \Auth::id();
+        $loggedUser= \Auth::user();
         $conv = Conversation::with('messages')
         ->join('messages','messages.id','=','conversations.message_id')
         ->join('users','conversations.receiver_id','users.id')
@@ -16,7 +17,8 @@ class ApiMessageController extends Controller
         ->where('messages.user_id',$user)
         ->latest('messages.id')
         ->get();
+        $data = [$loggedUser,$conv];
         
-        return response()->json($conv);
+        return response()->json($data);
     }
 }

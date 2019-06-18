@@ -1,7 +1,7 @@
 <template>
    <div class="login-form-wrap">
      <h2>Prijavi se</h2>
-     <form action="post" class="form">
+     <form action="post" class="form" @submit.prevent="login">
        <div class="form-item">
         <label for="email">Email</label>
         <input id="email" type="email" v-model="fields.email" placeholder="Email" class="input-form" name="email" value="email" required autocomplete="email"  autofocus>
@@ -13,9 +13,9 @@
           <span class="bottom-border"></span>       
        </div>
        <div class="submit">
-          <a href="#" @click="login" class="button">
+          <button  class="button">
               Prijavi se
-          </a>
+          </button>
           <router-link class="additional-btn" to="/register">Registruj se</router-link>
        </div>
      </form>
@@ -47,8 +47,8 @@ import messages from '../messages/Messages'
       login(){
         axios.post('/login',this.fields)
         .then(result=>{
-          this.response = result
-          console.log(result)
+          this.response = result;
+          this.$router.go('/')
         })
       }
     }
