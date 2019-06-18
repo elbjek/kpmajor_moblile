@@ -9,7 +9,10 @@ Vue.use(VueAxios, axios);
 
 import Home from './components/layout/Home';
 import Login from './components/login/Login';
+import Register from './components/login/Register';
+
 import SingleProduct from './components/products/ProductsCarousel';
+import CreateProduct from './components/products/CreateProduct';
 
 export default new VueRouter({
     mode: 'history',
@@ -28,6 +31,14 @@ export default new VueRouter({
             }
         },
         {
+            path: '/register',
+            name: 'register',
+            component: Register,
+            meta: {
+                auth: false
+            }
+        },
+        {
             path: '/products/:id',
             name: 'singleproduct',
             component: SingleProduct,
@@ -35,6 +46,15 @@ export default new VueRouter({
                 auth: false
             }
         },
+        {
+            path: '/products/create',
+            name: 'singleproduct',
+            component: CreateProduct,
+            meta: {
+                auth: true
+            }
+        },
+
     ]
 })
 
