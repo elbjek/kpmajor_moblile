@@ -6248,9 +6248,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['products'],
   data: function data() {
@@ -10746,7 +10743,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -10765,7 +10762,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-enter-active[data-v-a16304ba]{\r\n  transition:all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\r\n  transition:  all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],.page-leave-to[data-v-a16304ba]{\r\n  opacity:0;\n}\n.page-enter[data-v-a16304ba] {\r\n  -webkit-transform: translateX(40%);\r\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba]{\r\n  -webkit-transform:translateX(-40%);\r\n          transform:translateX(-40%)\n}\r\n", ""]);
+exports.push([module.i, "\n.page-enter-active[data-v-a16304ba]{\n  transition:all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\n  transition:  all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],.page-leave-to[data-v-a16304ba]{\n  opacity:0;\n}\n.page-enter[data-v-a16304ba] {\n  -webkit-transform: translateX(40%);\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba]{\n  -webkit-transform:translateX(-40%);\n          transform:translateX(-40%)\n}\n", ""]);
 
 // exports
 
@@ -10860,7 +10857,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -68787,7 +68784,7 @@ var render = function() {
               staticClass: "glyphicon glyphicon-exclamation-sign",
               attrs: { "aria-hidden": "true" }
             }),
-            _vm._v("\r\n    @" + _vm._s(_vm.error) + "\r\n    ")
+            _vm._v("\n    @" + _vm._s(_vm.error) + "\n    ")
           ]
         )
       : _vm._e(),
@@ -68868,14 +68865,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filter-buttons" }, [
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Naslov\r\n                "),
+        _vm._v("Naslov\n                "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
       ]),
       _vm._v(" "),
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Tekst oglasa\r\n                "),
+        _vm._v("Tekst oglasa\n                "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
@@ -69151,7 +69148,7 @@ var render = function() {
     { staticClass: "user-products-list-wrap" },
     _vm._l(_vm.products, function(product) {
       return _c("div", { key: product.id, staticClass: "user-products" }, [
-        _c("div", { staticClass: "product-item" }, [
+        _c("div", { staticClass: "product" }, [
           _c("div", { staticClass: "product-heading" }, [
             _c("div", { staticClass: "img" }, [
               _c("img", {
@@ -69166,10 +69163,6 @@ var render = function() {
               _vm._v(" "),
               _c("p", [_vm._v(_vm._s(product.price) + " RSD")])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "star" }, [
-            _vm._v("\n              ☆\n          ")
           ])
         ])
       ])
@@ -86311,8 +86304,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODUL
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\kpmajor\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\kpmajor\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -62,7 +62,7 @@ export default new VueRouter({
             name: 'users.show',
             component: UserProfile,
         },
-
+        // { path: '*', 
+        // component: NotFoundComponent }
     ]
 })
-

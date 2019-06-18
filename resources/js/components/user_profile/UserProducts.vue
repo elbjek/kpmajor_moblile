@@ -1,7 +1,7 @@
 <template>
     <div class="user-products-list-wrap">
       <div class="user-products" v-for="product in products" :key="product.id">
-        <div class="product-item" >
+        <div class="product" >
               <div class="product-heading">
                       <div class="img">
                       <img :src="'/storage/products/'+product.image">
@@ -11,10 +11,7 @@
                           <p>{{product.city}}</p>
                           <p>{{product.price}} RSD</p>
                       </div>
-              </div>
-              <div class="star">
-                  &#9734;
-              </div>           
+              </div>         
           </div>
       </div>
     </div>
