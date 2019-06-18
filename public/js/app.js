@@ -5514,20 +5514,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     onFileChange: function onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0]);
-    },
-    createImage: function createImage(file) {
-      var reader = new FileReader();
-      var vm = this;
+      var file = e.target.files[0]; // this.url = URL.createObjectURL(file);
 
-      reader.onload = function (e) {
-        vm.image = e.target.result;
-      };
-
-      reader.readAsDataURL(file);
+      this.image = file;
     },
+    // saveBook() {
+    // 	const fd = new FormData();
+    // 	fd.append('image', this.selected_cover, this.selected_cover.name)
+    // 	console.log(this.selected_cover);
+    // 	var book_details = {
+    // 		'title': this.book_title,
+    // 		'description': this.book_description,
+    // 		'book_cover': this.selected_cover,
+    // 		'tags': this.selected_tags
+    // 	};
+    // 	axios.post('/admin/saveBook', book_details).then(function(result){
+    // 		console.log('done')
+    // 	})
+    // },
     fetchData: function fetchData() {
       var _this = this;
 
@@ -5541,17 +5545,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     formSubmit: function formSubmit() {
       var _this2 = this;
 
-      this.fields = {
-        'image': this.image,
-        'title': this.title,
-        'description': this.description,
-        'price': this.price,
-        'user_id': this.userid
-      };
-      console.log(this.fields);
-      axios.post('/api/products/', this.fields, {
-        image: this.image
-      })["catch"](function (error) {
+      var fd = new FormData();
+      fd.append('image', this.image, this.image.name);
+      console.log(this.image.name);
+      fd.append('title', this.title);
+      fd.append('description', this.book_description);
+      fd.append('price', this.price);
+      fd.append('image', URL.createObjectURL(this.image)); // this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':this.image}
+
+      axios.post('/api/products', fd)["catch"](function (error) {
         if (error.response.status === 422) {
           _this2.errors = error.response.data.errors || {};
         }
@@ -68296,20 +68298,38 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("div", [
-                _c("img", {
-                  staticClass: "img-responsive",
-                  attrs: { src: _vm.image }
-                })
-              ]),
+            _c("div", { staticClass: "detail-container" }, [
+              _c("label", [_vm._v("Book Cover:")]),
               _vm._v(" "),
-              _c("div", [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: { type: "file" },
-                  on: { change: _vm.onFileChange }
-                })
+              _c("input", {
+                staticClass: "form-control-file",
+                attrs: { type: "file", id: "image", name: "image" },
+                on: { change: _vm.onFileChange }
+              }),
+              _vm._v(" "),
+              _c(
+                "small",
+                {
+                  staticClass: "form-text text-muted",
+                  attrs: { id: "fileHelp" }
+                },
+                [
+                  _vm._v(
+                    "After you select your desired cover, it will show the preview of the photo below."
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "preview" } }, [
+                _vm.image
+                  ? _c("img", {
+                      attrs: {
+                        src: _vm.image.name,
+                        height: "281",
+                        width: "180"
+                      }
+                    })
+                  : _vm._e()
               ])
             ]),
             _vm._v(" "),
@@ -86074,7 +86094,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODUL
   }, {
     path: '/products/create',
     name: 'products.create',
-    component: _components_products_CreateProduct__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _components_products_CreateProduct__WEBPACK_IMPORTED_MODULE_7__["default"] // meta: {
+    //     auth: true
+    // }
+
   }, {
     path: '/products/:id',
     name: 'products.show',

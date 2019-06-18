@@ -22,14 +22,14 @@
             <option v-for="(value,key) in clients" :key="key" :value="key"> {{value}}</option>
             </select> 
         </div> -->
-         <div class="form-group">
-                <div >
-                    <img :src="image" class="img-responsive">
-                </div>
-                <div>
-                    <input type="file" v-on:change="onFileChange" class="form-control">
-                </div>
-        </div>
+			<div class="detail-container">
+				<label>Book Cover:</label>
+				<input type="file" class="form-control-file" id="image" name="image" @change="onFileChange">
+				<small id="fileHelp" class="form-text text-muted">After you select your desired cover, it will show the preview of the photo below.</small>
+				<div id="preview">
+					<img v-if="image" :src="image.name" height="281" width="180" />
+				</div>
+			</div>
 
         <div class="form-group">
             <!-- <label for="user_id">User Id</label> -->
@@ -61,20 +61,26 @@
             this.fetchData();
         },
         methods:{
-            onFileChange(e) {
-                let files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-                this.createImage(files[0]);
-            },
-            createImage(file) {
-                let reader = new FileReader();
-                let vm = this;
-                reader.onload = (e) => {
-                    vm.image = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            },
+			onFileChange(e) {
+                const file = e.target.files[0];
+                // this.url = URL.createObjectURL(file);
+                this.image = file;
+			},
+			// saveBook() {
+			// 	const fd = new FormData();
+			// 	fd.append('image', this.selected_cover, this.selected_cover.name)
+			// 	console.log(this.selected_cover);
+			// 	var book_details = {
+			// 		'title': this.book_title,
+			// 		'description': this.book_description,
+			// 		'book_cover': this.selected_cover,
+			// 		'tags': this.selected_tags
+			// 	};
+				
+			// 	axios.post('/admin/saveBook', book_details).then(function(result){
+			// 		console.log('done')
+			// 	})
+			// },
             fetchData:function () {
                 axios.get('/api/products/create')
                     .then(response => {
@@ -86,9 +92,16 @@
                     })
             },
             formSubmit() {
-                this.fields = {'image':this.image,'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid}
-                console.log(this.fields)
-                axios.post('/api/products/', this.fields, {image:this.image})
+                const fd = new FormData();
+				fd.append('image', this.image, this.image.name)
+				console.log(this.image.name);
+                fd.append('title', this.title)
+                fd.append('description', this.book_description);
+                fd.append('price', this.price);
+
+                fd.append('image', URL.createObjectURL(this.image))
+                // this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':this.image}
+                axios.post('/api/products', fd)
                 .catch(error => {
                     if (error.response.status === 422) {
                     this.errors = error.response.data.errors || {};

@@ -45,6 +45,9 @@ export default new VueRouter({
             path: '/products/create',
             name: 'products.create',
             component: CreateProduct,
+            // meta: {
+            //     auth: true
+            // }
         },
         {
             path: '/products/:id',

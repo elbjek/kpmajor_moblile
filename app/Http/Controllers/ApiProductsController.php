@@ -48,16 +48,33 @@ class ApiProductsController extends Controller
     }
     public function store(Request $request)
     {
-        // $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'description' => 'required|min:5',
+            'price' => 'required|min:1',
+            'image' => 'required|image|mimes:jpeg,jpg,png|max:10000'
+         ]);
+
+         if($request->hasFile('image')) {
+            $fileNameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename. '_'. time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/products', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         Product::create([
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
-            'image'=> $request->image,
+            'image' => $fileNameToStore,
             'user_id' => \Auth::id()
             ]);
             return redirect('/home');
     }
+
     public function latest()
     {
         $products =  Product::with('images')
@@ -66,23 +83,4 @@ class ApiProductsController extends Controller
         ->get();
         return response()->json($products);
     }
-
-    // public function search(Request $request)
-    // {
-    //     $error = ['error' => 'No results found, please try with different keywords.'];
-
-    //     // Making sure the user entered a keyword.
-    //     if($request->has('q')) {
-
-    //         // Using the Laravel Scout syntax to search the products table.
-    //         $posts = Product::search($request->get('q'))->get();
-
-    //         // If there are results return them, if none, return the error message.
-    //         return $posts->count() ? $posts : $error;
-
-    //     }
-
-    //     // Return the error message if no keywords existed
-    //     return $error;
-    //         }
 }

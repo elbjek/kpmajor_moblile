@@ -38,9 +38,6 @@
                             <li>
                                 <router-link to="/register">{{ __('Registruj se') }}</router-link>
                             </li>
-							<li class="">
-                                <router-link class="" to="/products/create">Postavi oglas</router-link>
-                            </li>
                             @endif @else
                             <li class="">
                                 <router-link class="" to="/users/{{Auth::id()}}">{{__('Moj profil')}}</router-link>
