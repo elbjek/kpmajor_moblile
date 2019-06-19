@@ -43,7 +43,6 @@ import {EventBus} from '../../app';
                     this.products.forEach(element => {
                         this.allImages.push(element.images)
                     });
-                    console.log(this.products)
                 })
             },
             emitEvent(){

@@ -12,7 +12,7 @@ class Product extends Model
         'title','description','price','category_id','user_id','image'
     ];
 
-    public function users() 
+    public function user() 
     {
         return $this->belongsTo(\App\User::class);
     }
