@@ -12,9 +12,10 @@ import Home from './components/layout/Home';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
 
+import EditProduct from './components/products/EditProduct';
 import CreateProduct from './components/products/CreateProduct';
 import SingleProduct from './components/products/ProductsCarousel';
-
+import Test from './components/Test';
 import UserProfile from './components/user_profile/Profile';
 
 
@@ -44,6 +45,14 @@ export default new VueRouter({
             }
         },
         {
+            path: '/products/:id/edit',
+            name: 'products.edit',
+            component: EditProduct,
+            meta: {
+                auth: false
+            }
+        },
+        {
             path: '/products/create',
             name: 'products.create',
             component: CreateProduct,
@@ -63,6 +72,11 @@ export default new VueRouter({
             path: '/users/:id',
             name: 'users.show',
             component: UserProfile,
+        },
+        {
+            path: '/test',
+            name: 'test',
+            component: EditProduct,
         },
         // { path: '*', 
         // component: NotFoundComponent }

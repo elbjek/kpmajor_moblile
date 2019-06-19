@@ -26,6 +26,7 @@ Route::get('products/{product}', 'ApiProductsController@show')->name('products.s
 Route::middleware('auth:api')->get('products/create', 'ApiProductsController@create')->name('products.create');
 Route::middleware('auth:api')->post('products', 'ApiProductsController@store')->name('products.store');
 Route::middleware('auth:api')->get('products/{product}/edit', 'ApiProductsController@edit')->name('products.edit');
+Route::middleware('auth:api')->put('products/{product}', 'ApiProductsController@update')->name('products.update');
 
 // Route::resource('products', 'ApiProductsController');
 Route::middleware('auth:api')->resource('users', 'ApiUsersController');

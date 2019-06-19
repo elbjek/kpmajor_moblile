@@ -11,7 +11,9 @@
     >
       <productitem :product="product"></productitem>
     </v-touch>
-    <infinite-loading @infinite="infiniteHandler" :forceUseInfiniteWrapper="true"></infinite-loading>
+    <infinite-loading @infinite="infiniteHandler" no-more="ucitali ste" :forceUseInfiniteWrapper="true">
+        <template slot="no-more">Ucitali ste sve podatke</template>
+    </infinite-loading>
   </div>
 </template>
 
@@ -60,7 +62,7 @@ export default {
           } else {
             $state.complete();
           }
-        }, 2000);
+        }, 1000);
       });
     },
     showOptions(product, event) {
