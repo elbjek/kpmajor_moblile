@@ -1,6 +1,6 @@
 <template>
-   <div>
-     <search></search>
+   <div>  
+      <search></search>
      <latestproducts></latestproducts>
      <productslist></productslist>
      <messages></messages>
@@ -12,13 +12,14 @@ import latestproducts from '../products/LatestProducts';
 import productslist from '../products/ProductsList';
 import search from '../shared/Search'
 import messages from '../messages/Messages'
+
   export default {
     components: {
       'latestproducts':latestproducts,
       'productslist':productslist,
       'search':search,
       'messages':messages
-    },
+    }
   }
 </script>
 

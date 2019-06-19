@@ -35,8 +35,18 @@ Vue.use(Vue2TouchEvents, {
     longTapTimeInterval: 400
 })
 
+// VueTouch.registerCustomEvent('horizontal-swipe', {
+//     type: 'swipe',
+//     direction: 'right',
+//     threshold: 10
+//   })
+
 var VueTouch = require('vue-touch')
 Vue.use(VueTouch, {name: 'v-touch'})
+
+// VueTouch.config.pan = {
+//     threshold: 10
+// }
 
 import VueAgile from 'vue-agile'
 

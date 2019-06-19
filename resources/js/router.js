@@ -17,6 +17,8 @@ import SingleProduct from './components/products/ProductsCarousel';
 
 import UserProfile from './components/user_profile/Profile';
 
+
+
 export default new VueRouter({
     mode: 'history',
     routes:[

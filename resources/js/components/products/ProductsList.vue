@@ -2,34 +2,24 @@
     <div class="products-list-wrap">
         <h2>Svi oglasi</h2>
         <div v-if="products.length === 0">Loading...</div>
-        <v-touch v-on:swipeleft.prevent="showOptions(product,$event)" v-on:swiperight.prevent="hideOptions(product,$event)" ref="target" v-for="product in products" :test="product.id" :key="product.id" >
-            <router-link :to="'/products/'+product.id" class="product">
-                <div class="product-item" >
-                    <div class="product-heading">
-                            <div class="img">
-                            <img :src="'/storage/products/'+product.image">
-                            </div>
-                            <div class="product-content">
-                                <h6>{{product.title}}</h6>
-                                <p>{{product.city}}</p>
-                                <p>{{product.price}} RSD</p>
-                            </div>
-                    </div>
-                    <div class="star">
-                        &#9734;
-                    </div>           
-                </div>
-             <options></options>
-            </router-link>
+        <v-touch  
+                v-on:swipeleft.prevent="showOptions(product,$event)" 
+                v-on:swiperight.prevent="hideOptions(product,$event)" 
+                ref="target" v-for="product in products" 
+                :key="product.id" >
+            <!-- <product-item :product="product"></product-item> -->
         </v-touch>
     </div>
 </template>
 
 <script>
 import options from './ProductOptions';
+import product from '../shared/product';
     export default {
         components:{
-            options:options
+            options:options,
+            'my-component': () => import('./my-async-component')
+            // 'product-item':product
         },
         data() {
             return {
