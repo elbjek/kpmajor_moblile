@@ -5745,26 +5745,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5819,19 +5801,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "EditProduct",
+  name: "CreateProduct",
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       userid: "",
       image: "",
       title: "",
       description: "",
       price: "",
       fields: {},
-      errors: {},
-      currentUrl: window.location.pathname,
-      product: ''
-    };
+      errors: {}
+    }, _defineProperty(_ref, "image", ""), _defineProperty(_ref, "product", ''), _defineProperty(_ref, 'currentUrl', window.location.pathname), _ref;
   },
   mounted: function mounted() {
     this.fetchData();
@@ -5839,19 +5821,14 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onFileChange: function onFileChange(e) {
       var file = e.target.files[0];
-      this.image = file;
+      this.image = file; //   console.log(this.image)
     },
     fetchData: function fetchData() {
       var _this = this;
 
       axios.get("/api" + this.currentUrl).then(function (response) {
         _this.product = response.data[0];
-        console.log(product);
-        _this.userid = _this.product.user_id;
-        _this.image = _this.product.image;
-        _this.description = _this.product.description;
-        _this.price = _this.product.price;
-        _this.title = _this.product.title;
+        _this.title = response.data[0].title;
       })["catch"](function (err) {
         console.log(err);
       });
@@ -5861,13 +5838,15 @@ __webpack_require__.r(__webpack_exports__);
 
       var fd = new FormData();
       fd.append("image", this.image, this.image.name);
-      console.log(this.image.name);
+      console.log(this.image);
       fd.append("title", this.title);
+      console.log(this.title);
       fd.append("description", this.book_description);
       fd.append("price", this.price);
-      fd.append("image", URL.createObjectURL(this.image)); // this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':this.image}
+      fd.append("image", URL.createObjectURL(this.image)); //   this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':URL.createObjectURL(this.image)}
 
-      axios.put("/api/products", fd)["catch"](function (error) {
+      console.log(fd);
+      axios.put("/api/products/" + this.product.id, fd)["catch"](function (error) {
         if (error.response.status === 422) {
           _this2.errors = error.response.data.errors || {};
         }
@@ -11353,7 +11332,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* img {\n  max-height: 36px;\n} */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* img {\n  max-height: 36px;\n} */\n", ""]);
 
 // exports
 
@@ -69081,13 +69060,13 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "products" }, [
-        _c("h2", [_vm._v("EDIT")]),
+        _c("h2", [_vm._v("Add new Appointment")]),
         _vm._v(" "),
         _c(
           "form",
           {
             attrs: {
-              method: "POST",
+              method: "PUT",
               action: "/api/products",
               enctype: "multipart/form-data"
             },
@@ -69100,7 +69079,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "title" } }, [_vm._v("Title")]),
+              _c("label", { attrs: { for: "title" } }, [_vm._v("Title:")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -69112,13 +69091,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: {
-                  id: "title",
-                  type: "text",
-                  placeholder: "title",
-                  name: "fields.title",
-                  required: ""
-                },
+                attrs: { type: "text", name: "title" },
                 domProps: { value: _vm.title },
                 on: {
                   input: function($event) {
@@ -69128,9 +69101,7 @@ var render = function() {
                     _vm.title = $event.target.value
                   }
                 }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "bottom-border" })
+              })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -69148,12 +69119,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  name: "description",
-                  placeholder: "",
-                  required: ""
-                },
+                attrs: { type: "text", name: "description" },
                 domProps: { value: _vm.description },
                 on: {
                   input: function($event) {
@@ -69193,7 +69159,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "detail-container" }, [
-              _c("label", [_vm._v("Image:")]),
+              _c("label", [_vm._v("Book Cover:")]),
               _vm._v(" "),
               _c("input", {
                 staticClass: "form-control-file",
@@ -69214,24 +69180,17 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticStyle: { overflow: "hidden" },
-                  attrs: { id: "preview" }
-                },
-                [
-                  _vm.image
-                    ? _c("img", {
-                        attrs: {
-                          src: _vm.image.name,
-                          "max-height": "80",
-                          "max-width": "80"
-                        }
-                      })
-                    : _vm._e()
-                ]
-              )
+              _c("div", { attrs: { id: "preview" } }, [
+                _vm.image
+                  ? _c("img", {
+                      attrs: {
+                        src: _vm.image.name,
+                        height: "281",
+                        width: "180"
+                      }
+                    })
+                  : _vm._e()
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -69242,15 +69201,9 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { href: "#" },
-                on: { click: _vm.formSubmit }
-              },
-              [_vm._v("Add")]
-            )
+            _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+              _vm._v("Add")
+            ])
           ]
         )
       ])

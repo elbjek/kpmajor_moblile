@@ -105,13 +105,7 @@ class ApiProductsController extends Controller
             $fileNameToStore = 'noimage.jpg';
         }
 
-        $product->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price,
-            'image' => $fileNameToStore,
-            'user_id' => \Auth::id(),
-        ]);
+        $product->update($request->all());
         return redirect('/products/'.$id);
     }
 
