@@ -1,9 +1,9 @@
-<template>
+<template :key="compKey">
   <div class="user-products-list-wrap">
     <h2>Tvoji oglasi</h2>
     <div class="user-products">
       <v-touch
-        v-for="product in products"
+        v-for="(product) in products"
         :key="product.id"
         v-on:swipeleft.prevent="showOptions(product,$event)"
         v-on:swiperight.prevent="hideOptions(product,$event)"
@@ -31,6 +31,7 @@
 
 <script>
 import options from "./UserOptions";
+import {EventBus} from '../../app';
 export default {
   components: {
     options: options
@@ -42,16 +43,24 @@ export default {
       currentUrl: window.location.pathname,
       toggle: "fa-toggle-on",
       show: false,
-      hide: true
+      hide: true,
+      compKey:0
       // products:''
     };
   },
-  mounted() {
+  mounted(){
+
     console.log(this.ids);
+  },
+  created() {
+    // console.log(this.ids);
+    EventBus.$on('clickedItemId',(id)=>{
+      this.products.splice(this.products.indexOf(this.products.id), 1);
+      return this.products;
+    })
   },
   methods: {
     showOptions(product, event) {
-      console.log(event);
       this.ids.forEach(el => {
         if (product.id == el) {
           $(event.target.nextElementSibling).addClass("visible");

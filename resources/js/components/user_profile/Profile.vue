@@ -2,7 +2,8 @@
     <div class="user-profile-wrap">
        <div class="user-profile-header">
            <div class="img">
-               <img src="https://pixel.nymag.com/imgs/daily/science/2016/06/10/10-cute-baby.w700.h700.jpg" alt="">
+               <img v-if="user.profile_picture" :src="'/storage/user_images/'+user.profile_picture" alt="">
+               <img v-else src="https://pixel.nymag.com/imgs/daily/science/2016/06/10/10-cute-baby.w700.h700.jpg" alt="">
            </div>
            <h5>{{user.name}} {{user.lastname}}</h5>
            <p>{{formatTime}}</p>
@@ -73,6 +74,7 @@ import UserProduct from './UserProducts';
             fetchUser(){
                 axios.get('/api'+ this.currentUrl)
                 .then(response => {
+            console.log(response)
                     this.user = response.data[0]
                     this.products = this.user.products,
                     this.products.forEach(id => {

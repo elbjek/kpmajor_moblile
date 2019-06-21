@@ -29,6 +29,7 @@
               class="form-control-file"
               id="image"
               name="image"
+              v-bind:image="image"
               @change="onFileChange"
             >
             <small
@@ -36,15 +37,15 @@
               class="form-text text-muted"
             >After you select your desired cover, it will show the preview of the photo below.</small>
             <div id="preview">
-              <img v-if="image" :src="image.name" height="281" width="180">
+              <img v-if="image" :src="image" height="281" width="180">
             </div>
           </div>
 
           <div class="form-group">
             <!-- <label for="user_id">User Id</label> -->
-            <input type="hidden" class="form-control" name="user_id" :value="userid">
+            <input type="hidden" class="form-control" name="user_id" :value="product.user_id">
           </div>
-          <a class="btn btn-primary"  href="#">Add</a>
+          <button class="btn btn-primary" >Add</button>
         </form>
       </div>
     </div>
@@ -75,7 +76,6 @@ export default {
     onFileChange(e) {
       const file = e.target.files[0];
       this.image = file;
-    //   console.log(this.image)
     },
     fetchData: function() {
       axios
@@ -83,6 +83,11 @@ export default {
         .then(response => {
           this.product = response.data[0];
           this.title = response.data[0].title;
+          this.description = response.data[0].description;
+          this.price = response.data[0].price;
+          this.user_id = response.data[0].user_id;
+          this.image = response.data[0].image;
+
         })
         .catch(err => {
           console.log(err);
@@ -90,13 +95,11 @@ export default {
     },
     formSubmit() {
       const fd = new FormData();
+      console.log(this.image)
       fd.append("image", this.image, this.image.name);
-      console.log(this.image);
       fd.append("title", this.title);
-      console.log(this.title)
       fd.append("description", this.book_description);
       fd.append("price", this.price);
-
       fd.append("image", URL.createObjectURL(this.image));
     //   this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':URL.createObjectURL(this.image)}
       console.log(fd);

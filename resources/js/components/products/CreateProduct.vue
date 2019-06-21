@@ -23,7 +23,7 @@
             </select> 
         </div> -->
 			<div class="detail-container">
-				<label>Book Cover:</label>
+				<label>Slika:</label>
 				<input type="file" class="form-control-file" id="image" name="image" @change="onFileChange">
 				<small id="fileHelp" class="form-text text-muted">After you select your desired cover, it will show the preview of the photo below.</small>
 				<div id="preview">
@@ -35,7 +35,7 @@
             <!-- <label for="user_id">User Id</label> -->
             <input type="hidden"  class="form-control"  name="user_id" :value="userid" />
         </div>
-        <a class="btn btn-primary" @click="formSubmit" href="#" >Add</a>
+        <a class="btn btn-primary" @click="formSubmit" href="/" >Dodaj</a>
     </form>
    </div>
         </div>
@@ -69,7 +69,7 @@
                 axios.get('/api/products/create')
                     .then(response => {
                         this.userid = response.data.user;
-                        console.log(this.userid)
+                        console.log(response.data)
                     })
                     .catch((err) => {
                         console.log(err)
@@ -80,9 +80,9 @@
 				fd.append('image', this.image, this.image.name)
 				console.log(this.image.name);
                 fd.append('title', this.title)
-                fd.append('description', this.book_description);
+                fd.append('description', this.description);
                 fd.append('price', this.price);
-
+                fd.append('price', this.userid);
                 fd.append('image', URL.createObjectURL(this.image))
                 // this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':this.image}
                 axios.post('/api/products', fd)

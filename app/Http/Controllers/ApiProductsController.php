@@ -44,7 +44,8 @@ class ApiProductsController extends Controller
     public function create(Product $Product)
     {
         $user = \Auth::id();
-        return compact('user');
+        $product = $Product;
+        return compact('product');
     }
 
     public function store(Request $request)
@@ -84,13 +85,6 @@ class ApiProductsController extends Controller
         return response()->json($product);
     }
 
-    // public function update (Request $request, Appointment $appointment)
-    // {
-    //     $id = $appointment->id;
-    //     $appointment->update($request->all());
-    //     return redirect('/appointments/'.$id);
-    // }
-
     public function update(Request $request, Product $product)
     {
         $id = $product->id;
@@ -107,6 +101,12 @@ class ApiProductsController extends Controller
 
         $product->update($request->all());
         return redirect('/products/'.$id);
+    }
+
+    public function destroy(Product $product)
+    {
+        // $appointment = Appointments::find($id);
+        $product->delete();
     }
 
     public function latest()
