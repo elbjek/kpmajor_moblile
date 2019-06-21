@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
    <div class="products">
        <h2>Add new Appointment</h2>
-        <form @submit.prevent="formSubmit()" method="POST" action="/api/products" enctype="multipart/form-data">
+        <form   method="POST" action="/api/products" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" class="form-control" name="title" v-model="title"/>
@@ -35,7 +35,7 @@
             <!-- <label for="user_id">User Id</label> -->
             <input type="hidden"  class="form-control"  name="user_id" :value="userid" />
         </div>
-        <a class="btn btn-primary" @click="formSubmit" href="/" >Dodaj</a>
+        <button class="btn btn-primary" @click="formSubmit()">Dodaj</button>
     </form>
    </div>
         </div>
@@ -79,11 +79,18 @@
                 const fd = new FormData();
 				fd.append('image', this.image, this.image.name)
 				console.log(this.image.name);
-                fd.append('title', this.title)
+                fd.append('title', this.title);
+				console.log(this.title);
+
                 fd.append('description', this.description);
+				console.log(this.description);
+
                 fd.append('price', this.price);
-                fd.append('price', this.userid);
+				console.log(this.price);
+
+                fd.append('user_id', this.userid);
                 fd.append('image', URL.createObjectURL(this.image))
+                console.log(fd)
                 // this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':this.image}
                 axios.post('/api/products', fd)
                 .catch(error => {

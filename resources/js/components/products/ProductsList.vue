@@ -19,12 +19,13 @@
 
 <script>
 import options from "./ProductOptions";
-// import product from '../shared/product';
+import product from '../shared/product';
 import InfiniteLoading from "vue-infinite-loading";
 export default {
   components: {
     options: options,
-    productitem: () => import("../shared/product"),
+    // productitem: () => import("../shared/product"),
+    productitem:product,
     InfiniteLoading
   },
   data() {
