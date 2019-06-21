@@ -5605,16 +5605,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var fd = new FormData();
       fd.append('image', this.image, this.image.name);
-      console.log(this.image.name);
       fd.append('title', this.title);
-      console.log(this.title);
       fd.append('description', this.description);
-      console.log(this.description);
       fd.append('price', this.price);
-      console.log(this.price);
       fd.append('user_id', this.userid);
-      fd.append('image', URL.createObjectURL(this.image));
-      console.log(fd); // this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':this.image}
+      fd.append('image', URL.createObjectURL(this.image)); // this.fields = {'title':this.title,'description':this.description,'price':this.price,'user_id':this.userid,'image':this.image}
 
       axios.post('/api/products', fd)["catch"](function (error) {
         if (error.response.status === 422) {
