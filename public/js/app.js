@@ -4513,13 +4513,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       errorMessage: 'Wrong e-mail or password!',
       email: '',
       password: '',
-      fields: {}
+      fields: {},
+      errors: {}
     };
   },
   methods: {
@@ -4530,6 +4534,12 @@ __webpack_require__.r(__webpack_exports__);
         _this.response = result;
 
         _this.$router.go('/');
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.errors = error.response.data.errors || {};
+        }
+
+        console.log(_this.errors);
       });
     }
   }
@@ -6262,24 +6272,87 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: [],
       loading: false,
       error: false,
-      query: '',
+      query: "",
       show: false,
-      hide: true
+      hide: true,
+      isVisible: false
     };
   },
   mounted: function mounted() {
     this.$anime;
   },
   methods: {
+    additionalQuery: function additionalQuery() {
+      if (this.query.length == 0) {
+        $(".additional-query").removeClass("show-additional-query");
+        this.$anime({
+          targets: ".additional-query",
+          translateY: -20,
+          height: "0px",
+          easing: "linear",
+          duration: 200,
+          opacity: 0
+        });
+      } else {
+        $(".additional-query").addClass("show-additional-query");
+        this.$anime({
+          targets: ".additional-query",
+          translateY: 5,
+          height: "100%",
+          easing: "linear",
+          opacity: 1,
+          duration: 200
+        });
+      }
+    },
     removeFilters: function removeFilters(e) {
       this.$anime({
-        targets: '.cancel',
+        targets: ".cancel",
         translateX: 15,
         keyframes: [{
           translateX: 20,
@@ -6288,21 +6361,30 @@ __webpack_require__.r(__webpack_exports__);
           translateX: 20,
           scaleX: 0.8
         }],
-        easing: 'cubicBezier(.5, .05, .1, .3)'
+        easing: "cubicBezier(.5, .05, .1, .3)"
+      });
+      this.$anime({
+        targets: ".additional-query",
+        translateY: -20,
+        height: "0px",
+        easing: "linear",
+        duration: 200
       });
       this.show = false;
       this.hide = true;
-      $('.input').removeClass('enlarge-search');
+      $(".input").removeClass("enlarge-search");
+      $(".additional-query").removeClass("show-additional-query");
+      this.query = "";
     },
     showFilters: function showFilters() {
-      $('.input').addClass('enlarge-search');
+      $(".input").addClass("enlarge-search");
       this.show = true;
       this.hide = false;
       this.cancel();
     },
     cancel: function cancel() {
       var animation = this.$anime({
-        targets: '.cancel',
+        targets: ".cancel",
         duration: 420,
         keyframes: [{
           translateX: 20,
@@ -6311,7 +6393,7 @@ __webpack_require__.r(__webpack_exports__);
           translateX: 0,
           scaleX: 1
         }],
-        easing: 'cubicBezier(.5, .05, .1, .3)'
+        easing: "cubicBezier(.5, .05, .1, .3)"
       });
       animation.play();
     }
@@ -67215,7 +67297,11 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("span", { staticClass: "bottom-border" })
+          _c("span", { staticClass: "bottom-border" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "error" }, [
+            _vm._v(_vm._s(_vm.errors.email))
+          ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-item" }, [
@@ -67252,7 +67338,11 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("span", { staticClass: "bottom-border" })
+          _c("span", { staticClass: "bottom-border" }),
+          _vm._v(" "),
+          _c("span", { staticClass: "error" }, [
+            _vm._v(_vm._s(_vm.errors.password))
+          ])
         ]),
         _vm._v(" "),
         _c(
@@ -69527,7 +69617,7 @@ var render = function() {
               staticClass: "glyphicon glyphicon-exclamation-sign",
               attrs: { "aria-hidden": "true" }
             }),
-            _vm._v("\n    @" + _vm._s(_vm.error) + "\n    ")
+            _vm._v("\n    @" + _vm._s(_vm.error) + "\n  ")
           ]
         )
       : _vm._e(),
@@ -69549,6 +69639,7 @@ var render = function() {
             domProps: { value: _vm.query },
             on: {
               click: _vm.showFilters,
+              keyup: _vm.additionalQuery,
               input: function($event) {
                 if ($event.target.composing) {
                   return
@@ -69597,7 +69688,33 @@ var render = function() {
           class: { filtertransition: _vm.show }
         },
         [_vm._m(0), _vm._v(" "), _vm._m(1)]
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "additional-query" }, [
+        _c("div", { staticClass: "search-by" }, [
+          _c("p", [
+            _c("span", [
+              _vm._v('\n            Pretrazi oglase po: "\n            '),
+              _c("span", { staticClass: "query" }, [_vm._v(_vm._s(_vm.query))]),
+              _vm._v('" na celom\n            '),
+              _vm._m(2)
+            ]),
+            _vm._v(" "),
+            _vm._m(3)
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("span", [
+              _vm._v('\n            Pretrazi oglase po: "\n            '),
+              _c("span", { staticClass: "query" }, [_vm._v(_vm._s(_vm.query))]),
+              _vm._v('" na celom\n            '),
+              _vm._m(4)
+            ]),
+            _vm._v(" "),
+            _vm._m(5)
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -69608,14 +69725,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "filter-buttons" }, [
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Naslov\n                "),
+        _vm._v("\n          Naslov\n          "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
       ]),
       _vm._v(" "),
       _c("label", { staticClass: "checkbox" }, [
-        _vm._v("Tekst oglasa\n                "),
+        _vm._v("\n          Tekst oglasa\n          "),
         _c("input", { attrs: { type: "checkbox" } }),
         _vm._v(" "),
         _c("span", { staticClass: "checkmark" })
@@ -69631,6 +69748,38 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("i", { staticClass: "fas fa-sliders-h" })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "logo" }, [
+      _c("span", [_vm._v("k")]),
+      _vm._v(" "),
+      _c("span", [_vm._v("p")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("i", { staticClass: "fas fa-chevron-right" })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "logo" }, [
+      _c("span", [_vm._v("k")]),
+      _vm._v(" "),
+      _c("span", [_vm._v("p")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("i", { staticClass: "fas fa-chevron-right" })])
   }
 ]
 render._withStripped = true

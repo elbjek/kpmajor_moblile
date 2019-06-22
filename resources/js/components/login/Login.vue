@@ -6,11 +6,14 @@
         <label for="email">Email</label>
         <input id="email" type="email" v-model="fields.email" placeholder="Email" class="input-form" name="email" value="email" required autocomplete="email"  autofocus>
         <span class="bottom-border"></span>
+        <span class="error">{{errors.email}}</span>
        </div>
         <div class="form-item">
           <label for="email">Password</label>
           <input id="password" type="password" v-model="fields.password" placeholder="Password" class="input-form" name="password" value="password" required autocomplete="password"  autofocus>
-          <span class="bottom-border"></span>       
+          <span class="bottom-border"></span>  
+          <span class="error">{{errors.password}}</span>
+
        </div>
        <div class="submit">
           <button  class="button">
@@ -30,7 +33,8 @@
         errorMessage:'Wrong e-mail or password!',
         email:'',
         password:'',
-        fields:{}
+        fields:{},
+        errors:{}
       }
     },
     methods:{
@@ -39,6 +43,12 @@
         .then(result=>{
           this.response = result;
           this.$router.go('/')
+        })
+        .catch(error => {
+          if (error.response.status === 422) {
+          this.errors = error.response.data.errors || {};
+        }
+        console.log(this.errors)
         })
       }
     }
