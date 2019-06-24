@@ -48,10 +48,6 @@ export default {
       // products:''
     };
   },
-  mounted(){
-
-    console.log(this.ids);
-  },
   created() {
     // console.log(this.ids);
     EventBus.$on('clickedItemId',(id)=>{

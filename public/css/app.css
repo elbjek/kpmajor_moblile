@@ -11,6 +11,25 @@ body {
   overflow-x: hidden;
 }
 
+.footer {
+  text-align: center;
+  display: block;
+  width: 100%;
+  background-color: #003368;
+  padding: 7px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.footer a {
+  color: white;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .py-4 {
   position: relative;
 }
@@ -101,6 +120,10 @@ body {
 
 .product .product-heading .product-content p {
   margin: 0px;
+}
+
+.product .product-heading .product-content p i {
+  margin-right: 5px;
 }
 
 .product .img {
@@ -538,6 +561,12 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  display: block !important;
+  z-index: 9;
+}
+
+.transparent-bg {
+  display: none;
 }
 
 .chat-height {
@@ -563,7 +592,7 @@ body {
   bottom: 20px;
   right: 25px;
   border-radius: 27px;
-  z-index: 9999;
+  z-index: 999;
   transition: 0.4s ease;
   border: none;
 }

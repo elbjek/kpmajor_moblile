@@ -74,7 +74,6 @@ import UserProduct from './UserProducts';
             fetchUser(){
                 axios.get('/api'+ this.currentUrl)
                 .then(response => {
-            console.log(response)
                     this.user = response.data[0]
                     this.products = this.user.products,
                     this.products.forEach(id => {

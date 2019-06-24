@@ -7,7 +7,7 @@
         </div>
         <div class="product-content">
           <h6>{{product.title}}</h6>
-          <p>{{product.city}}</p>
+          <p><i class="fas fa-map-marker-alt" ></i>{{product.user.city}}</p>
           <p>{{product.price}} RSD</p>
         </div>
       </div>

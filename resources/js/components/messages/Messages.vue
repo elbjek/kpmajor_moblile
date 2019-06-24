@@ -57,13 +57,16 @@ export default {
             $('.chat-box').toggleClass('chat-show')
             $('.chat-wrap').toggleClass('chat-height')
             $('body').toggleClass('overflow')
-            $('.transparent-bg').toggleClass('modal-background')
+            $('.transparent-bg').toggleClass('modal-background');
+           $('.message-modal').toggleClass('hide-modal');
         },
         closeModal(){
             $('.chat-box').removeClass('chat-show');
             $('.chat-wrap').toggleClass('chat-height');
             $('body').removeClass('overflow');
             $('.transparent-bg').removeClass('modal-background')
+           $('.message-modal').removeClass('hide-modal');
+
         },
         fetchData(){
             axios.get('/api/messages')

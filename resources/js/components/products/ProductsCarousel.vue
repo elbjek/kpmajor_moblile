@@ -9,6 +9,7 @@
     <transition name="slide-fade">
         <singleproduct  v-touch:swipe.left="fetchProducts" :product="product"> </singleproduct>
     </transition>
+        <messages></messages>
    </div>
 </template>
 
@@ -17,13 +18,14 @@ import { Carousel, Slide } from 'vue-carousel';
 import singleproduct from './SingleProduct';
 import { VueAgile } from 'vue-agile';
 import {EventBus} from '../../app';
-
+import messages from '../messages/Messages'
     export default {
         components: {
             "carousel": Carousel,
             "slide": Slide,
             'singleproduct':singleproduct,
-            'agile': VueAgile
+            'agile': VueAgile,
+            messages:messages
         },
         data() {
             return {
@@ -59,7 +61,7 @@ import {EventBus} from '../../app';
                 vm.$forceUpdate();
             },
             transitionEnd(){
-                console.log('ended')
+                // console.log('ended')
                 this.show=true;
             }
         }

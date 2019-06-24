@@ -1,24 +1,37 @@
 <template>
-  <div class="container">
-        <transition name="page" mode="out-in">
-          <router-view></router-view>
-        </transition>
+  <div>
+    <div class="container">
+      <transition name="page" mode="out-in">
+        <router-view></router-view>
+      </transition>
+      <navigation :user="user"></navigation>
+    </div>
   </div>
 </template>
 
 <script>
 import navigation from "../Navigation";
+import footer from "../shared/footer";
 export default {
   components: {
-    navigation: navigation
+    navigation: navigation,
+    "footer-component": footer
   },
   data() {
-    return {};
+    return {
+      user:''
+    };
+  },
+  mounted(){
+      axios.get('/api/user')
+      .then(response=>{
+          this.user = response.data
+      })
   },
   methods: {
     beforeLeave(element) {
       this.prevHeight = getComputedStyle(element).height;
-    },
+    }
     //   showNav(event){
     //   // var x = document.getElementById("x");
     //   // var y = document.getElementById("y");

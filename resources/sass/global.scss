@@ -9,6 +9,20 @@ body{
     overflow-x: hidden;
 }
 
+.footer{
+    text-align: center;
+    display: block;
+    width: 100%;
+    background-color: $darkblue;
+    padding: 7px;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    a{
+        color:white;
+        user-select: none;
+    }
+}
 .py-4{
     position: relative;
 }
@@ -79,6 +93,9 @@ body{
             }
             p{
                 margin:0px;
+                i{
+                    margin-right:5px;
+                }
             }
         }            
     }
