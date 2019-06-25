@@ -4,7 +4,8 @@
       <transition name="page" mode="out-in">
         <router-view></router-view>
       </transition>
-      <navigation :user="user"></navigation>
+      <div class="show-nav"></div>
+      <!-- <navigation :user="user"></navigation> -->
     </div>
   </div>
 </template>

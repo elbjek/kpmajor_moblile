@@ -4538,6 +4538,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -67257,10 +67258,7 @@ var render = function() {
             ? _c("ul", [
                 _c(
                   "li",
-                  {
-                    staticClass: "navigation-item",
-                    on: { click: _vm.hideNavigation }
-                  },
+                  { staticClass: "navigation-item" },
                   [
                     _c("router-link", { attrs: { to: "/users/1" } }, [
                       _c("i", { staticClass: "far fa-user" }),
@@ -67273,10 +67271,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  {
-                    staticClass: "navigation-item",
-                    on: { click: _vm.hideNavigation }
-                  },
+                  { staticClass: "navigation-item" },
                   [
                     _c("router-link", { attrs: { to: "/products/create" } }, [
                       _c("i", { staticClass: "far fa-sticky-note" }),
@@ -67287,39 +67282,32 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "navigation-item",
-                    on: { click: _vm.hideNavigation }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href: "/logout",
-                          onclick:
-                            "event.preventDefault();\n                                  document.getElementById('logout-form').submit();"
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "fas fa-sign-out-alt" }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Odjavi se")])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("form", {
-                      staticStyle: { display: "none" },
+                _c("li", { staticClass: "navigation-item" }, [
+                  _c(
+                    "a",
+                    {
                       attrs: {
-                        id: "logout-form",
-                        action: "/logout",
-                        method: "POST"
+                        href: "/logout",
+                        onclick:
+                          "event.preventDefault();\n                                  document.getElementById('logout-form').submit();"
                       }
-                    })
-                  ]
-                )
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-sign-out-alt" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Odjavi se")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("form", {
+                    staticStyle: { display: "none" },
+                    attrs: {
+                      id: "logout-form",
+                      action: "/logout",
+                      method: "POST"
+                    }
+                  })
+                ])
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -67327,10 +67315,7 @@ var render = function() {
             ? _c("ul", [
                 _c(
                   "li",
-                  {
-                    staticClass: "navigation-item",
-                    on: { click: _vm.hideNavigation }
-                  },
+                  { staticClass: "navigation-item" },
                   [
                     _c("router-link", { attrs: { to: "/login" } }, [
                       _c("i", { staticClass: "fas fa-sign-in-alt" }),
@@ -67343,10 +67328,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "li",
-                  {
-                    staticClass: "navigation-item",
-                    on: { click: _vm.hideNavigation }
-                  },
+                  { staticClass: "navigation-item" },
                   [
                     _c("router-link", { attrs: { to: "/register" } }, [
                       _c("i", { staticClass: "far fa-list-alt" }),
@@ -67458,7 +67440,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("navigation", { attrs: { user: _vm.user } })
+        _c("div", { staticClass: "show-nav" })
       ],
       1
     )

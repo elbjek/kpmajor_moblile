@@ -6,19 +6,19 @@
       v-on:swiperight.prevent="hideNavigation()"
     >
       <ul v-if="user">
-        <li class="navigation-item" @click="hideNavigation">
+        <li class="navigation-item">
           <router-link to="/users/1">
           <i class="far fa-user"></i>
           <span>Profile</span>
           </router-link>
         </li>
-        <li class="navigation-item" @click="hideNavigation">
+        <li class="navigation-item">
           <router-link class to="/products/create">
             <i class="far fa-sticky-note"></i>
             <span>Postavi oglas</span>
           </router-link>
         </li>
-        <li class="navigation-item" @click="hideNavigation">
+        <li class="navigation-item">
           <a
             class
             href="/logout"
@@ -33,13 +33,13 @@
       </ul>
 
       <ul v-if="!user">
-        <li class="navigation-item" @click="hideNavigation">
+        <li class="navigation-item">
           <router-link to="/login">
             <i class="fas fa-sign-in-alt"></i>
             <span>Prijavi se</span>
           </router-link>
         </li>
-        <li class="navigation-item" @click="hideNavigation">
+        <li class="navigation-item">
           <router-link to="/register">
             <i class="far fa-list-alt"></i>
             <span>Registruj se</span>
@@ -64,7 +64,6 @@ export default {
     $(".navigation2").css({ transform: "translate(" + el + "px)" });
   },
   methods: {
-      
     showNavigation() {
       var el = $(".navigation2").width() - 20;
       console.log(el);
