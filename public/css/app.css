@@ -532,6 +532,10 @@ body {
   font-size: 10px;
 }
 
+.login-form-wrap .error-border {
+  border: 1px solid #fe1e00 !important;
+}
+
 .overflow {
   height: 100%;
   overflow: hidden;
