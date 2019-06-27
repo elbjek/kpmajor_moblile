@@ -1,8 +1,8 @@
 <template>
     <div class="container" style="height:100vh">
-        <div class="row justify-content-center">
-   <div class="products">
-       <h2>Add new Appointment</h2>
+    <div class="row justify-content-center">
+   <div class="products-form-wrap">
+       <h2>Dodaj proizvod</h2>
         <form   method="POST" action="/api/products" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">Title:</label>
@@ -16,12 +16,6 @@
             <label for="price">Price</label>
             <input type="number" class="form-control" name="price" v-model="price"/>
         </div>
-        <!-- <div class="form-group">
-            <label for="client_id">Client id</label>
-            <select type="number" class="form-control" name="client_id" v-model="fields.client_id">
-            <option v-for="(value,key) in clients" :key="key" :value="key"> {{value}}</option>
-            </select> 
-        </div> -->
 			<div class="detail-container">
 				<label>Slika:</label>
 				<input type="file" class="form-control-file" id="image" name="image" @change="onFileChange">
@@ -30,7 +24,6 @@
 					<img v-if="image" :src="image.name" height="281" width="180" />
 				</div>
 			</div>
-
         <div class="form-group">
             <!-- <label for="user_id">User Id</label> -->
             <input type="hidden"  class="form-control"  name="user_id" :value="userid" />

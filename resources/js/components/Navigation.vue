@@ -60,6 +60,7 @@
 <script>
 import { setTimeout } from "timers";
 import logo from "./shared/logo";
+import {EventBus} from '../app';
 export default {
   components: {
     "logo-component": logo
@@ -76,6 +77,7 @@ export default {
   mounted() {
     var el = $(".navigation-test").width() - 50;
     $(".navigation-test").css({ transform: "translateX(" + el + "px)" });
+    EventBus.$on('closeNav',this.hideNavigation())
   },
   methods: {
     submit: function() {
@@ -86,24 +88,28 @@ export default {
     },
     showNavigation() {
       $("body").addClass("overflow");
+      $('.search-bar').css({'z-index':0,"position":"static"})
       var el = $(".navigation-test").width() - 50;
       this.$anime({
         targets: ".navigation-test",
         translateX: 0,
         duration: 300,
         easing: "linear",
-        width: "100%"
+        width: "100%",
       });
       this.show = true;
     },
     hideNavigation() {
       $("body").removeClass("overflow");
+      setTimeout(()=>{
+      $('.search-bar').css({'z-index':11,"position":"relative"})
+      },300)
       var el = $(".navigation-test").width() - 50;
       this.$anime({
         targets: ".navigation-test",
         translateX: el,
         duration: 300,
-        easing: "linear"
+        easing: "linear",
       });
     }
   }
@@ -115,11 +121,11 @@ export default {
   min-height: 100vh;
   width: 100%;
   position: fixed;
-  top: 37px;
   background: transparent;
   right: 0;
   width: 100%;
   z-index: 7;
+  top:0px
 }
 .navigation2 {
   touch-action: auto;
@@ -131,6 +137,7 @@ export default {
   justify-self: right;
   position: relative;
   right: 0;
+  top:0;
   height: 100%;
   position: absolute;
   right: 0;
