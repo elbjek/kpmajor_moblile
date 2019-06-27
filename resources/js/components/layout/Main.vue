@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div class="container">
+      <navigation :user="user"></navigation>
+      <div class="container" style="padding-top:20px">
       <transition name="page" mode="out-in">
         <router-view></router-view>
       </transition>
-      <div class="show-nav"></div>
-      <!-- <navigation :user="user"></navigation> -->
-    </div>
+      </div>
   </div>
 </template>
 
@@ -20,14 +19,13 @@ export default {
   },
   data() {
     return {
-      user:''
+      user: ""
     };
   },
-  mounted(){
-      axios.get('/api/user')
-      .then(response=>{
-          this.user = response.data
-      })
+  mounted() {
+    axios.get("/api/user").then(response => {
+      this.user = response.data;
+    });
   },
   methods: {
     beforeLeave(element) {

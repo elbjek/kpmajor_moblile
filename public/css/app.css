@@ -192,13 +192,10 @@ body {
 }
 
 .show-nav {
-  visibility: visible !important;
-  -webkit-transform: translate(0px) !important;
-          transform: translate(0px) !important;
+  -webkit-transform: translate(0px);
+          transform: translate(0px);
   -webkit-transform-origin: 0 100%;
           transform-origin: 0 100%;
-  transition: 0.5s ease-in-out;
-  box-shadow: 0 0 1px 1px rgba(128, 128, 128, 0.1);
 }
 
 .show-nav li a {
@@ -596,7 +593,7 @@ body {
   bottom: 20px;
   right: 25px;
   border-radius: 27px;
-  z-index: 999;
+  z-index: 6;
   transition: 0.4s ease;
   border: none;
 }
@@ -1024,6 +1021,7 @@ body {
   background: #f4f4f4;
   border-radius: 8px;
   width: 0%;
+  z-index: 9;
   position: relative;
   right: 0;
   -webkit-transform-origin: 100% 100%;

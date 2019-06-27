@@ -1,93 +1,110 @@
 <template>
-  <div class="navigation-test" id="navtest" >
+  <nav class="navigation navbar navbar-expand-md navbar-light" id="nav3">
+    <div class="container">
+      <logo-component></logo-component>
+      <button class="nav-button" id="nav" type="button" v-on:click="toggleNav">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
     <v-touch
-      class="navigation2"
-      v-on:swipeleft.prevent="showNavigation($event)"
-      v-on:swiperight.prevent="hideNavigation()"
+      class="navigation-test"
+      id="navtest"
+      v-on:swipeleft="showNavigation"
+      v-on:tap="hideNavigation"
+      v-on:swiperight="hideNavigation"
     >
-      <ul v-if="user">
-        <li class="navigation-item">
-          <router-link to="/users/1">
-          <i class="far fa-user"></i>
-          <span>Profile</span>
-          </router-link>
-        </li>
-        <li class="navigation-item">
-          <router-link class to="/products/create">
-            <i class="far fa-sticky-note"></i>
-            <span>Postavi oglas</span>
-          </router-link>
-        </li>
-        <li class="navigation-item">
-          <a
-            class
-            href="/logout"
-            onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();"
-          >
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Odjavi se</span>
-          </a>
-          <form id="logout-form" action="/logout" method="POST" style="display: none;"></form>
-        </li>
-      </ul>
+      <div class="navigation2">
+        <ul v-if="user">
+          <li class="navigation-item">
+            <router-link to="/users/1">
+              <i class="far fa-user"></i>
+              <span>Profile</span>
+            </router-link>
+          </li>
+          <li class="navigation-item">
+            <router-link class to="/products/create">
+              <i class="far fa-sticky-note"></i>
+              <span>Postavi oglas</span>
+            </router-link>
+          </li>
+          <li class="navigation-item">
+            <a
+              href="#"
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+            >Sign Out</a>
+            <form id="logout-form" action="logout" method="POST" style="display: none;">
+              <input type="hidden" name="_token" :value="csrf">
+            </form>
+          </li>
+        </ul>
 
-      <ul v-if="!user">
-        <li class="navigation-item">
-          <router-link to="/login">
-            <i class="fas fa-sign-in-alt"></i>
-            <span>Prijavi se</span>
-          </router-link>
-        </li>
-        <li class="navigation-item">
-          <router-link to="/register">
-            <i class="far fa-list-alt"></i>
-            <span>Registruj se</span>
-          </router-link>
-        </li>
-      </ul>
+        <ul v-if="!user">
+          <li class="navigation-item" v-on:swipeleft="showNavigation">
+            <router-link to="/login">
+              <i class="fas fa-sign-in-alt"></i>
+              <span>Prijavi se</span>
+            </router-link>
+          </li>
+          <li class="navigation-item" v-on:swipeleft="showNavigation">
+            <router-link to="/register">
+              <i class="far fa-list-alt"></i>
+              <span>Registruj se</span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
     </v-touch>
-  </div>
+  </nav>
 </template>
 
 <script>
-import { setTimeout } from 'timers';
+import { setTimeout } from "timers";
+import logo from "./shared/logo";
 export default {
-    data(){
-        return{
-            show:false
-        }
-    },
+  components: {
+    "logo-component": logo
+  },
+  data() {
+    return {
+      show: false,
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content")
+    };
+  },
   props: ["user"],
   mounted() {
-    var el = $(".navigation2").width() - 20;
-    $(".navigation2").css({ transform: "translate(" + el + "px)" });
+    var el = $(".navigation-test").width() - 50;
+    $(".navigation-test").css({ transform: "translateX(" + el + "px)" });
   },
   methods: {
+    submit: function() {
+      this.$refs.form.submit();
+    },
+    toggleNav() {
+        this.showNavigation()
+    },
     showNavigation() {
-      var el = $(".navigation2").width() - 20;
-      console.log(el);
-      $('.navigation2').addClass('navigation-style');
-      $('.navigation-test').addClass('navigation-close');
-
+      $("body").addClass("overflow");
+      var el = $(".navigation-test").width() - 50;
       this.$anime({
-        targets: ".navigation2",
-        translateX: -el,
+        targets: ".navigation-test",
+        translateX: 0,
+        duration: 300,
         easing: "linear",
-        duration:300
+        width: "100%"
       });
+      this.show = true;
     },
     hideNavigation() {
+      $("body").removeClass("overflow");
+      var el = $(".navigation-test").width() - 50;
       this.$anime({
-        targets: ".navigation2",
-        translateX: 0,
-        easing: "linear",
-        duration:300
+        targets: ".navigation-test",
+        translateX: el,
+        duration: 300,
+        easing: "linear"
       });
-      setTimeout(()=>{
-        $('.navigation2').removeClass('navigation-style');
-        $('.navigation-test').removeClass('navigation-close');
-      },300)
     }
   }
 };
@@ -95,46 +112,44 @@ export default {
 
 <style scoped>
 .navigation-test {
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  background: transparent;
   position: fixed;
   top: 37px;
-  left: 0;
-  z-index:1000;
+  background: transparent;
+  right: 0;
+  width: 100%;
+  z-index: 7;
 }
 .navigation2 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: transparent;
-  height: 100%;
+  touch-action: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   width: 60%;
-}
-ul{
-    margin:0;
-    padding:0;
-}
-ul li {
-    list-style-type: none;
-    padding:16px;
-}
-ul li a {
-    color:white;
-}
-ul li a i{
-    margin-right:6px;
+  background-color: #003368;
+  justify-self: right;
+  position: relative;
+  right: 0;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  padding-right: 20px;
 }
 
-.navigation-style{
-    background-color: #003368 !important;
+ul {
+  margin: 0;
+  padding: 0;
 }
-.navigation-close{
-    background-color: rgba(0,0,0,0.3) !important;
-      /* pointer-events: none;
-    touch-action: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0); */
+ul li {
+  list-style-type: none;
+  padding: 16px;
+}
+ul li a {
+  color: white;
+}
+ul li a i {
+  margin-right: 6px;
 }
 </style>
