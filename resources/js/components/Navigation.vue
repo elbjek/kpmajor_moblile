@@ -113,7 +113,7 @@ export default {
   mounted() {
     EventBus.$on("closeNav", this.hideNavigation());
     axios.get("/api/users/" + this.user.id).then(response => {
-      (this.products = response.data), console.log(response);
+      (this.products = response.data);
     });
   },
   methods: {

@@ -1,3 +1,6 @@
+.messages-wrap{
+    cursor: pointer;
+}
 .message-button,.chat-wrap{
     position: absolute;
     bottom: 20px;
@@ -33,14 +36,55 @@
     transform: scale(0);
     background-color:$white;
     border-radius: 50px;
+    overflow:scroll;
+    .img{
+        height:40px;
+        width:40px;
+    }
+    .image-wrap{
+        margin-right:15px;
+        display:flex;
+    }
+    .users-wrap{
+        display:flex;
+        padding:10px 20px;
+   
+    &:first-of-type{
+        margin-top:15px;
+    }
+        .message-wrap{
+            width:100%;
+            .user-info{
+                display: flex;
+                justify-content: space-between;
+                h6{
+                    color: $darkblue;
+                    font-weight: 600;
+                    font-size:16px;
+                }
+                span{
+                    font-size: 10px;
+                    color:$medium-gray;
+                }
+            }
+            .last{
+                display: flex;
+                justify-content: space-between;
+                .last-message{
+                    color:$medium-gray;
+                    font-size:12px;
+                    white-space: nowrap; 
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 60%;
+                }
+            }
+        }
+    }
 }
 
 .z-index-lower{
     z-index:3 !important;
-    transition:1s ease;
-}
-.z-index-low{
-    z-index:4 !important;
     transition:1s ease;
 }
 .transparent-bg-visible{
@@ -53,10 +97,7 @@
     z-index: 11;
     transition: 0.4s ease-in-out;
     visibility: visible !important;
-    touch-action: auto;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+    touch-action: none;
     user-select: none;
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -69,11 +110,14 @@
 }
 
 .chat-box{
-    // visibility: hidden;
-    // height:0;
-    // width:0;
-    // opacity: 0;
-    // transition: 0.4 ease
+    padding: 5px 0px;
+    i{
+        color:$darkblue;
+    }
+    p{
+        font-weight: 700;
+        color:$darkblue;
+    }
 }
 .chatbox-visible{
     visibility: visible !important;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Conversation;
+use App\User;
 class ApiMessageController extends Controller
 {
     public function index() 
@@ -20,5 +21,14 @@ class ApiMessageController extends Controller
         $data = [$loggedUser,$conv];
         
         return response()->json($data);
+    }
+    public function conversation() 
+    {
+        $user = \Auth::id();
+        $loggedUser= \Auth::user();
+        $conv = Conversation::with('messages');
+        $data = [$loggedUser,$conv];
+        
+        return response()->json($conv);
     }
 }

@@ -581,6 +581,10 @@ body {
   font-size: 24px;
 }
 
+.messages-wrap {
+  cursor: pointer;
+}
+
 .message-button,
 .chat-wrap {
   position: absolute;
@@ -624,15 +628,64 @@ body {
           transform: scale(0);
   background-color: #ffffff;
   border-radius: 50px;
+  overflow: scroll;
+}
+
+.chat-wrap .img {
+  height: 40px;
+  width: 40px;
+}
+
+.chat-wrap .image-wrap {
+  margin-right: 15px;
+  display: flex;
+}
+
+.chat-wrap .users-wrap {
+  display: flex;
+  padding: 10px 20px;
+}
+
+.chat-wrap .users-wrap:first-of-type {
+  margin-top: 15px;
+}
+
+.chat-wrap .users-wrap .message-wrap {
+  width: 100%;
+}
+
+.chat-wrap .users-wrap .message-wrap .user-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-wrap .users-wrap .message-wrap .user-info h6 {
+  color: #003368;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.chat-wrap .users-wrap .message-wrap .user-info span {
+  font-size: 10px;
+  color: #707070;
+}
+
+.chat-wrap .users-wrap .message-wrap .last {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-wrap .users-wrap .message-wrap .last .last-message {
+  color: #707070;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
 }
 
 .z-index-lower {
   z-index: 3 !important;
-  transition: 1s ease;
-}
-
-.z-index-low {
-  z-index: 4 !important;
   transition: 1s ease;
 }
 
@@ -646,11 +699,11 @@ body {
   z-index: 11;
   transition: 0.4s ease-in-out;
   visibility: visible !important;
-  touch-action: auto;
+  touch-action: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   opacity: 1 !important;
@@ -660,6 +713,19 @@ body {
   visibility: hidden;
   transition: 0.5s ease-in-out;
   opacity: 0;
+}
+
+.chat-box {
+  padding: 5px 0px;
+}
+
+.chat-box i {
+  color: #003368;
+}
+
+.chat-box p {
+  font-weight: 700;
+  color: #003368;
 }
 
 .chatbox-visible {

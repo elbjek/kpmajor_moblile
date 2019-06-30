@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 use App\Product;
 class ProductController extends Controller
 {
-    // public function index()
-    // {
-
-    //     return view('home');
-    // }
     public function show(Product $Product)
     {
         return view('product');
