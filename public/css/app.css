@@ -11,6 +11,35 @@ body {
   overflow-x: hidden;
 }
 
+.img {
+  border-radius: 60px;
+  overflow: hidden;
+}
+
+.img img {
+  height: 100%;
+  width: auto;
+}
+
+.close-nav::before,
+.close-nav::after {
+  content: "";
+  height: 2px;
+  width: 18px;
+  background-color: #003368;
+  display: block;
+}
+
+.close-nav::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.close-nav::after {
+  -webkit-transform: rotate(-45deg) translate(1.5px, -1px);
+          transform: rotate(-45deg) translate(1.5px, -1px);
+}
+
 .footer {
   text-align: center;
   display: block;
@@ -152,6 +181,11 @@ body {
 
 .nav-button:focus {
   outline: none;
+}
+
+.nav-button i {
+  font-size: 15px;
+  color: #003368;
 }
 
 .drop-navigaton {
@@ -916,16 +950,9 @@ body {
 .user-profile-wrap .user-profile-header .img {
   height: 85px;
   width: 85px;
-  border-radius: 60px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   margin: 0 auto;
-}
-
-.user-profile-wrap .user-profile-header .img img {
-  height: 100%;
-  width: auto;
 }
 
 .user-profile-wrap .user-profile-header h5 {

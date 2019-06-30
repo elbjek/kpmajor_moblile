@@ -5,6 +5,10 @@
     &:focus{
         outline:none;
     }
+    i{
+        font-size: 15px;
+        color:$darkblue
+    }
 }
 .drop-navigaton{
     width: 80%;

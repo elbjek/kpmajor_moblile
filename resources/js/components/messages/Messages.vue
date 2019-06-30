@@ -6,9 +6,12 @@
     <div class="transparent-bg" v-touch="closeModal"></div>
     <div class="chat-wrap">
        <div class="chat-box">
-            <div class="chat-heading">
+            <div style="display:flex; justify-content:space-between;align-items:center;">
+                <div  class="chat-heading">
                 <i v-touch:tap="handleModal" class="fas fa-chevron-down"></i>
                 <p>Vaše konverzacije</p>
+                </div>
+                <p style="margin:0;padding-right:20px; cursor:pointer"><i class="fas fa-plus"></i></p>
             </div>
             <div style="overflow:scroll; height:70%" >
                 <div class="users-wrap" v-for="conversation in messages" :key="conversation.id">
