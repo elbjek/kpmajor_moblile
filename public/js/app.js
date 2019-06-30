@@ -4514,11 +4514,7 @@ __webpack_require__.r(__webpack_exports__);
           backgroundColor: "rgba(0,0,0,0)",
           delay: 10
         }]
-      }); // this.$anime({
-      //   targets:'.navigation2',
-      //   translateX:'200px',
-      //   // duration:
-      // })
+      });
     }
   },
   computed: {
@@ -4931,6 +4927,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4946,20 +4945,83 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchData();
   },
   methods: {
-    handleModal: function handleModal() {
-      this.show = !this.show;
-      $('.chat-box').toggleClass('chat-show');
-      $('.chat-wrap').toggleClass('chat-height');
-      $('body').toggleClass('overflow');
-      $('.transparent-bg').toggleClass('modal-background');
-      $('.message-modal').toggleClass('hide-modal');
+    openMessages: function openMessages() {
+      $('.open-messages').addClass('z-index-lower');
+      $('.transparent-bg').addClass('transparent-bg-visible');
+      $("body").addClass("overflow"); // $('.chat-box').addClass('chatbox-visible');            
+
+      this.$anime({
+        targets: '.open-messages',
+        borderRadius: '8px',
+        duration: 150,
+        backgroundColor: '#ffffff'
+      });
+      this.$anime({
+        targets: '.open-messages-icon',
+        rotate: '180deg',
+        opacity: 0
+      });
+      this.$anime({
+        targets: '.close-messages',
+        duration: 150,
+        backgroundColor: '#ffffff',
+        borderRadius: '8px'
+      });
+      this.$anime({
+        targets: '.close-messages-icon',
+        rotate: '90deg',
+        opacity: 1,
+        color: '#003368'
+      });
+      this.$anime({
+        targets: '.chat-wrap',
+        height: '60%',
+        width: '100%',
+        scale: 1,
+        borderRadius: 8,
+        duration: 150,
+        easing: 'linear'
+      });
     },
-    closeModal: function closeModal() {
-      $('.chat-box').removeClass('chat-show');
-      $('.chat-wrap').toggleClass('chat-height');
-      $('body').removeClass('overflow');
-      $('.transparent-bg').removeClass('modal-background');
-      $('.message-modal').removeClass('hide-modal');
+    closeMessages: function closeMessages() {
+      $('.open-messages').removeClass('z-index-lower');
+      $('.transparent-bg').removeClass('transparent-bg-visible'); // $('.chat-box').removeClass('chatbox-visible');   
+
+      $("body").removeClass("overflow");
+      this.$anime({
+        targets: '.close-messages',
+        duration: 250,
+        backgroundColor: '#003368',
+        borderRadius: '50px'
+      });
+      this.$anime({
+        targets: '.close-messages-icon',
+        rotate: '-90deg',
+        opacity: 0,
+        color: '#ffffff'
+      });
+      this.$anime({
+        targets: '.open-messages',
+        borderRadius: '50px',
+        duration: 250,
+        backgroundColor: '#003368'
+      });
+      this.$anime({
+        targets: '.open-messages-icon',
+        rotate: '360deg',
+        opacity: 1,
+        color: '#ffffff'
+      });
+      this.$anime({
+        targets: '.chat-wrap',
+        scale: 0,
+        borderRadius: '50px',
+        duration: 100,
+        // keyframes:[
+        //     {backgroundColor:'transparent',delay:100}
+        // ],
+        easing: 'cubicBezier(0.895, 0.030, 0.685, 0.220)'
+      });
     },
     fetchData: function fetchData() {
       var _this = this;
@@ -11492,7 +11554,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navigation-test[data-v-d456e682] {\n  min-height: 100vh;\n  width: 100%;\n  position: fixed;\n  background: transparent;\n  right: 0;\n  width: 100%;\n  z-index: 7;\n  top: 0;\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right;\n}\n.navigation2[data-v-d456e682] {\n  touch-action: auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-user-drag: none;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  width: 75%;\n  background-color: #ffffff;\n  justify-self: right;\n  position: relative;\n  right: 0;\n  top: 0px;\n  height: 100%;\n  position: absolute;\n  right: 0;\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right;\n}\nul[data-v-d456e682] {\n  margin: 0;\n  padding: 0.5em 0em 0em 0em;\n  border-top: 1px solid #f4f4f4;\n}\nul li[data-v-d456e682] {\n  list-style-type: none;\n  padding: 0.8em 1.5em;\n}\nul li a[data-v-d456e682] {\n  color: #003368;\n}\nul li a i[data-v-d456e682] {\n  margin-right: 6px;\n}\n.nav-header-wrap[data-v-d456e682] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #f4f4f4;\n}\n.nav-header-wrap h3[data-v-d456e682] {\n  color: #003368;\n  font-size: 16px;\n  font-weight: bold;\n  margin: 0;\n  padding-left: 1.5em;\n}\n.user-profile-header[data-v-d456e682] {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  padding: 0.8em 1.5em;\n}\n.user-profile-header .img[data-v-d456e682] {\n  height: 40px;\n  width: 40px;\n}\n.user-profile-header h5[data-v-d456e682],\n.user-profile-header p[data-v-d456e682] {\n  padding: 0;\n  color: #003368;\n  margin: 0;\n}\n.user-profile-header h5[data-v-d456e682] {\n  margin-top: 10px;\n}\n.user-profile-header p[data-v-d456e682] {\n  font-size: 13px;\n  margin-top: 6px;\n}\n.user-profile-header .products[data-v-d456e682] {\n  display: flex;\n}\n.user-profile-header .products p[data-v-d456e682] {\n  margin-right: 12px;\n}\n.user-profile-header .products span[data-v-d456e682] {\n  font-weight: 900;\n  margin-right: 4px;\n}\n.user-profile-header .logout[data-v-d456e682] {\n  border-top: 1px solid #f4f4f4;\n}", ""]);
+exports.push([module.i, ".navigation-test[data-v-d456e682] {\n  min-height: 100vh;\n  width: 100%;\n  position: fixed;\n  background: transparent;\n  right: 0;\n  width: 100%;\n  z-index: 15;\n  top: 0;\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right;\n}\n.navigation2[data-v-d456e682] {\n  touch-action: auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-user-drag: none;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  width: 75%;\n  background-color: #ffffff;\n  justify-self: right;\n  position: relative;\n  right: 0;\n  top: 0px;\n  height: 100%;\n  position: absolute;\n  right: 0;\n  -webkit-transform-origin: bottom right;\n          transform-origin: bottom right;\n}\nul[data-v-d456e682] {\n  margin: 0;\n  padding: 0.5em 0em 0em 0em;\n  border-top: 1px solid #f4f4f4;\n}\nul li[data-v-d456e682] {\n  list-style-type: none;\n  padding: 0.8em 1.5em;\n}\nul li a[data-v-d456e682] {\n  color: #003368;\n}\nul li a i[data-v-d456e682] {\n  margin-right: 6px;\n}\n.nav-header-wrap[data-v-d456e682] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #f4f4f4;\n}\n.nav-header-wrap h3[data-v-d456e682] {\n  color: #003368;\n  font-size: 16px;\n  font-weight: bold;\n  margin: 0;\n  padding-left: 1.5em;\n}\n.user-profile-header[data-v-d456e682] {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  padding: 0.8em 1.5em;\n}\n.user-profile-header .img[data-v-d456e682] {\n  height: 40px;\n  width: 40px;\n}\n.user-profile-header h5[data-v-d456e682],\n.user-profile-header p[data-v-d456e682] {\n  padding: 0;\n  color: #003368;\n  margin: 0;\n}\n.user-profile-header h5[data-v-d456e682] {\n  margin-top: 10px;\n}\n.user-profile-header p[data-v-d456e682] {\n  font-size: 13px;\n  margin-top: 6px;\n}\n.user-profile-header .products[data-v-d456e682] {\n  display: flex;\n}\n.user-profile-header .products p[data-v-d456e682] {\n  margin-right: 12px;\n}\n.user-profile-header .products span[data-v-d456e682] {\n  font-weight: 900;\n  margin-right: 4px;\n}\n.user-profile-header .logout[data-v-d456e682] {\n  border-top: 1px solid #f4f4f4;\n}", ""]);
 
 // exports
 
@@ -68182,56 +68244,67 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.user
-    ? _c("div", { staticClass: "messages-wrap" }, [
-        _c(
-          "button",
-          {
+    ? _c(
+        "div",
+        { staticClass: "messages-wrap" },
+        [
+          _c(
+            "v-touch",
+            {
+              directives: [
+                {
+                  name: "touch",
+                  rawName: "v-touch:tap",
+                  value: _vm.openMessages,
+                  expression: "openMessages",
+                  arg: "tap"
+                }
+              ],
+              staticClass: "message-button open-messages"
+            },
+            [_c("i", { staticClass: "far fa-comment open-messages-icon" })]
+          ),
+          _vm._v(" "),
+          _c(
+            "v-touch",
+            {
+              directives: [
+                {
+                  name: "touch",
+                  rawName: "v-touch:tap",
+                  value: _vm.closeMessages,
+                  expression: "closeMessages",
+                  arg: "tap"
+                }
+              ],
+              staticClass: "message-button close-messages"
+            },
+            [_c("i", { staticClass: "fas fa-times close-messages-icon" })]
+          ),
+          _vm._v(" "),
+          _c("div", {
             directives: [
               {
                 name: "touch",
                 rawName: "v-touch",
-                value: _vm.handleModal,
-                expression: "handleModal"
+                value: _vm.closeMessages,
+                expression: "closeMessages"
               }
             ],
-            staticClass: "message-button",
-            class: { messageButtonWhite: _vm.show }
-          },
-          [_c("i", { staticClass: "far fa-comment" })]
-        ),
-        _vm._v(" "),
-        _c("div", {
-          directives: [
-            {
-              name: "touch",
-              rawName: "v-touch",
-              value: _vm.closeModal,
-              expression: "closeModal"
-            }
-          ],
-          staticClass: "transparent-bg"
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-wrap" }, [
-          _c("div", { staticClass: "chat-box" }, [
-            _c(
-              "div",
-              {
-                staticStyle: {
-                  display: "flex",
-                  "justify-content": "space-between",
-                  "align-items": "center"
-                }
-              },
-              [
+            staticClass: "transparent-bg"
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "chat-wrap" }, [
+            _c("div", { staticClass: "chat-box" }, [
+              _c("div", [
                 _c("div", { staticClass: "chat-heading" }, [
                   _c("i", {
                     directives: [
                       {
                         name: "touch",
                         rawName: "v-touch:tap",
-                        value: _vm.handleModal,
-                        expression: "handleModal",
+                        value: _vm.closeMessages,
+                        expression: "closeMessages",
                         arg: "tap"
                       }
                     ],
@@ -68242,60 +68315,60 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._m(0)
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticStyle: { overflow: "scroll", height: "70%" } },
-              _vm._l(_vm.messages, function(conversation) {
-                return _c(
-                  "div",
-                  { key: conversation.id, staticClass: "users-wrap" },
-                  [
-                    _c("div", { staticClass: "image-wrap" }, [
-                      _c("div", { staticClass: "img" }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "/storage/user_images/" +
-                              conversation.profile_picture
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("span", { class: { online: conversation.online } })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "message-wrap" }, [
-                      _c("div", { staticClass: "user-info" }, [
-                        _c("h6", [
-                          _vm._v(
-                            _vm._s(conversation.name) +
-                              " " +
-                              _vm._s(conversation.lastname)
-                          )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                _vm._l(_vm.messages, function(conversation) {
+                  return _c(
+                    "div",
+                    { key: conversation.id, staticClass: "users-wrap" },
+                    [
+                      _c("div", { staticClass: "image-wrap" }, [
+                        _c("div", { staticClass: "img" }, [
+                          _c("img", {
+                            attrs: {
+                              src:
+                                "/storage/user_images/" +
+                                conversation.profile_picture
+                            }
+                          })
                         ]),
                         _vm._v(" "),
-                        _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
+                        _c("span", { class: { online: conversation.online } })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "time" }, [
-                        _c("span", { staticClass: "last-message" }, [
-                          _vm._v(_vm._s(conversation.message_content))
+                      _c("div", { staticClass: "message-wrap" }, [
+                        _c("div", { staticClass: "user-info" }, [
+                          _c("h6", [
+                            _vm._v(
+                              _vm._s(conversation.name) +
+                                " " +
+                                _vm._s(conversation.lastname)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "time" }, [_vm._v("14:40")])
                         ]),
                         _vm._v(" "),
-                        _c("span", { class: { new: conversation.seen } })
+                        _c("div", { staticClass: "time" }, [
+                          _c("span", { staticClass: "last-message" }, [
+                            _vm._v(_vm._s(conversation.message_content))
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { class: { new: conversation.seen } })
+                        ])
                       ])
-                    ])
-                  ]
-                )
-              }),
-              0
-            )
+                    ]
+                  )
+                }),
+                0
+              )
+            ])
           ])
-        ])
-      ])
+        ],
+        1
+      )
     : _vm._e()
 }
 var staticRenderFns = [

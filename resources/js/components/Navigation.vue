@@ -150,11 +150,6 @@ export default {
         translateX: 320,
         keyframes: [{ backgroundColor: "rgba(0,0,0,0)", delay: 10 }]
       });
-      // this.$anime({
-      //   targets:'.navigation2',
-      //   translateX:'200px',
-      //   // duration:
-      // })
     }
   },
   computed: {
@@ -187,7 +182,7 @@ export default {
   background: transparent;
   right: 0;
   width: 100%;
-  z-index: 7;
+  z-index: 15;
   top: 0;
   transform-origin: bottom right;
 }

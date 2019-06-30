@@ -1,19 +1,22 @@
 <template>
 <div class="messages-wrap" v-if="user" >
-    <button v-touch="handleModal" v-bind:class="{messageButtonWhite:show}" class="message-button">
-        <i class="far fa-comment"></i>
-    </button>
-    <div class="transparent-bg" v-touch="closeModal"></div>
+    <v-touch v-touch:tap="openMessages" class="message-button open-messages">
+        <i class="far fa-comment open-messages-icon"></i>
+    </v-touch>
+    <v-touch v-touch:tap="closeMessages" class="message-button close-messages">
+        <i class="fas fa-times close-messages-icon"></i>
+    </v-touch>
+    <div class="transparent-bg" v-touch="closeMessages"></div>
     <div class="chat-wrap">
        <div class="chat-box">
-            <div style="display:flex; justify-content:space-between;align-items:center;">
+            <div>
                 <div  class="chat-heading">
-                <i v-touch:tap="handleModal" class="fas fa-chevron-down"></i>
+                <i v-touch:tap="closeMessages" class="fas fa-chevron-down"></i>
                 <p>Vaše konverzacije</p>
                 </div>
                 <p style="margin:0;padding-right:20px; cursor:pointer"><i class="fas fa-plus"></i></p>
             </div>
-            <div style="overflow:scroll; height:70%" >
+            <div>
                 <div class="users-wrap" v-for="conversation in messages" :key="conversation.id">
                     <div class="image-wrap">
                         <div class="img">
@@ -55,22 +58,85 @@ export default {
     this.fetchData()
     },
     methods:{
-        handleModal(){
-            this.show=!this.show
-            $('.chat-box').toggleClass('chat-show')
-            $('.chat-wrap').toggleClass('chat-height')
-            $('body').toggleClass('overflow')
-            $('.transparent-bg').toggleClass('modal-background');
-           $('.message-modal').toggleClass('hide-modal');
+        openMessages(){
+            $('.open-messages').addClass('z-index-lower')
+            $('.transparent-bg').addClass('transparent-bg-visible');
+            $("body").addClass("overflow");
+            // $('.chat-box').addClass('chatbox-visible');            
+            this.$anime({
+                targets:'.open-messages',
+                borderRadius:'8px',
+                duration:150,
+                backgroundColor:'#ffffff',
+            })
+            this.$anime({
+                targets:'.open-messages-icon',
+                rotate:'180deg',
+                opacity:0,
+            })
+            this.$anime({
+                targets:'.close-messages',
+                duration:150,
+                backgroundColor:'#ffffff',
+                borderRadius:'8px',
+            })
+            this.$anime({
+                targets:'.close-messages-icon',
+                rotate:'90deg',
+                opacity:1,
+                color:'#003368'
+            })
+            this.$anime({
+                targets:'.chat-wrap',
+                height:'60%',
+                width:'100%',
+                scale:1,
+                borderRadius:8,
+                duration:150,
+                easing:'linear',
+            })
         },
-        closeModal(){
-            $('.chat-box').removeClass('chat-show');
-            $('.chat-wrap').toggleClass('chat-height');
-            $('body').removeClass('overflow');
-            $('.transparent-bg').removeClass('modal-background')
-           $('.message-modal').removeClass('hide-modal');
-
-        },
+        closeMessages(){
+            $('.open-messages').removeClass('z-index-lower')
+            $('.transparent-bg').removeClass('transparent-bg-visible');
+            // $('.chat-box').removeClass('chatbox-visible');   
+            $("body").removeClass("overflow");
+            this.$anime({
+                targets:'.close-messages',
+                duration:250,
+                backgroundColor:'#003368',
+                borderRadius:'50px',
+            })
+            this.$anime({
+                    targets:'.close-messages-icon',
+                rotate:'-90deg',
+                opacity:0,
+                color:'#ffffff'
+            })
+            this.$anime({
+                targets:'.open-messages',
+                borderRadius:'50px',
+                duration:250,
+                backgroundColor:'#003368'
+            })
+            this.$anime({
+                targets:'.open-messages-icon',
+                rotate:'360deg',
+                opacity:1,
+                color:'#ffffff',
+            })
+             this.$anime({
+                targets:'.chat-wrap',
+                scale:0,
+                borderRadius:'50px',
+                duration:100,
+                // keyframes:[
+                //     {backgroundColor:'transparent',delay:100}
+                // ],
+                 easing:'cubicBezier(0.895, 0.030, 0.685, 0.220)'
+            })
+ },
+        
         fetchData(){
             axios.get('/api/messages')
             .then(response => {
