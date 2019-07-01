@@ -20,7 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('products/latest', 'ApiProductsController@latest');
-Route::get('products', 'ApiProductsController@index')->name('products.index');
+// Route::get('products', 'ApiProductsController@index')->name('products.index');
+Route::get('products', 'ApiProductsController@index');
 Route::get('products/{product}', 'ApiProductsController@show')->name('products.show');
 
 Route::middleware('auth:api')->put('products/{product}', 'ApiProductsController@update')->name('products.update');
@@ -30,7 +31,7 @@ Route::middleware('auth:api')->get('products/{product}/edit', 'ApiProductsContro
 Route::middleware('auth:api')->delete('products/{product}', 'ApiProductsController@destroy')->name('products.destroy');
 
 
-Route::get('products', 'ApiMessageController@conversation')->name('messages.conversation');
+Route::get('messages', 'ApiMessageController@conversation')->name('messages.conversation');
 
 // Route::resource('products', 'ApiProductsController');
 Route::middleware('auth:api')->resource('users', 'ApiUsersController');

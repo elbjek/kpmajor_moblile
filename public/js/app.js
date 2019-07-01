@@ -11714,7 +11714,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -11733,7 +11733,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-enter-active[data-v-a16304ba] {\n  transition: all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\n  transition: all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],\n.page-leave-to[data-v-a16304ba] {\n  opacity: 0;\n}\n.page-enter[data-v-a16304ba] {\n  -webkit-transform: translateX(40%);\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba] {\n  -webkit-transform: translateX(-40%);\n          transform: translateX(-40%);\n}\n", ""]);
+exports.push([module.i, "\n.page-enter-active[data-v-a16304ba] {\r\n  transition: all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\r\n  transition: all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],\r\n.page-leave-to[data-v-a16304ba] {\r\n  opacity: 0;\n}\n.page-enter[data-v-a16304ba] {\r\n  -webkit-transform: translateX(40%);\r\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba] {\r\n  -webkit-transform: translateX(-40%);\r\n          transform: translateX(-40%);\n}\r\n", ""]);
 
 // exports
 
@@ -11828,7 +11828,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* img {\n  max-height: 36px;\n} */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* img {\r\n  max-height: 36px;\r\n} */\r\n", ""]);
 
 // exports
 
@@ -11847,7 +11847,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -92114,8 +92114,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODUL
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\kpmajor\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\kpmajor\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

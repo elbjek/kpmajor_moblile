@@ -10,7 +10,7 @@ class ApiProductsController extends Controller
     public function index()
     {
         $user = \Auth::id();
-        $products = Product::with('user')->paginate(1);
+        $products = Product::with('user')->paginate(3);
         return response()->json($products);
     }
 
