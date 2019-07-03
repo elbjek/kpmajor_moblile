@@ -1,47 +1,144 @@
 <template>
-  <div class="messages-wrap">
-    <div class="users-wrap" v-for="conversation in singleconv" :key="conversation.id">
-      <div class="image-wrap">
+  <div class="all-chat-messages">
+    <div class="all-messages-header">
+      <i v-touch:tap="closeSingleChat" class="fas fa-chevron-left" style></i>
+    </div>
+    <div class="chat-messages">
+      <div
+        style="display:flex; align-items:center;"
+        v-for="message in singleconversation.messages"
+        :key="message.id"
+      >
         <div class="img">
-          <img :src="'/storage/user_images/' + conversation.profile_picture">
+          <img :src="'/storage/user_images/'+ singleconversation.profile_picture" alt>
         </div>
-        <span class="offline" v-bind:class="{ online: conversation.online }"></span>
-      </div>
-      <div class="message-wrap">
-        <div class="user-info">
-          <h6>{{conversation.name}} {{conversation.lastname}}</h6>
-          <span class="time">14:40</span>
-        </div>
-        <div class="last">
-          <span class="last-message">{{conversation.message_content}}</span>
-          <span v-bind:class="{new:conversation.seen}"></span>
+        <div class="single-message-wrap">
+          <p>{{message.message_content}}</p>
         </div>
       </div>
+      <!-- <div class="sendmessage" style="display:none">
+        <textarea name="sendmessages" id="" cols="30" rows="10">
+
+        </textarea>
+      </div> -->
     </div>
   </div>
-  <!-- <singleconversation :conversation="conversation"></singleconversation> -->
 </template>
 
 <script>
-import singleconversation from './singleConversation';
+
+import { EventBus } from "../../app";
+import { setTimeout } from "timers";
+
 export default {
-    props:['conversations',],
-    components:{singleconversation:singleconversation},
   data() {
     return {
       show: false,
       messages: "",
       currentUrl: window.location.pathname,
-      singleconv:{}
+      singleconversation: {},
+      conversationID: "",
+      show: false,
+      username: ""
     };
+  },
+  beforeMount() {
+    // $(".single-chat-wrap").css({ transform: "translateX:450px" });
+  },
+  mounted() {
+    EventBus.$on("getConversationID", id => {
+      // this.show=true
+      this.conversationID = id;
+      axios.get("/api/conversations/" + this.conversationID).then(response => {
+        this.singleconversation = response.data;
+        console.log(response.data);
+        this.username = response.data.name;
+        EventBus.$emit("sendUsername", this.username);
+      });
 
-  },mounted(){
-      axios.get('/api/conversation')
-      .then(response=>{
-          this.conversation = response.data
-          console.log(this.singleconv)
+      this.$anime({
+        targets: ".all-chat-messages",
+        keyframes: [
+          {
+            opacity: 1,
+            height: "63%",
+            width: "100%",
+            right: "-450px",
+            duration: 200,
+            easing: "linear",
+            padding: "10px 0px 10px 0px"
+          },
+          { right: 0, duration: 250, delay: 350, easing: "linear" }
+        ]
+      });
+      this.$anime({
+        targets: ".all-messages-header",
+        keyframes: [
+          {
+            width: "100%",
+            scale: 1,
+            right: "-450px",
+            duration: 200,
+            easing: "linear"
+          }
+          // {scale:1,duration:250,delay:350, easing:'linear'}
+        ]
+      });
+
+      $(".all-messages-header i").css({ padding: "5px 0px 20px 20px" },{'border-bottom':'1px solid #f4f4f4'});
+
+      $(".chat-messages").css({ padding: "10px 20px" });
+});
+  },
+  methods: {
+    closeSingleChat() {
+      var el = $(".all-chat-messages").width();
+      this.$anime({
+        targets: ".all-chat-messages",
+        keyframes: [
+          { right: 0, duration: 100, easing: "linear" },
+                    {
+            opacity: 1,
+            height: "63%",
+            width: "100%",
+            right: "-450px",
+            duration: 200,
+            easing: "linear",
+            padding: "0px"
+          },
+        ]
+      });
+      this.$anime({
+        targets:'.fa-chevron-down',
+        rotate:'0deg'
       })
+      this.$anime({
+        targets: ".single-chat-main-heading",
+        keyframes: [
+          // {translateY:0, opacity:1},
+          { translateY: 20, opacity: 0, duration: 200, easing:'linear' }
+        ]
+      });
+      this.$anime({
+        targets: ".chat-main-heading",
+        translateY: 0,
+        opacity: 1,
+        duration: 200,
+        easing:'linear'
+      });
+      let userswrap = $('.users-wrap').width()+50
+        this.$anime({
+        targets:'.users-wrap',
+        translateX:0,
+        easing:'linear',
+        duration:200,
+        delay:250
+      })
+      $(".all-messages-header i").css({ padding: "0" },{'border':'none'});
+
+      // $(".chat-messages").css({ padding: "0", height:0, width:0 });
+    }
   }
- 
 };
 </script>
+

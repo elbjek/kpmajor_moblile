@@ -31,7 +31,7 @@ Route::middleware('auth:api')->get('products/{product}/edit', 'ApiProductsContro
 Route::middleware('auth:api')->delete('products/{product}', 'ApiProductsController@destroy')->name('products.destroy');
 
 
-Route::get('messages', 'ApiMessageController@conversation')->name('messages.conversation');
+Route::get('conversations/{conversation}', 'ApiMessageController@conversation')->name('messages.conversation');
 
 // Route::resource('products', 'ApiProductsController');
 Route::middleware('auth:api')->resource('users', 'ApiUsersController');

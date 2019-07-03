@@ -587,7 +587,7 @@ body {
 
 .message-button,
 .chat-wrap {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 0px;
   border-radius: 50px;
@@ -715,24 +715,72 @@ body {
   opacity: 0;
 }
 
-.chat-box {
+.chat-box,
+.single-chat-heading {
   padding: 5px 0px;
 }
 
-.chat-box i {
+.chat-box i,
+.single-chat-heading i {
   color: #003368;
 }
 
-.chat-box p {
+.chat-main-heading,
+.single-chat-main-heading {
   font-weight: 700;
   color: #003368;
 }
 
-.chatbox-visible {
-  visibility: visible !important;
-  height: 100%;
+.single-chat-main-heading {
+  -webkit-transform: translateY(40px);
+          transform: translateY(40px);
+  opacity: 0;
+  margin: 0;
+  position: absolute;
+}
+
+.all-chat-messages {
+  position: fixed;
+  bottom: 0;
+  right: -450px;
+  z-index: 15;
+  opacity: 0;
+  border-radius: 8px;
+}
+
+.all-chat-messages .all-messages-header {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  width: 0;
+  height: auto;
+  opacity: 0;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.all-chat-messages .chat-messages {
+  background-color: #ffffff;
+}
+
+.all-chat-messages .img {
+  height: 40px;
+  width: 50px;
+  margin-right: 20px;
+}
+
+.all-chat-messages .single-message-wrap {
   width: 100%;
-  opacity: 1;
+  font-weight: 700;
+  color: #003368;
+}
+
+.all-chat-messages .single-message-wrap p {
+  background-color: #f4f4f4;
+  max-width: 70%;
+  padding: 8px 14px;
+  border-radius: 25px;
+  width: 70%;
+  font-weight: 500;
+  margin: 0;
 }
 
 .latest-products-wrap h1 {

@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 .message-button,.chat-wrap{
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 0px;
     border-radius: 50px;
@@ -13,7 +13,7 @@
 .message-button{
     padding:20px 23px;
     background-color:$darkblue;
-
+    
     &:focus{
         outline: none;
     }
@@ -48,10 +48,10 @@
     .users-wrap{
         display:flex;
         padding:10px 20px;
-   
-    &:first-of-type{
-        margin-top:15px;
-    }
+        
+        &:first-of-type{
+            margin-top:15px;
+        }
         .message-wrap{
             width:100%;
             .user-info{
@@ -108,20 +108,103 @@
     transition: 0.5s ease-in-out;
     opacity:0;
 }
-
-.chat-box{
-    padding: 5px 0px;
-    i{
-        color:$darkblue;
+// .all-chat-messages{
+    
+    // }
+    
+    .chat-box,.single-chat-heading {
+        padding: 5px 0px;
+        i{
+            color:$darkblue;
+        }
     }
-    p{
+    .chat-main-heading, .single-chat-main-heading{
         font-weight: 700;
-        color:$darkblue;
+        color: $darkblue;
     }
-}
-.chatbox-visible{
-    visibility: visible !important;
-    height:100%;
-    width:100%;
-    opacity: 1;
-}
+    .single-chat-main-heading{
+        transform: translateY(40px);
+        opacity: 0;
+        margin: 0;
+        position: absolute;
+    }
+    
+    .all-chat-messages{
+        position: fixed;
+        bottom: 0;
+        right: -450px;
+        z-index: 15;
+        opacity: 0;
+        border-radius: 8px;
+        .all-messages-header{
+            transform: scale(0);
+            width:0;
+            height:auto;
+            opacity: 0;
+            border-bottom:1px solid $light-gray;
+        }
+        .chat-messages{
+            background-color: $white;
+            // height:100%;
+            // width:100%;
+        }
+        .img{
+            height: 40px;
+            width: 50px;
+            margin-right: 20px;
+        }
+        .single-message-wrap{
+            width: 100%;
+            // padding-left: 20px;
+            font-weight: 700;
+            color: #003368;
+            
+            p{
+                background-color: #f4f4f4;
+                max-width: 70%;
+                padding: 8px 14px;
+                border-radius: 25px;
+                width: 70%;
+                font-weight: 500;
+                margin:0
+                
+            }
+        }
+        // .users-wrap{
+            //     display:flex;
+            //     padding:10px 20px;
+            
+            // &:first-of-type{
+                //     margin-top:15px;
+                // }
+                //     .message-wrap{
+                    //         width:100%;
+                    //         .user-info{
+                        //             display: flex;
+                        //             justify-content: space-between;
+                        //             h6{
+                            //                 color: $darkblue;
+                            //                 font-weight: 600;
+                            //                 font-size:16px;
+                            //             }
+                            //             span{
+                                //                 font-size: 10px;
+                                //                 color:$medium-gray;
+                                //             }
+                                //         }
+                                //         .last{
+                                    //             display: flex;
+                                    //             justify-content: space-between;
+                                    //             .last-message{
+                                        //                 color:$medium-gray;
+                                        //                 font-size:12px;
+                                        //                 white-space: nowrap; 
+                                        //                 overflow: hidden;
+                                        //                 text-overflow: ellipsis;
+                                        //                 max-width: 60%;
+                                        //             }
+                                        //         }
+                                        //     }
+                                        // }
+                                    }
+                                    
