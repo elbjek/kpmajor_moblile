@@ -585,20 +585,25 @@ body {
   cursor: pointer;
 }
 
-.message-button,
 .chat-wrap {
   position: fixed;
   bottom: 20px;
   right: 0px;
-  border-radius: 50px;
   transition: 0.4s ease;
   border: none;
   padding-top: 5px;
 }
 
 .message-button {
-  padding: 20px 23px;
-  background-color: #003368;
+  position: relative;
+  bottom: 20px;
+  right: 0px;
+  transition: 0.4s ease;
+  border: none;
+  padding-top: 5px;
+  height: 100px;
+  width: 100px;
+  z-index: 14;
 }
 
 .message-button:focus {
@@ -608,6 +613,12 @@ body {
 .message-button i {
   color: #ffffff;
   font-size: 20px;
+  background-color: #003368;
+  padding: 20px;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
 }
 
 .open-messages {
@@ -737,6 +748,45 @@ body {
   opacity: 0;
   margin: 0;
   position: absolute;
+}
+
+.close-messages-icon {
+  z-index: 10;
+}
+
+.open-messages-icon {
+  z-index: 11;
+}
+
+.send-message {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-transform: translateX(450px);
+          transform: translateX(450px);
+}
+
+.send-message .message-input {
+  width: 100%;
+  border: none;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.send-message .message-input:focus {
+  outline: none;
+}
+
+.send-message i {
+  color: #003368;
+  padding: 20px;
+  background-color: #ffffff;
+  padding: 20px 10px;
 }
 
 .all-chat-messages {

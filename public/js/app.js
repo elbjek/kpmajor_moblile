@@ -4989,7 +4989,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -5058,32 +5057,29 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     openMessages: function openMessages() {
-      $(".open-messages").addClass("z-index-lower");
-      $(".transparent-bg").addClass("transparent-bg-visible");
-      $("body").addClass("overflow");
       this.$anime({
-        targets: ".open-messages",
-        borderRadius: "8x",
-        duration: 100,
-        backgroundColor: "#ffffff"
-      });
-      this.$anime({
-        targets: ".open-messages-icon",
-        rotate: "180deg",
-        opacity: 0
-      });
-      this.$anime({
-        targets: ".close-messages",
-        duration: 100,
+        targets: ".message-button i",
+        borderRadius: "8px",
+        duration: 250,
+        easing: 'linear',
         backgroundColor: "#ffffff",
-        borderRadius: "4px"
+        rotate: 90
       });
       this.$anime({
         targets: ".close-messages-icon",
-        rotate: "90deg",
-        opacity: 1,
-        color: "#003368"
+        duration: 250,
+        easing: 'linear',
+        color: "#003368",
+        opacity: 1
       });
+      $('.close-messages-icon').css({
+        'z-index': '11'
+      });
+      $('.open-messages-icon').css({
+        'z-index': '10'
+      });
+      $(".transparent-bg").addClass("transparent-bg-visible");
+      $("body").addClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
         height: "60%",
@@ -5095,34 +5091,74 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     closeMessages: function closeMessages() {
-      $(".open-messages").removeClass("z-index-lower");
-      $(".transparent-bg").removeClass("transparent-bg-visible"); // $('.chat-box').removeClass('chatbox-visible');
-
-      $("body").removeClass("overflow");
       this.$anime({
-        targets: ".close-messages",
-        duration: 250,
-        backgroundColor: "#003368",
-        borderRadius: "50px"
+        targets: ".message-button i",
+        borderRadius: "50px",
+        duration: 150,
+        easing: 'linear',
+        rotate: 0,
+        backgroundColor: '#003368'
       });
       this.$anime({
         targets: ".close-messages-icon",
-        rotate: "-90deg",
-        opacity: 0,
-        color: "#ffffff"
-      });
-      this.$anime({
-        targets: ".open-messages",
-        borderRadius: "50px",
-        duration: 250,
-        backgroundColor: "#003368"
+        'z-index': 10,
+        opacity: 0 // delay:1000
+
       });
       this.$anime({
         targets: ".open-messages-icon",
-        rotate: "360deg",
-        opacity: 1,
-        color: "#ffffff"
+        'z-index': 11 // delay:1000
+
       });
+      this.$anime({
+        targets: ".all-chat-messages",
+        keyframes: [{
+          right: 0,
+          duration: 100,
+          easing: "linear"
+        }, {
+          opacity: 1,
+          height: "0%",
+          width: "0%",
+          right: "-450px",
+          duration: 300,
+          easing: "linear",
+          padding: "0px"
+        }]
+      });
+      this.$anime({
+        targets: '.fa-chevron-down',
+        rotate: '0deg'
+      });
+      this.$anime({
+        targets: ".single-chat-main-heading",
+        keyframes: [// {translateY:0, opacity:1},
+        {
+          translateY: 20,
+          opacity: 0,
+          duration: 400,
+          easing: 'linear'
+        }]
+      });
+      this.$anime({
+        targets: ".chat-main-heading",
+        translateY: 0,
+        opacity: 1,
+        duration: 200,
+        easing: 'linear'
+      });
+      var userswrap = $('.users-wrap').width() + 50;
+      this.$anime({
+        targets: '.users-wrap',
+        translateX: 0,
+        easing: 'linear',
+        duration: 200,
+        delay: 250
+      }); // $(".open-messages").removeClass("z-index-lower");
+
+      $(".transparent-bg").removeClass("transparent-bg-visible"); // $('.chat-box').removeClass('chatbox-visible');
+
+      $("body").removeClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
         scale: 0,
@@ -5200,13 +5236,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       conversationID: ""
     }, _defineProperty(_ref, "show", false), _defineProperty(_ref, "username", ""), _ref;
   },
-  beforeMount: function beforeMount() {// $(".single-chat-wrap").css({ transform: "translateX:450px" });
-  },
   mounted: function mounted() {
     var _this = this;
 
+    _app__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("closeSingleMesage", function () {
+      _this.$anime({
+        targets: ".all-chat-messages",
+        height: 0,
+        width: 0
+      });
+    });
     _app__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("getConversationID", function (id) {
-      // this.show=true
       _this.conversationID = id;
       axios.get("/api/conversations/" + _this.conversationID).then(function (response) {
         _this.singleconversation = response.data;
@@ -5240,52 +5280,86 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           scale: 1,
           right: "-450px",
           duration: 200,
-          easing: "linear" // {scale:1,duration:250,delay:350, easing:'linear'}
-
+          easing: "linear"
         }]
       });
 
       $(".all-messages-header i").css({
         padding: "5px 0px 20px 20px"
       }, {
-        'border-bottom': '1px solid #f4f4f4'
+        "border-bottom": "1px solid #f4f4f4"
       });
       $(".chat-messages").css({
         padding: "10px 20px"
       });
+
+      _this.$anime({
+        targets: ".send-message",
+        keyframes: [{
+          translateX: 450,
+          duration: 600
+        }, {
+          translateX: 0,
+          duration: 200,
+          easing: "linear",
+          opacity: 1
+        }]
+      });
     });
   },
   methods: {
+    openInput: function openInput() {
+      this.$anime({
+        targets: '.message-input',
+        padding: 10,
+        borderRadius: 40,
+        easing: 'linear',
+        duration: 250
+      });
+      this.$anime({
+        targets: '.fa-images',
+        width: 0,
+        height: 0,
+        'visibility': 'hidden',
+        opacity: 0,
+        display: 'none'
+      });
+      this.$anime({
+        targets: '.fa-paper-plane',
+        padding: 20,
+        duration: 150,
+        easing: 'linear'
+      });
+    },
     closeSingleChat: function closeSingleChat() {
       var el = $(".all-chat-messages").width();
       this.$anime({
         targets: ".all-chat-messages",
         keyframes: [{
           right: 0,
-          duration: 100,
+          duration: 50,
           easing: "linear"
         }, {
           opacity: 1,
           height: "63%",
           width: "100%",
           right: "-450px",
-          duration: 200,
+          duration: 150,
           easing: "linear",
           padding: "0px"
         }]
       });
       this.$anime({
-        targets: '.fa-chevron-down',
-        rotate: '0deg'
+        targets: ".fa-chevron-down",
+        rotate: "0deg"
       });
       this.$anime({
         targets: ".single-chat-main-heading",
-        keyframes: [// {translateY:0, opacity:1},
-        {
+        keyframes: [{
           translateY: 20,
           opacity: 0,
           duration: 200,
-          easing: 'linear'
+          easing: "linear"
         }]
       });
       this.$anime({
@@ -5293,21 +5367,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         translateY: 0,
         opacity: 1,
         duration: 200,
-        easing: 'linear'
+        easing: "linear"
       });
-      var userswrap = $('.users-wrap').width() + 50;
+      var userswrap = $(".users-wrap").width() + 50;
       this.$anime({
-        targets: '.users-wrap',
+        targets: ".users-wrap",
         translateX: 0,
-        easing: 'linear',
+        easing: "linear",
         duration: 200,
         delay: 250
       });
       $(".all-messages-header i").css({
         padding: "0"
       }, {
-        'border': 'none'
-      }); // $(".chat-messages").css({ padding: "0", height:0, width:0 });
+        border: "none"
+      });
+      this.$anime({
+        targets: ".send-message",
+        keyframes: [{
+          translateX: 0,
+          duration: 100
+        }, {
+          translateX: 450,
+          duration: 300,
+          easing: "linear",
+          opacity: 0
+        }]
+      });
     }
   }
 });
@@ -11870,7 +11956,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -11889,7 +11975,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-enter-active[data-v-a16304ba] {\n  transition: all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\n  transition: all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],\n.page-leave-to[data-v-a16304ba] {\n  opacity: 0;\n}\n.page-enter[data-v-a16304ba] {\n  -webkit-transform: translateX(40%);\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba] {\n  -webkit-transform: translateX(-40%);\n          transform: translateX(-40%);\n}\n", ""]);
+exports.push([module.i, "\n.page-enter-active[data-v-a16304ba] {\r\n  transition: all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\r\n  transition: all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],\r\n.page-leave-to[data-v-a16304ba] {\r\n  opacity: 0;\n}\n.page-enter[data-v-a16304ba] {\r\n  -webkit-transform: translateX(40%);\r\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba] {\r\n  -webkit-transform: translateX(-40%);\r\n          transform: translateX(-40%);\n}\r\n", ""]);
 
 // exports
 
@@ -11984,7 +12070,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* img {\n  max-height: 36px;\n} */\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* img {\r\n  max-height: 36px;\r\n} */\r\n", ""]);
 
 // exports
 
@@ -12003,7 +12089,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -68606,9 +68692,8 @@ var render = function() {
         "div",
         { staticClass: "messages-wrap" },
         [
-          _c(
-            "v-touch",
-            {
+          _c("v-touch", { staticClass: "message-button" }, [
+            _c("i", {
               directives: [
                 {
                   name: "touch",
@@ -68618,27 +68703,9 @@ var render = function() {
                   arg: "tap"
                 }
               ],
-              staticClass: "message-button open-messages"
-            },
-            [_c("i", { staticClass: "far fa-comment open-messages-icon" })]
-          ),
-          _vm._v(" "),
-          _c(
-            "v-touch",
-            {
-              directives: [
-                {
-                  name: "touch",
-                  rawName: "v-touch:tap",
-                  value: _vm.closeMessages,
-                  expression: "closeMessages",
-                  arg: "tap"
-                }
-              ],
-              staticClass: "message-button close-messages"
-            },
-            [_c("i", { staticClass: "fas fa-times close-messages-icon" })]
-          ),
+              staticClass: "far fa-comment open-messages-icon"
+            })
+          ]),
           _vm._v(" "),
           _c("div", {
             directives: [
@@ -68796,32 +68863,46 @@ var render = function() {
     _c(
       "div",
       { staticClass: "chat-messages" },
-      _vm._l(_vm.singleconversation.messages, function(message) {
-        return _c(
-          "div",
-          {
-            key: message.id,
-            staticStyle: { display: "flex", "align-items": "center" }
-          },
-          [
-            _c("div", { staticClass: "img" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "/storage/user_images/" +
-                    _vm.singleconversation.profile_picture,
-                  alt: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "single-message-wrap" }, [
-              _c("p", [_vm._v(_vm._s(message.message_content))])
-            ])
-          ]
-        )
-      }),
-      0
+      [
+        _vm._l(_vm.singleconversation.messages, function(message) {
+          return _c(
+            "div",
+            {
+              key: message.id,
+              staticStyle: { display: "flex", "align-items": "center" }
+            },
+            [
+              _c("div", { staticClass: "img" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/storage/user_images/" +
+                      _vm.singleconversation.profile_picture,
+                    alt: ""
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "single-message-wrap" }, [
+                _c("p", [_vm._v(_vm._s(message.message_content))])
+              ])
+            ]
+          )
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "send-message" }, [
+          _c("i", { staticClass: "far fa-images" }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "message-input",
+            attrs: { type: "text", placeholder: "Aa" },
+            on: { click: _vm.openInput }
+          }),
+          _vm._v(" "),
+          _c("i", { staticClass: "far fa-paper-plane" })
+        ])
+      ],
+      2
     )
   ])
 }
@@ -92258,8 +92339,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODUL
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\kpmajor\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\kpmajor\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

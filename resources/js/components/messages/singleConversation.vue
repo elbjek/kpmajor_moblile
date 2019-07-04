@@ -10,23 +10,22 @@
         :key="message.id"
       >
         <div class="img">
-          <img :src="'/storage/user_images/'+ singleconversation.profile_picture" alt>
+          <img :src="'/storage/user_images/'+ singleconversation.profile_picture" alt />
         </div>
         <div class="single-message-wrap">
           <p>{{message.message_content}}</p>
         </div>
       </div>
-      <!-- <div class="sendmessage" style="display:none">
-        <textarea name="sendmessages" id="" cols="30" rows="10">
-
-        </textarea>
-      </div> -->
+      <div class="send-message">
+        <i class="far fa-images"></i>
+        <input type="text" class="message-input" placeholder="Aa" v-on:click="openInput"/>
+        <i class="far fa-paper-plane"></i>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import { EventBus } from "../../app";
 import { setTimeout } from "timers";
 
@@ -42,12 +41,15 @@ export default {
       username: ""
     };
   },
-  beforeMount() {
-    // $(".single-chat-wrap").css({ transform: "translateX:450px" });
-  },
   mounted() {
+    EventBus.$on("closeSingleMesage", () => {
+      this.$anime({
+        targets: ".all-chat-messages",
+        height: 0,
+        width: 0
+      });
+    });
     EventBus.$on("getConversationID", id => {
-      // this.show=true
       this.conversationID = id;
       axios.get("/api/conversations/" + this.conversationID).then(response => {
         this.singleconversation = response.data;
@@ -55,7 +57,6 @@ export default {
         this.username = response.data.name;
         EventBus.$emit("sendUsername", this.username);
       });
-
       this.$anime({
         targets: ".all-chat-messages",
         keyframes: [
@@ -81,42 +82,72 @@ export default {
             duration: 200,
             easing: "linear"
           }
-          // {scale:1,duration:250,delay:350, easing:'linear'}
         ]
       });
-
-      $(".all-messages-header i").css({ padding: "5px 0px 20px 20px" },{'border-bottom':'1px solid #f4f4f4'});
-
+      $(".all-messages-header i").css(
+        { padding: "5px 0px 20px 20px" },
+        { "border-bottom": "1px solid #f4f4f4" }
+      );
       $(".chat-messages").css({ padding: "10px 20px" });
-});
+      this.$anime({
+        targets: ".send-message",
+        keyframes: [
+          { translateX: 450, duration: 600 },
+          { translateX: 0, duration: 200, easing: "linear", opacity: 1 }
+        ]
+      });
+    });
   },
   methods: {
+    openInput(){
+      this.$anime({
+        targets:'.message-input',
+        padding:10,
+        borderRadius:40,
+        easing:'linear',
+        duration:250
+      })
+      this.$anime({
+        targets:'.fa-images',
+        width: 0,
+        height: 0,
+        'visibility': 'hidden',
+        opacity: 0,
+        display: 'none',
+      })
+      this.$anime({
+        targets:'.fa-paper-plane',
+        padding:20,
+        duration:150,
+        easing:'linear'
+      })
+    },
     closeSingleChat() {
       var el = $(".all-chat-messages").width();
       this.$anime({
         targets: ".all-chat-messages",
         keyframes: [
-          { right: 0, duration: 100, easing: "linear" },
-                    {
+          { right: 0, duration: 50, easing: "linear" },
+          {
             opacity: 1,
             height: "63%",
             width: "100%",
             right: "-450px",
-            duration: 200,
+            duration: 150,
             easing: "linear",
             padding: "0px"
-          },
+          }
         ]
       });
+
       this.$anime({
-        targets:'.fa-chevron-down',
-        rotate:'0deg'
-      })
+        targets: ".fa-chevron-down",
+        rotate: "0deg"
+      });
       this.$anime({
         targets: ".single-chat-main-heading",
         keyframes: [
-          // {translateY:0, opacity:1},
-          { translateY: 20, opacity: 0, duration: 200, easing:'linear' }
+          { translateY: 20, opacity: 0, duration: 200, easing: "linear" }
         ]
       });
       this.$anime({
@@ -124,19 +155,24 @@ export default {
         translateY: 0,
         opacity: 1,
         duration: 200,
-        easing:'linear'
+        easing: "linear"
       });
-      let userswrap = $('.users-wrap').width()+50
-        this.$anime({
-        targets:'.users-wrap',
-        translateX:0,
-        easing:'linear',
-        duration:200,
-        delay:250
-      })
-      $(".all-messages-header i").css({ padding: "0" },{'border':'none'});
-
-      // $(".chat-messages").css({ padding: "0", height:0, width:0 });
+      let userswrap = $(".users-wrap").width() + 50;
+      this.$anime({
+        targets: ".users-wrap",
+        translateX: 0,
+        easing: "linear",
+        duration: 200,
+        delay: 250
+      });
+      $(".all-messages-header i").css({ padding: "0" }, { border: "none" });
+      this.$anime({
+        targets: ".send-message",
+        keyframes: [
+          { translateX: 0, duration: 100 },
+          { translateX: 450, duration: 300, easing: "linear", opacity: 0 }
+        ]
+      });
     }
   }
 };
