@@ -34,26 +34,36 @@
 
                 h5{
                     font-weight: 900;
-                    font-size:18px;
+                    font-size:16px;
                     text-transform: capitalize;
                     color:$darkblue;
+                    margin:0;
                 }
                 p{
                     font-weight:400;
                     color:$darkblue;
                     margin:0;
+                    font-size:14px;
+
+                    span{
+                        font-weight: 700;
+                        color:$darkblue;
+                        font-size:14px;
+                    }
                 }
             }
             span{
                 font-size: 12px;
                 font-weight: 300;
-                color:$darkblue;
+                color:$medium-gray;
             }
         }
         p{
             font-weight: 400;
-            color:$darkblue;
+            color:$medium-gray;
             margin:0;
+            font-size: 12px;
+            padding-top:4px;
         }
     }
     .product-user-info-wrap{
@@ -65,36 +75,82 @@
             p{
                 margin-bottom:10px;
                 font-weight: 600;
+                font-size:0.7rem;
                 color:$darkblue;
             }
             span{
-                font-weight: 300;
-                color:$darkblue;
-                font-size:12px;
+                font-weight: 600;
+                color:$medium-gray;
+                font-size:0.7rem;
             }
         }
         .product-user-information{
-            .user{
-                display:flex;
+            .user-info{
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                /* width: 100%; */
+                .user{
+                    display:flex;
+                }
                 h5{
-                    font-weight:900;
-                    color:$darkblue;
-                    font-size:16px;
-                    margin-bottom:15px;
+                    font-size: 1rem;
+                    color: $darkblue;
+                    // margin-bottom:15px;
                     margin-right:5px;
                 }
+                .rating {
+                    display: flex;
+                    i{
+                        font-size: 0.4rem;
+                        margin-right:3px;
+                    }
+                    span{
+                        font-size: 0.7rem;
+                        color:$darkblue;
+                    }
+                    .upvotes, .downvotes{
+                        display: flex;
+                        align-items: flex-start;
+                        cursor: pointer;
+                    }
+                    .upvotes{
+                        padding-right: 10px;
+                        i{
+                            color:$green;
+                        }
+                    }
+                    .downvotes i{
+                        color:$red;
+                    }
+                }
             }
+
             p{
                 margin:0;
                 color:$darkblue;
                 font-weight:400;
+                font-size: 0.7rem;
+                span{
+                    padding-left:4px;
+                }
             }
             button{
              background-color:$lightblue;
              color:$white; 
              margin:15px 0px 7px 0px;
-             border-radius:8px;  
+             border-radius:8px;
+             padding: 6px;
+             font-size: 0.8rem;
+           
             }
         }
     }
+}
+.shrinkImage{
+    height:200px !important;
+    transition:0.5s ease-in !important
+}
+.image{
+    transition:0.4s ease-out;
 }

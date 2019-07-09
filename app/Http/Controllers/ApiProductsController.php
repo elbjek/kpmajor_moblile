@@ -17,8 +17,14 @@ class ApiProductsController extends Controller
     public function show(Product $Product)
     {
         $selectedProduct = $Product->id;
+        // $artists = Artist::orderBy('name')->get();
+
         $product = Product::join('users', 'users.id', '=', 'products.user_id')
             ->select('products.*', 'name', 'lastname', 'phone_number', 'city', 'online', 'users.created_at')
+            ->with(['comments' => function($q) {
+                $q->join('users','users.id','=','comments.user_id')
+                ->select('comments.*','users.name','users.lastname','users.profile_picture');
+            }])
             ->where('products.id', $selectedProduct)
             ->with('images')
             ->first();

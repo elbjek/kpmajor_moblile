@@ -207,7 +207,6 @@ export default {
       axios.get("/api/messages").then(response => {
         this.user = response.data[0];
         this.messages = response.data[1];
-        console.log(this.messages);
       });
     }
   }

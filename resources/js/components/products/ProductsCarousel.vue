@@ -7,7 +7,7 @@
         </slide>     
    </carousel> -->
     <transition name="slide-fade">
-        <singleproduct  v-touch:swipe.left="fetchProducts" :product="product"> </singleproduct>
+        <singleproduct  v-touch:swipe.left="fetchProducts" :product="product" > </singleproduct>
     </transition>
         <messages></messages>
    </div>
@@ -34,7 +34,8 @@ import messages from '../messages/Messages'
                 'allProducts': [],
                 'index':'',
                 'show':false,
-                'previous':[]
+                'previous':[],
+                'comments':[]
             }
         },
         beforeMount(){
@@ -53,7 +54,8 @@ import messages from '../messages/Messages'
                     this.product = response.data[0]
                     this.previous = response.data[1]
                     this.allProducts = response.data[3]
-                    console.log(this.previous)
+                    this.comments = response.data[0].comments
+                    EventBus.$emit('sendComments',this.comments)
                 })
             },
             swipeLeft(){

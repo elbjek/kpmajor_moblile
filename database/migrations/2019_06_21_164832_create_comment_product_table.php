@@ -14,7 +14,10 @@ class CreateCommentProductTable extends Migration
     public function up()
     {
         Schema::create('comment_product', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->integer('product_id')->unsigned()->index();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->integer('comment_id')->unsigned()->index();
+            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
             $table->timestamps();
         });
     }
