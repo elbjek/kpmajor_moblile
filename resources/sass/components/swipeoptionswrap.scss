@@ -1,13 +1,10 @@
 .swipe-options-wrap{
-  background-color:$darkblue;
   visibility: hidden;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background: #f4f4f4;
   border-radius: 8px;
   width:0%;
-  // transform: translateX(20px);
   z-index:9;
   position: relative;
   right: 0;

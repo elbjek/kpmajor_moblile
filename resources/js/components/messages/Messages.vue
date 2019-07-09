@@ -101,14 +101,14 @@ export default {
       this.$anime({
         targets: ".message-button i",
         borderRadius: "8px",
-        duration: 250,
+        duration: 150,
         easing:'linear',
         backgroundColor: "#ffffff",
         rotate:90
       });
       this.$anime({
         targets: ".close-messages-icon",
-        duration: 250,
+        duration: 150,
         easing:'linear',
         color: "#003368",
         opacity:1
@@ -124,7 +124,7 @@ export default {
         width: "100%",
         scale: 1,
         borderRadius: "4px",
-        duration: 150,
+        duration: 100,
         easing: "linear"
       });
     },
@@ -178,7 +178,7 @@ export default {
         targets: ".chat-main-heading",
         translateY: 0,
         opacity: 1,
-        duration: 200,
+        duration: 100,
         easing:'linear'
       });
       let userswrap = $('.users-wrap').width()+50
@@ -198,7 +198,7 @@ export default {
         targets: ".chat-wrap",
         scale: 0,
         borderRadius: "50px",
-        duration: 100,
+        duration: 10,
         easing: "cubicBezier(0.895, 0.030, 0.685, 0.220)"
       });
     },

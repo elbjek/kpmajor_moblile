@@ -8,7 +8,9 @@
       v-for="product in products"
       :key="product.id"
     >
-      <productitem :product="product"></productitem>
+     <div class="productitem">
+        <productitem :product="product"></productitem>
+     </div>
     </v-touch>
     <infinite-loading @infinite="infiniteHandler" no-more="ucitali ste" :forceUseInfiniteWrapper="true">
         <template slot="no-more">Ucitali ste sve podatke</template>
@@ -62,7 +64,7 @@ export default {
           } else {
             $state.complete();
           }
-        }, 1000);
+        }, 200);
       });
     },
     showOptions(product, event) {
@@ -77,23 +79,23 @@ export default {
             translateX: 0,
             easing: "easeInSine",
             width: "30%",
-            duration: 300
+            duration: 250
           });
           this.$anime({
             targets: ".call",
             translateX: 0,
-            duration: 300
+            duration: 250
           });
           this.$anime({
             targets: ".message",
             translateX: 0,
-            duration: 300
+            duration: 250
           });
           this.$anime({
             targets: event.target,
             translateX: -20,
             easing: "easeInSine",
-            duration: 300
+            duration: 250
           });
         }
       });
@@ -106,23 +108,23 @@ export default {
             translateX: "50px",
             easing: "easeOutSine",
             width: "0",
-            duration: 300
+            duration: 150
           });
           this.$anime({
             targets: event.target,
             translateX: 0,
             easing: "easeOutSine",
-            duration: 300
+            duration: 150
           });
           this.$anime({
             targets: ".call",
             translateX: 13,
-            duration: 300
+            duration: 150
           });
           this.$anime({
             targets: ".message",
             translateX: -11,
-            duration: 300
+            duration: 150
           });
         }
       });

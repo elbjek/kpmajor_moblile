@@ -1113,12 +1113,10 @@ body {
 }
 
 .swipe-options-wrap {
-  background-color: #003368;
   visibility: hidden;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background: #f4f4f4;
   border-radius: 8px;
   width: 0%;
   z-index: 9;

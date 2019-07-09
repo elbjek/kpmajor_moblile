@@ -5060,14 +5060,14 @@ __webpack_require__.r(__webpack_exports__);
       this.$anime({
         targets: ".message-button i",
         borderRadius: "8px",
-        duration: 250,
+        duration: 150,
         easing: 'linear',
         backgroundColor: "#ffffff",
         rotate: 90
       });
       this.$anime({
         targets: ".close-messages-icon",
-        duration: 250,
+        duration: 150,
         easing: 'linear',
         color: "#003368",
         opacity: 1
@@ -5086,7 +5086,7 @@ __webpack_require__.r(__webpack_exports__);
         width: "100%",
         scale: 1,
         borderRadius: "4px",
-        duration: 150,
+        duration: 100,
         easing: "linear"
       });
     },
@@ -5144,7 +5144,7 @@ __webpack_require__.r(__webpack_exports__);
         targets: ".chat-main-heading",
         translateY: 0,
         opacity: 1,
-        duration: 200,
+        duration: 100,
         easing: 'linear'
       });
       var userswrap = $('.users-wrap').width() + 50;
@@ -5163,7 +5163,7 @@ __webpack_require__.r(__webpack_exports__);
         targets: ".chat-wrap",
         scale: 0,
         borderRadius: "50px",
-        duration: 100,
+        duration: 10,
         easing: "cubicBezier(0.895, 0.030, 0.685, 0.220)"
       });
     },
@@ -6617,6 +6617,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -6664,7 +6666,7 @@ __webpack_require__.r(__webpack_exports__);
           } else {
             $state.complete();
           }
-        }, 1000);
+        }, 200);
       });
     },
     showOptions: function showOptions(product, event) {
@@ -6682,26 +6684,26 @@ __webpack_require__.r(__webpack_exports__);
             translateX: 0,
             easing: "easeInSine",
             width: "30%",
-            duration: 300
+            duration: 250
           });
 
           _this2.$anime({
             targets: ".call",
             translateX: 0,
-            duration: 300
+            duration: 250
           });
 
           _this2.$anime({
             targets: ".message",
             translateX: 0,
-            duration: 300
+            duration: 250
           });
 
           _this2.$anime({
             targets: event.target,
             translateX: -20,
             easing: "easeInSine",
-            duration: 300
+            duration: 250
           });
         }
       });
@@ -6716,26 +6718,26 @@ __webpack_require__.r(__webpack_exports__);
             translateX: "50px",
             easing: "easeOutSine",
             width: "0",
-            duration: 300
+            duration: 150
           });
 
           _this3.$anime({
             targets: event.target,
             translateX: 0,
             easing: "easeOutSine",
-            duration: 300
+            duration: 150
           });
 
           _this3.$anime({
             targets: ".call",
             translateX: 13,
-            duration: 300
+            duration: 150
           });
 
           _this3.$anime({
             targets: ".message",
             translateX: -11,
-            duration: 300
+            duration: 150
           });
         }
       });
@@ -11956,7 +11958,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-da572c6e] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-da572c6e] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-da572c6e], .slide-fade-leave-to[data-v-da572c6e]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -11975,7 +11977,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.page-enter-active[data-v-a16304ba] {\r\n  transition: all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\r\n  transition: all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],\r\n.page-leave-to[data-v-a16304ba] {\r\n  opacity: 0;\n}\n.page-enter[data-v-a16304ba] {\r\n  -webkit-transform: translateX(40%);\r\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba] {\r\n  -webkit-transform: translateX(-40%);\r\n          transform: translateX(-40%);\n}\r\n", ""]);
+exports.push([module.i, "\n.page-enter-active[data-v-a16304ba] {\n  transition: all 0.09s ease-in-out 0.02s;\n}\n.page-leave-active[data-v-a16304ba] {\n  transition: all 0.1s ease-in-out 0.02s;\n}\n.page-enter[data-v-a16304ba],\n.page-leave-to[data-v-a16304ba] {\n  opacity: 0;\n}\n.page-enter[data-v-a16304ba] {\n  -webkit-transform: translateX(40%);\n          transform: translateX(40%);\n}\n.page-leave-to[data-v-a16304ba] {\n  -webkit-transform: translateX(-40%);\n          transform: translateX(-40%);\n}\n", ""]);
 
 // exports
 
@@ -12070,7 +12072,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* img {\r\n  max-height: 36px;\r\n} */\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* img {\n  max-height: 36px;\n} */\n", ""]);
 
 // exports
 
@@ -12089,7 +12091,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\r\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\r\n/* .slide-fade-leave-active below version 2.1.8 */ {\r\n  -webkit-transform: translateX(10px);\r\n          transform: translateX(10px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.slide-fade-enter-active[data-v-4e195d14] {\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-4e195d14] {\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter[data-v-4e195d14], .slide-fade-leave-to[data-v-4e195d14]\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -70534,8 +70536,14 @@ var render = function() {
               }
             }
           },
-          [_c("productitem", { attrs: { product: product } })],
-          1
+          [
+            _c(
+              "div",
+              { staticClass: "productitem" },
+              [_c("productitem", { attrs: { product: product } })],
+              1
+            )
+          ]
         )
       }),
       _vm._v(" "),
@@ -92339,8 +92347,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODUL
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\kpmajor\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\kpmajor\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/kpmajor/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
