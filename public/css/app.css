@@ -801,7 +801,7 @@ body {
   margin: 0;
 }
 
-.all-chat-messages .send-message {
+.send-message {
   bottom: 20px;
   width: 100%;
   left: 0;
@@ -814,7 +814,7 @@ body {
   border-bottom-right-radius: 8px;
 }
 
-.all-chat-messages .send-message .message-input {
+.send-message .message-input {
   width: 100%;
   border: none;
   background-color: white;
@@ -822,14 +822,94 @@ body {
   padding: 5px 10px;
 }
 
-.all-chat-messages .send-message .message-input:focus {
+.send-message .message-input:focus {
   outline: none;
 }
 
-.all-chat-messages .send-message i {
+.send-message i {
   color: #003368;
   padding: 20px;
   padding: 20px 10px;
+}
+
+.new-message-wrap {
+  -webkit-transform: translateX(-450px);
+          transform: translateX(-450px);
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.new-message-wrap .chat-main-heading {
+  padding-left: 20px;
+}
+
+.new-message-wrap .new-message-heading {
+  background-color: #ffffff;
+}
+
+.new-message-wrap .sendtouser {
+  padding: 10px 20px;
+  align-items: center;
+  display: flex;
+}
+
+.new-message-wrap .sendtouser label {
+  color: #003368;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.new-message-wrap .sendtouser input {
+  background-color: #f4f4f4;
+  border-radius: 30px;
+  border: none;
+  width: 100%;
+  padding: 4px;
+}
+
+.new-message-wrap .sendtouser input:focus {
+  outline: none;
+}
+
+.new-message-wrap .user-list {
+  max-height: 25%;
+  overflow: scroll;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  margin: 0px 20px;
+  border-radius: 8px;
+}
+
+.new-message-wrap .user-list .single-listed-user {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.new-message-wrap .user-list .single-listed-user .img {
+  margin-right: 20px;
+  background-color: #ffffff;
+}
+
+.new-message-wrap .user-list .single-listed-user p {
+  margin: 0;
+  font-weight: 700;
+  color: #003368;
+}
+
+.new-message-wrap .message-content {
+  height: 80%;
+}
+
+.new-message-wrap .send-message {
+  position: fixed;
+  bottom: 0;
+  margin: 0 !important;
 }
 
 .latest-products-wrap h1 {

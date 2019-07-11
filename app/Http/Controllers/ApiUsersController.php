@@ -7,6 +7,13 @@ use App\User;
 class ApiUsersController extends Controller
 {
 
+    public function index()
+    {
+
+        $users = User::select('id','name','lastname','profile_picture','online')->get();
+        return response()->json($users);
+    }
+
     public function show()
     {
         $user = \Auth::id();
