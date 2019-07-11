@@ -5143,7 +5143,7 @@ __webpack_require__.r(__webpack_exports__);
       $("body").addClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
-        height: "60%",
+        height: "80%",
         width: "100%",
         scale: 1,
         borderRadius: "4px",
@@ -5215,10 +5215,8 @@ __webpack_require__.r(__webpack_exports__);
         easing: 'linear',
         duration: 200,
         delay: 250
-      }); // $(".open-messages").removeClass("z-index-lower");
-
-      $(".transparent-bg").removeClass("transparent-bg-visible"); // $('.chat-box').removeClass('chatbox-visible');
-
+      });
+      $(".transparent-bg").removeClass("transparent-bg-visible");
       $("body").removeClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
@@ -5319,7 +5317,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         targets: ".all-chat-messages",
         keyframes: [{
           opacity: 1,
-          height: "63%",
+          height: "83%",
           width: "100%",
           right: "-450px",
           duration: 200,
@@ -5344,6 +5342,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }]
       });
 
+      _this.$anime({
+        targets: ".send-message",
+        translateX: 0
+      });
+
       $(".all-messages-header i").css({
         padding: "5px 0px 20px 20px"
       }, {
@@ -5351,19 +5354,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
       $(".chat-messages").css({
         padding: "10px 20px"
-      });
-
-      _this.$anime({
-        targets: ".send-message",
-        keyframes: [{
-          translateX: 450,
-          duration: 600
-        }, {
-          translateX: 0,
-          duration: 200,
-          easing: "linear",
-          opacity: 1
-        }]
       });
     });
   },
@@ -5401,12 +5391,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           easing: "linear"
         }, {
           opacity: 1,
-          height: "63%",
+          height: "83%",
           width: "100%",
           right: "-450px",
           duration: 150,
-          easing: "linear",
-          padding: "0px"
+          easing: "linear" // padding: "0px"
+
         }]
       });
       this.$anime({
@@ -5441,18 +5431,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         padding: "0"
       }, {
         border: "none"
-      });
-      this.$anime({
-        targets: ".send-message",
-        keyframes: [{
-          translateX: 0,
-          duration: 100
-        }, {
-          translateX: 450,
-          duration: 300,
-          easing: "linear",
-          opacity: 0
-        }]
       });
     }
   }
@@ -66729,62 +66707,78 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "navigation2" }, [
-            _c("div", { staticClass: "user-wrap" }, [
-              _c("div", { staticClass: "nav-header-wrap" }, [
-                _c("h3", [_vm._v("Informacije:")]),
+            _c(
+              "div",
+              { staticClass: "user-wrap" },
+              [
+                _c("div", { staticClass: "nav-header-wrap" }, [
+                  _c("h3", [_vm._v("Informacije:")]),
+                  _vm._v(" "),
+                  _c("button", { staticClass: "nav-button" }, [
+                    _c("i", { staticClass: "fas fa-times" })
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("button", { staticClass: "nav-button" }, [
-                  _c("i", { staticClass: "fas fa-times" })
-                ])
-              ]),
-              _vm._v(" "),
-              _vm.user
-                ? _c("div", { staticClass: "user-profile-header" }, [
-                    _c("div", { staticClass: "img" }, [
-                      _vm.user.profile_picture
-                        ? _c("img", {
-                            attrs: {
-                              src:
-                                "/storage/user_images/" +
-                                _vm.user.profile_picture,
-                              alt: ""
-                            }
-                          })
-                        : _c("img", {
-                            attrs: {
-                              src:
-                                "https://pixel.nymag.com/imgs/daily/science/2016/06/10/10-cute-baby.w700.h700.jpg",
-                              alt: ""
-                            }
-                          })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c("h5", [
-                        _vm._v(
-                          _vm._s(_vm.user.name) +
-                            " " +
-                            _vm._s(_vm.user.lastname)
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(_vm._s(_vm.formatTime))]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "products" }, [
-                        _c("p", [
-                          _c("span", [_vm._v(_vm._s(_vm.numberOfProducts))]),
-                          _vm._v("Oglasa\n              ")
+                _vm.user
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "user-profile-header",
+                        attrs: { to: "/users/" + _vm.user.id }
+                      },
+                      [
+                        _c("div", { staticClass: "img" }, [
+                          _vm.user.profile_picture
+                            ? _c("img", {
+                                attrs: {
+                                  src:
+                                    "/storage/user_images/" +
+                                    _vm.user.profile_picture,
+                                  alt: ""
+                                }
+                              })
+                            : _c("img", {
+                                attrs: {
+                                  src:
+                                    "https://pixel.nymag.com/imgs/daily/science/2016/06/10/10-cute-baby.w700.h700.jpg",
+                                  alt: ""
+                                }
+                              })
                         ]),
                         _vm._v(" "),
-                        _c("p", [
-                          _c("span", [_vm._v(_vm._s(_vm.numberOfMessages))]),
-                          _vm._v("Poruka\n              ")
+                        _c("div", [
+                          _c("h5", [
+                            _vm._v(
+                              _vm._s(_vm.user.name) +
+                                " " +
+                                _vm._s(_vm.user.lastname)
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(_vm.formatTime))]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "products" }, [
+                            _c("p", [
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.numberOfProducts))
+                              ]),
+                              _vm._v("Oglasa\n              ")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.numberOfMessages))
+                              ]),
+                              _vm._v("Poruka\n              ")
+                            ])
+                          ])
                         ])
-                      ])
-                    ])
-                  ])
-                : _vm._e()
-            ]),
+                      ]
+                    )
+                  : _vm._e()
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm.user
               ? _c("ul", { staticClass: "nav-list" }, [
@@ -66792,11 +66786,15 @@ var render = function() {
                     "li",
                     { staticClass: "navigation-item" },
                     [
-                      _c("router-link", { attrs: { to: "/users/1" } }, [
-                        _c("i", { staticClass: "far fa-user" }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Profile")])
-                      ])
+                      _c(
+                        "router-link",
+                        { attrs: { to: "/users/" + _vm.user.id } },
+                        [
+                          _c("i", { staticClass: "far fa-user" }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Profile")])
+                        ]
+                      )
                     ],
                     1
                   ),
@@ -67811,47 +67809,45 @@ var render = function() {
     _c(
       "div",
       { staticClass: "chat-messages" },
-      [
-        _vm._l(_vm.singleconversation.messages, function(message) {
-          return _c(
-            "div",
-            {
-              key: message.id,
-              staticStyle: { display: "flex", "align-items": "center" }
-            },
-            [
-              _c("div", { staticClass: "img" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/storage/user_images/" +
-                      _vm.singleconversation.profile_picture,
-                    alt: ""
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "single-message-wrap" }, [
-                _c("p", [_vm._v(_vm._s(message.message_content))])
-              ])
-            ]
-          )
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "send-message" }, [
-          _c("i", { staticClass: "far fa-images" }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "message-input",
-            attrs: { type: "text", placeholder: "Aa" },
-            on: { click: _vm.openInput }
-          }),
-          _vm._v(" "),
-          _c("i", { staticClass: "far fa-paper-plane" })
-        ])
-      ],
-      2
-    )
+      _vm._l(_vm.singleconversation.messages, function(message) {
+        return _c(
+          "div",
+          {
+            key: message.id,
+            staticStyle: { display: "flex", "align-items": "center" }
+          },
+          [
+            _c("div", { staticClass: "img" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/storage/user_images/" +
+                    _vm.singleconversation.profile_picture,
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "single-message-wrap" }, [
+              _c("p", [_vm._v(_vm._s(message.message_content))])
+            ])
+          ]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "send-message" }, [
+      _c("i", { staticClass: "far fa-images" }),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "message-input",
+        attrs: { type: "text", placeholder: "Aa" },
+        on: { click: _vm.openInput }
+      }),
+      _vm._v(" "),
+      _c("i", { staticClass: "far fa-paper-plane" })
+    ])
   ])
 }
 var staticRenderFns = []

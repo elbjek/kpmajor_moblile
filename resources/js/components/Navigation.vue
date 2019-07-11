@@ -21,7 +21,7 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-          <div class="user-profile-header" v-if="user">
+          <router-link class="user-profile-header" :to="'/users/'+user.id" v-if="user">
             <div class="img">
               <img
                 v-if="user.profile_picture"
@@ -46,11 +46,11 @@
                 </p>
               </div>
             </div>
-          </div>
+          </router-link>
         </div>
         <ul v-if="user" class="nav-list">
           <li class="navigation-item">
-            <router-link to="/users/1">
+            <router-link :to="'/users/'+user.id">
               <i class="far fa-user"></i>
               <span>Profile</span>
             </router-link>

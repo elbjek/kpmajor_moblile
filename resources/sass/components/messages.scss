@@ -143,36 +143,10 @@
 .open-messages-icon{
     z-index:11
 }
-.send-message{
-    position: fixed;
-    bottom: 20px;
-    width: 100%;
-    left: 0;
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    transform: translateX(450px);
-    .message-input{
-        width: 100%;
-        border: none;
-        background-color: #f4f4f4;
-        border-radius: 8px;
-        padding:5px 10px;
-        &:focus{
-            outline: none;
-            // transform:translate()
-        }
-    }
-    i{
-        color:$darkblue;
-        padding:20px;
-        background-color:$white;
-        padding: 20px 10px;
-    }
-}
+
 
 .all-chat-messages{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: -450px;
     z-index: 15;
@@ -187,8 +161,8 @@
     }
     .chat-messages{
         background-color: $white;
-        // height:100%;
-        // width:100%;
+        height:80%;
+
     }
     .img{
         height: 40px;
@@ -212,5 +186,32 @@
             
         }
     }
-    
+    .send-message{
+        // position: fixed;
+        bottom: 20px;
+        width: 100%;
+        left: 0;
+        display: flex;
+        align-items:center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        background-color: $light-gray;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        .message-input{
+            width: 100%;
+            border: none;
+            background-color: white;
+            border-radius: 8px;
+            padding:5px 10px;
+            &:focus{
+                outline: none;
+            }
+        }
+        i{
+            color:$darkblue;
+            padding:20px;
+            padding: 20px 10px;
+        }
+    }
 }

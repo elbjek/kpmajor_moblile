@@ -16,12 +16,12 @@
           <p>{{message.message_content}}</p>
         </div>
       </div>
+    </div>
       <div class="send-message">
         <i class="far fa-images"></i>
         <input type="text" class="message-input" placeholder="Aa" v-on:click="openInput"/>
         <i class="far fa-paper-plane"></i>
       </div>
-    </div>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
         keyframes: [
           {
             opacity: 1,
-            height: "63%",
+            height: "83%",
             width: "100%",
             right: "-450px",
             duration: 200,
@@ -84,18 +84,17 @@ export default {
           }
         ]
       });
+      this.$anime({
+        targets: ".send-message",
+        translateX:0,
+
+      });
       $(".all-messages-header i").css(
         { padding: "5px 0px 20px 20px" },
         { "border-bottom": "1px solid #f4f4f4" }
       );
+      
       $(".chat-messages").css({ padding: "10px 20px" });
-      this.$anime({
-        targets: ".send-message",
-        keyframes: [
-          { translateX: 450, duration: 600 },
-          { translateX: 0, duration: 200, easing: "linear", opacity: 1 }
-        ]
-      });
     });
   },
   methods: {
@@ -130,12 +129,12 @@ export default {
           { right: 0, duration: 50, easing: "linear" },
           {
             opacity: 1,
-            height: "63%",
+            height: "83%",
             width: "100%",
             right: "-450px",
             duration: 150,
             easing: "linear",
-            padding: "0px"
+            // padding: "0px"
           }
         ]
       });
@@ -166,13 +165,6 @@ export default {
         delay: 250
       });
       $(".all-messages-header i").css({ padding: "0" }, { border: "none" });
-      this.$anime({
-        targets: ".send-message",
-        keyframes: [
-          { translateX: 0, duration: 100 },
-          { translateX: 450, duration: 300, easing: "linear", opacity: 0 }
-        ]
-      });
     }
   }
 };

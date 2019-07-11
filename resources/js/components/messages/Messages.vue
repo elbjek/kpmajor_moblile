@@ -120,7 +120,7 @@ export default {
       $("body").addClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
-        height: "60%",
+        height: "80%",
         width: "100%",
         scale: 1,
         borderRadius: "4px",
@@ -190,9 +190,8 @@ export default {
         delay:250
       })
       
-      // $(".open-messages").removeClass("z-index-lower");
       $(".transparent-bg").removeClass("transparent-bg-visible");
-      // $('.chat-box').removeClass('chatbox-visible');
+
       $("body").removeClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
