@@ -5317,20 +5317,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       show: false,
-      search: '',
-      users: []
+      search: "",
+      users: [],
+      selectedUsers: [],
+      selectedUser: ""
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/users').then(function (response) {
+    axios.get("/api/users").then(function (response) {
       _this.users = response.data;
       console.log(_this.users);
     });
@@ -5338,39 +5353,80 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showAllUsers: function showAllUsers() {
       this.$anime({
-        targets: '.user-list',
+        targets: ".user-list",
         translateY: 0,
         opacity: 1,
-        'max-height': '40%',
-        height: 'auto'
+        "max-height": "40%",
+        height: "auto"
+      });
+      this.$anime({
+        targets: '.sendtouser',
+        padding: '8px 4px'
       });
     },
     closeMessage: function closeMessage() {
       this.$anime({
         targets: ".new-message-wrap",
-        translateX: $('.new-message-wrap').width(),
+        translateX: $(".new-message-wrap").width(),
         delay: 200,
         duration: 1000,
         opacity: 0
       });
     },
     filterUsers: function filterUsers() {
-      if (this.search === '' || this.search.length == 0) {
+      if (this.search === "" || this.search.length == 0) {
         this.$anime({
-          targets: '.user-list',
+          targets: ".user-list",
           translateY: -20,
           opacity: 0 //   height:0
 
         });
+        this.$anime({
+          targets: '.sendtouser',
+          padding: '4px 4px'
+        });
       } else {
         this.$anime({
-          targets: '.user-list',
+          targets: ".user-list",
           translateY: 0,
           opacity: 1,
-          'max-height': '40%',
-          height: 'auto'
+          "max-height": "40%",
+          height: "auto"
+        });
+        this.$anime({
+          targets: '.sendtouser',
+          padding: '8px 4px'
         });
       }
+    },
+    selectUser: function selectUser(data) {
+      this.show = true;
+      this.selectedUser = data;
+      this.$anime({
+        targets: ".user-list",
+        translateY: -20,
+        opacity: 0 //   height:0
+
+      });
+    },
+    removeUser: function removeUser() {
+      var _this2 = this;
+
+      this.$anime({
+        targets: '.selectedUser',
+        scaleX: 0,
+        opacity: 0
+      });
+      Object(timers__WEBPACK_IMPORTED_MODULE_1__["setTimeout"])(function () {
+        _this2.show = false;
+      }, 100);
+      this.$anime({
+        targets: ".user-list",
+        translateY: 0,
+        opacity: 1,
+        "max-height": "40%",
+        height: "auto"
+      });
     }
   },
   computed: {
@@ -67994,25 +68050,55 @@ var render = function() {
             _vm.search = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _vm.show
+        ? _c(
+            "div",
+            { staticClass: "selectedUser", on: { click: _vm.removeUser } },
+            [
+              _c("p", [
+                _vm._v(
+                  _vm._s(_vm.selectedUser.name) +
+                    " " +
+                    _vm._s(_vm.selectedUser.lastname)
+                )
+              ]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fas fa-times" })
+            ]
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "user-list" },
       _vm._l(_vm.filteredUsers, function(user) {
-        return _c("div", { key: user.id, staticClass: "single-listed-user" }, [
-          _c("div", { staticClass: "img" }, [
-            _c("img", {
-              attrs: {
-                src: "/storage/user_images/" + user.profile_picture,
-                alt: ""
+        return _c(
+          "div",
+          {
+            key: user.id,
+            staticClass: "single-listed-user",
+            on: {
+              click: function($event) {
+                return _vm.selectUser(user)
               }
-            })
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(user.name) + " " + _vm._s(user.lastname))])
-        ])
+            }
+          },
+          [
+            _c("div", { staticClass: "img" }, [
+              _c("img", {
+                attrs: {
+                  src: "/storage/user_images/" + user.profile_picture,
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(user.name) + " " + _vm._s(user.lastname))])
+          ]
+        )
       }),
       0
     ),

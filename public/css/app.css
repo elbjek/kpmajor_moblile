@@ -876,8 +876,31 @@ body {
   outline: none;
 }
 
+.new-message-wrap .sendtouser .selectedUser {
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+  position: absolute;
+  left: 70px;
+  background-color: white;
+  padding-left: 10px;
+  border-radius: 10px;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.new-message-wrap .sendtouser .selectedUser p {
+  margin: 0;
+  color: #003368;
+}
+
+.new-message-wrap .sendtouser .selectedUser i {
+  font-size: 12px;
+  padding: 2px 10px;
+}
+
 .new-message-wrap .user-list {
-  max-height: 25%;
+  max-height: 40%;
   overflow: scroll;
   padding: 10px 20px;
   background-color: #f4f4f4;
