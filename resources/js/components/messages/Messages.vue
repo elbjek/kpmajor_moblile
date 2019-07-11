@@ -17,10 +17,11 @@
             <p style="display:flex; flex-direction:column;margin:0">
               <span class="chat-main-heading" style="margin:0;padding-right:20px;">Vaše konverzacije</span>
               <span class="single-chat-main-heading">{{username}}</span>
+              <span class="chat-new-heading" >Nova poruka</span>
             </p>
             <!-- <p class="single-chat-main-heading">username</p> -->
           </div>
-          <p style="margin:0;padding-right:20px;cursor:pointer" @click="createNewMessage">
+          <p style="margin:0;padding-right:20px;cursor:pointer" class="createmsg" @click="createNewMessage">
             <i class="fas fa-plus"></i>
           </p>
         </div>
@@ -102,7 +103,11 @@ export default {
   },
   methods: {
     createNewMessage() {
-      console.log("i work");
+      $('.fa-chevron-down').css({'opacity':0})
+      this.$anime({
+        targets:'.createmsg i ',
+        rotate:45
+      })
       this.$anime({
         targets: ".new-message-wrap",
         easing:'linear',
@@ -111,6 +116,22 @@ export default {
         opacity: 1,
         "z-index": 18
       });
+      this.$anime({
+        targets:'.users-wrap',
+        translateX:-$('.users-wrap').width() - 100,
+      })
+    this.$anime({
+      targets:'.chat-new-heading',
+      keyframes:[
+        {translateY:30,opacity:0,duration:10},
+        {      translateY:0,
+      opacity:1,duration:450}
+      ]
+    })
+      this.$anime({
+      targets:'.chat-main-heading',
+      translateY:-30
+    })
     },
     openMessages() {
       this.$anime({

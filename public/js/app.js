@@ -5054,6 +5054,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -5124,7 +5125,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createNewMessage: function createNewMessage() {
-      console.log("i work");
+      $('.fa-chevron-down').css({
+        'opacity': 0
+      });
+      this.$anime({
+        targets: '.createmsg i ',
+        rotate: 45
+      });
       this.$anime({
         targets: ".new-message-wrap",
         easing: 'linear',
@@ -5132,6 +5139,26 @@ __webpack_require__.r(__webpack_exports__);
         duration: 250,
         opacity: 1,
         "z-index": 18
+      });
+      this.$anime({
+        targets: '.users-wrap',
+        translateX: -$('.users-wrap').width() - 100
+      });
+      this.$anime({
+        targets: '.chat-new-heading',
+        keyframes: [{
+          translateY: 30,
+          opacity: 0,
+          duration: 10
+        }, {
+          translateY: 0,
+          opacity: 1,
+          duration: 450
+        }]
+      });
+      this.$anime({
+        targets: '.chat-main-heading',
+        translateY: -30
       });
     },
     openMessages: function openMessages() {
@@ -5330,6 +5357,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5357,20 +5386,46 @@ __webpack_require__.r(__webpack_exports__);
         translateY: 0,
         opacity: 1,
         "max-height": "40%",
-        height: "auto"
-      });
-      this.$anime({
-        targets: '.sendtouser',
-        padding: '8px 4px'
+        height: "40%",
+        padding: '10px 20px'
       });
     },
     closeMessage: function closeMessage() {
+      $('.fa-chevron-down').css({
+        'opacity': 1
+      });
       this.$anime({
         targets: ".new-message-wrap",
         translateX: $(".new-message-wrap").width(),
-        delay: 200,
-        duration: 1000,
+        // delay: 200,
+        duration: 800,
         opacity: 0
+      });
+      this.$anime({
+        targets: '.createmsg i ',
+        rotate: 0
+      });
+      this.$anime({
+        targets: '.users-wrap',
+        translateX: 0,
+        easing: 'linear',
+        duration: 250
+      });
+      this.$anime({
+        targets: '.chat-new-heading',
+        keyframes: [{
+          translateY: 0,
+          opacity: 1,
+          duration: 10
+        }, {
+          translateY: 30,
+          opacity: 0,
+          duration: 450
+        }]
+      });
+      this.$anime({
+        targets: '.chat-main-heading',
+        translateY: 0
       });
     },
     filterUsers: function filterUsers() {
@@ -5381,10 +5436,6 @@ __webpack_require__.r(__webpack_exports__);
           opacity: 0 //   height:0
 
         });
-        this.$anime({
-          targets: '.sendtouser',
-          padding: '4px 4px'
-        });
       } else {
         this.$anime({
           targets: ".user-list",
@@ -5392,10 +5443,6 @@ __webpack_require__.r(__webpack_exports__);
           opacity: 1,
           "max-height": "40%",
           height: "auto"
-        });
-        this.$anime({
-          targets: '.sendtouser',
-          padding: '8px 4px'
         });
       }
     },
@@ -67930,7 +67977,11 @@ var render = function() {
                             "span",
                             { staticClass: "single-chat-main-heading" },
                             [_vm._v(_vm._s(_vm.username))]
-                          )
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "chat-new-heading" }, [
+                            _vm._v("Nova poruka")
+                          ])
                         ]
                       )
                     ]
@@ -67939,6 +67990,7 @@ var render = function() {
                   _c(
                     "p",
                     {
+                      staticClass: "createmsg",
                       staticStyle: {
                         margin: "0",
                         "padding-right": "20px",
@@ -68016,7 +68068,8 @@ var render = function() {
             staticStyle: {
               margin: "0",
               "padding-right": "20px",
-              cursor: "pointer"
+              cursor: "pointer",
+              opacity: "0"
             },
             on: { click: _vm.closeMessage }
           },
@@ -68038,7 +68091,7 @@ var render = function() {
           }
         ],
         staticClass: "sendtouser",
-        attrs: { type: "text" },
+        attrs: { type: "text", placeholder: "Trazi" },
         domProps: { value: _vm.search },
         on: {
           click: _vm.showAllUsers,
@@ -68130,14 +68183,10 @@ var staticRenderFns = [
             }
           },
           [
-            _c(
-              "span",
-              {
-                staticClass: "chat-main-heading",
-                staticStyle: { margin: "0", "padding-right": "20px" }
-              },
-              [_vm._v("Nova poruka")]
-            ),
+            _c("i", {
+              staticClass: "fas fa-chevron-down",
+              staticStyle: { padding: "0px 20px" }
+            }),
             _vm._v(" "),
             _c("span", { staticClass: "single-chat-main-heading" })
           ]

@@ -129,7 +129,7 @@
     font-weight: 700;
     color: $darkblue;
 }
-.single-chat-main-heading{
+.single-chat-main-heading, .chat-new-heading{
     transform: translateY(40px);
     opacity: 0;
     margin: 0;
@@ -221,12 +221,12 @@
     left: 0;
     height: 100%;
     width:100%;
-    background-color:$white;
+    // background-color:$white;
     .chat-main-heading{
         padding-left:20px;
     }
     .new-message-heading{
-        background-color:$white;
+        // background-color:$white;
     }
     .sendtouser{
         padding: 10px 20px;
@@ -242,7 +242,10 @@
             border-radius: 30px;
             border: none;
             width: 100%;
-            padding:4px;
+            padding:4px 8px;
+            &::placeholder{
+                margin-left:10px;
+            }
             &:focus{
                 outline: none;
             }
@@ -269,21 +272,18 @@
         }
     }
     .user-list{
-        max-height: 40%;
+        // max-height: 40%;
+        height: 0;
         overflow: scroll;
-        padding: 10px 20px;
+        padding:0px;
         background-color: $light-gray;
         margin: 0px 20px;
         border-radius: 8px;
-        // transform: translateY(-20px);
-        // opacity:0;
-        // height:0;
-
         .single-listed-user{
             display: flex;
             align-items: center;
             margin:10px 0px;
-            
+            padding:0px 20px;
             .img{
                 margin-right:20px;
                 background-color:$white
@@ -303,4 +303,13 @@
         bottom:0;
         margin:0 !important
     }
+}
+
+.chat-new-heading{
+    transform: translateY(30px);
+    opacity: 0;
+    margin: 0;
+    position: absolute;
+    color:$darkblue;
+    font-weight: 900;
 }

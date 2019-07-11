@@ -6,11 +6,12 @@
     >
       <div class="chat-heading" style="display:flex;align-items:center;">
         <p style="display:flex; flex-direction:column;margin:0">
-          <span class="chat-main-heading" style="margin:0;padding-right:20px;">Nova poruka</span>
+           <i  class="fas fa-chevron-down" style="padding:0px 20px;"></i>
+          <!-- <span class="chat-main-heading" style="margin:0;padding-right:20px;">Nova poruka</span> -->
           <span class="single-chat-main-heading"></span>
         </p>
       </div>
-      <p style="margin:0;padding-right:20px;cursor:pointer" @click="closeMessage">
+      <p style="margin:0;padding-right:20px;cursor:pointer;opacity:0" @click="closeMessage">
         <i class="fas fa-times"></i>
       </p>
     </div>
@@ -22,6 +23,7 @@
         class="sendtouser"
         @click="showAllUsers"
         @keyup="filterUsers"
+        placeholder="Trazi"
       />
       <div v-if="show" class="selectedUser" @click="removeUser">
         <p>{{selectedUser.name}} {{selectedUser.lastname}}</p>
@@ -77,21 +79,42 @@ export default {
         translateY: 0,
         opacity: 1,
         "max-height": "40%",
-        height: "auto"
+        height: "40%",
+        padding:'10px 20px'
       });
-      this.$anime({
-          targets:'.sendtouser',
-          padding:'8px 4px'
-      })
     },
     closeMessage() {
+      $('.fa-chevron-down').css({'opacity':1})
+
       this.$anime({
         targets: ".new-message-wrap",
         translateX: $(".new-message-wrap").width(),
-        delay: 200,
-        duration: 1000,
+        // delay: 200,
+        duration: 800,
         opacity: 0
       });
+      this.$anime({
+        targets:'.createmsg i ',
+        rotate:0
+      })
+        this.$anime({
+        targets:'.users-wrap',
+        translateX:0,
+        easing:'linear',
+        duration:250
+      })
+      this.$anime({
+      targets:'.chat-new-heading',
+      keyframes:[
+        {  translateY:0,
+      opacity:1,duration:10},
+        {translateY:30,opacity:0,duration:450},
+      ]
+    })
+      this.$anime({
+      targets:'.chat-main-heading',
+      translateY:0
+    })
     },
     filterUsers() {
       if (this.search === "" || this.search.length == 0) {
@@ -101,10 +124,7 @@ export default {
           opacity: 0
           //   height:0
         });
-      this.$anime({
-          targets:'.sendtouser',
-          padding:'4px 4px'
-      })
+
       } else {
         this.$anime({
           targets: ".user-list",
@@ -113,10 +133,7 @@ export default {
           "max-height": "40%",
           height: "auto"
         });
-        this.$anime({
-          targets:'.sendtouser',
-          padding:'8px 4px'
-      })
+
       }
     },
     selectUser(data) {

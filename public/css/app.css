@@ -740,7 +740,8 @@ body {
   color: #003368;
 }
 
-.single-chat-main-heading {
+.single-chat-main-heading,
+.chat-new-heading {
   -webkit-transform: translateY(40px);
           transform: translateY(40px);
   opacity: 0;
@@ -841,15 +842,10 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #ffffff;
 }
 
 .new-message-wrap .chat-main-heading {
   padding-left: 20px;
-}
-
-.new-message-wrap .new-message-heading {
-  background-color: #ffffff;
 }
 
 .new-message-wrap .sendtouser {
@@ -869,7 +865,27 @@ body {
   border-radius: 30px;
   border: none;
   width: 100%;
-  padding: 4px;
+  padding: 4px 8px;
+}
+
+.new-message-wrap .sendtouser input::-webkit-input-placeholder {
+  margin-left: 10px;
+}
+
+.new-message-wrap .sendtouser input::-moz-placeholder {
+  margin-left: 10px;
+}
+
+.new-message-wrap .sendtouser input:-ms-input-placeholder {
+  margin-left: 10px;
+}
+
+.new-message-wrap .sendtouser input::-ms-input-placeholder {
+  margin-left: 10px;
+}
+
+.new-message-wrap .sendtouser input::placeholder {
+  margin-left: 10px;
 }
 
 .new-message-wrap .sendtouser input:focus {
@@ -900,9 +916,9 @@ body {
 }
 
 .new-message-wrap .user-list {
-  max-height: 40%;
+  height: 0;
   overflow: scroll;
-  padding: 10px 20px;
+  padding: 0px;
   background-color: #f4f4f4;
   margin: 0px 20px;
   border-radius: 8px;
@@ -912,6 +928,7 @@ body {
   display: flex;
   align-items: center;
   margin: 10px 0px;
+  padding: 0px 20px;
 }
 
 .new-message-wrap .user-list .single-listed-user .img {
@@ -933,6 +950,16 @@ body {
   position: fixed;
   bottom: 0;
   margin: 0 !important;
+}
+
+.chat-new-heading {
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
+  opacity: 0;
+  margin: 0;
+  position: absolute;
+  color: #003368;
+  font-weight: 900;
 }
 
 .latest-products-wrap h1 {
