@@ -2,20 +2,14 @@
   <div class="product-carousel-wrap">
     <div class="single-product-wrap">
           <!-- <v-touch class=""></v-touch> -->
-      <div class="transparent-background" v-on:click="hideCarousel">
-      </div>
-          <carousel :perPage="1" :loop="true" :paginationEnabled="false" class="image-carousel">
-           <slide class=" carouselitem" >
+          <carousel :perPage="1" :loop="true" :paginationEnabled="true" class="image-carousel">
+           <slide class="img image" >
             <img :src="'/storage/products/' + product.image" alt />
           </slide>
-            <slide class=" carouselitem" v-for="image in product.images" :key="image.id">
+            <slide class=" img image" v-for="image in product.images" :key="image.id">
             <img :src="'/storage/products/' + image.image" alt />
           </slide>
           </carousel>
-
-      <div class="img image" style="transform-origin:top" v-on:click="showCarousel">
-        <img :src="'/storage/products/' + product.image" alt />
-      </div>
 
       <div class="single-product-heading-wrap">
         <div class="single-product-info-wrap">

@@ -2,9 +2,9 @@
   <div>
       <navigation :user="user"></navigation>
       <div class="container" style="padding-top:20px">
-      <transition name="page" mode="out-in">
+      <vue-page-transition name="fade-in-left">
         <router-view></router-view>
-      </transition>
+      </vue-page-transition>
       </div>
   </div>
 </template>

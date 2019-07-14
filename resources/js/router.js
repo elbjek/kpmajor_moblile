@@ -26,7 +26,10 @@ export default new VueRouter({
         {
             path: '/',
             name: 'home',
-            component: Home
+            component: Home,
+            meta:{
+                transition:'fade-in-right'
+            }
         },
         {
             path: '/login',
@@ -65,7 +68,8 @@ export default new VueRouter({
             name: 'products.show',
             component: SingleProduct,
             meta: {
-                auth: false
+                auth: false,
+                transition:'fade-in-down'
             }
         },
         {
