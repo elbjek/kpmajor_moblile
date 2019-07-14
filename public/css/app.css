@@ -631,12 +631,12 @@ body {
   z-index: 12;
   -webkit-transform-origin: bottom right;
           transform-origin: bottom right;
-  height: 0;
-  width: 0;
+  height: 80%;
+  width: 100%;
   -webkit-transform: scale(0);
           transform: scale(0);
   background-color: #ffffff;
-  border-radius: 50px;
+  border-radius: 4px;
   overflow: scroll;
 }
 
@@ -699,9 +699,6 @@ body {
 }
 
 .transparent-bg-visible {
-  position: fixed;
-  top: 0;
-  right: 0;
   background: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;
@@ -722,6 +719,9 @@ body {
   visibility: hidden;
   transition: 0.5s ease-in-out;
   opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 .chat-box,
@@ -746,7 +746,7 @@ body {
           transform: translateY(40px);
   opacity: 0;
   margin: 0;
-  position: absolute;
+  position: fixed;
 }
 
 .close-messages-icon {
@@ -758,7 +758,7 @@ body {
 }
 
 .all-chat-messages {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: -450px;
   z-index: 15;
@@ -897,7 +897,7 @@ body {
   align-items: center;
   /* width: 100%; */
   position: absolute;
-  left: 70px;
+  right: 30px;
   background-color: white;
   padding-left: 10px;
   border-radius: 10px;
@@ -1235,6 +1235,7 @@ body {
   visibility: visible !important;
   padding: 20px;
   opacity: 1 !important;
+  overflow: hidden;
 }
 
 .user-profile-wrap {
@@ -1359,20 +1360,8 @@ body {
   right: 0;
   -webkit-transform-origin: 100% 100%;
           transform-origin: 100% 100%;
-}
-
-.swipe-options-wrap .call {
-  -webkit-transform: translateX(13px);
-          transform: translateX(13px);
-}
-
-.swipe-options-wrap .message {
-  -webkit-transform: translateX(-11px);
-          transform: translateX(-11px);
-}
-
-.swipe-options-wrap .option {
-  visibility: hidden;
+  -webkit-transform: translate(30px);
+          transform: translate(30px);
 }
 
 .swipe-options-wrap i {

@@ -40,12 +40,12 @@
 }
 .chat-wrap{
     z-index:12;
-    transform-origin: bottom right;
-    height:0;
-    width:0;
+    transform-origin:bottom right;
+    height:80%;
+    width:100%;
     transform: scale(0);
     background-color:$white;
-    border-radius: 50px;
+    border-radius: 4px;
     overflow:scroll;
     .img{
         height:40px;
@@ -98,9 +98,7 @@
     transition:1s ease;
 }
 .transparent-bg-visible{
-    position: fixed ;
-    top: 0 ;
-    right: 0;
+   
     background: rgba(0,0,0,0.2);
     width: 100% ;
     height: 100% ;
@@ -117,6 +115,9 @@
     visibility: hidden;
     transition: 0.5s ease-in-out;
     opacity:0;
+    position: fixed ;
+    top: 0 ;
+    right: 0;
 }
 
 .chat-box,.single-chat-heading {
@@ -133,7 +134,7 @@
     transform: translateY(40px);
     opacity: 0;
     margin: 0;
-    position: absolute;
+    position: fixed;
 }
 .close-messages-icon{
     z-index:10
@@ -144,7 +145,7 @@
 
 
 .all-chat-messages{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: -450px;
     z-index: 15;
@@ -255,7 +256,7 @@
             align-items: center;
             /* width: 100%; */
             position: absolute;
-            left: 70px;
+            right: 30px;
             background-color: white;
             padding-left: 10px;
             border-radius: 10px;

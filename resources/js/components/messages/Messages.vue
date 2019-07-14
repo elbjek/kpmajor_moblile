@@ -137,7 +137,7 @@ export default {
       this.$anime({
         targets: ".message-button i",
         borderRadius: "8px",
-        duration: 150,
+        duration: 100,
         easing: "linear",
         backgroundColor: "#ffffff",
         rotate: 90
@@ -149,89 +149,92 @@ export default {
         color: "#003368",
         opacity: 1
       });
-      $(".close-messages-icon").css({ "z-index": "11" });
-      $(".open-messages-icon").css({ "z-index": "10" });
-      $('.message-button').css({'z-index':'12'})
+      // $(".close-messages-icon").css({ "z-index": "11" });
+      // $(".open-messages-icon").css({ "z-index": "10" });
+      // $('.message-button').css({'z-index':'14','visibility':'hidden'})
       $(".transparent-bg").addClass("transparent-bg-visible");
       $("body").addClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
-        height: "80%",
-        width: "100%",
-        scale: 1,
+
+           scale: 1,
         borderRadius: "4px",
-        duration: 100,
+        duration: 150,
+        
+        visibility:'visible',
         easing: "linear"
       });
     },
     closeMessages() {
-            this.$anime({
-        targets: ".new-message-wrap",
-        translateX: $('.new-message-wrap').width(),
-        delay:200,
-        duration: 1000,
-        opacity: 0,
-      });
+      $('.message-button').css({'z-index':'14','visibility':'visible'})
+      //       this.$anime({
+      //   targets: ".new-message-wrap",
+      //   translateX: $('.new-message-wrap').width(),
+      //   delay:200,
+      //   duration: 1000,
+      //   opacity: 0,
+      // });
       this.$anime({
         targets: ".message-button i",
         borderRadius: "50px",
-        duration: 150,
+        duration: 50,
         easing: "linear",
         rotate: 0,
+        delay:200,
         backgroundColor: "#003368"
       });
-      this.$anime({
-        targets: ".close-messages-icon",
-        "z-index": 10,
-        opacity: 0
-        // delay:1000
-      });
-      this.$anime({
-        targets: ".open-messages-icon",
-        "z-index": 11
-        // delay:1000
-      });
-      this.$anime({
-        targets: ".all-chat-messages",
-        keyframes: [
-          { right: 0, duration: 100, easing: "linear" },
-          {
-            opacity: 1,
-            height: "0%",
-            width: "0%",
-            right: "-450px",
-            duration: 300,
-            easing: "linear",
-            padding: "0px"
-          }
-        ]
-      });
-      this.$anime({
-        targets: ".fa-chevron-down",
-        rotate: "0deg"
-      });
-      this.$anime({
-        targets: ".single-chat-main-heading",
-        keyframes: [
-          // {translateY:0, opacity:1},
-          { translateY: 20, opacity: 0, duration: 400, easing: "linear" }
-        ]
-      });
-      this.$anime({
-        targets: ".chat-main-heading",
-        translateY: 0,
-        opacity: 1,
-        duration: 100,
-        easing: "linear"
-      });
-      let userswrap = $(".users-wrap").width() + 50;
-      this.$anime({
-        targets: ".users-wrap",
-        translateX: 0,
-        easing: "linear",
-        duration: 200,
-        delay: 250
-      });
+      // this.$anime({
+      //   targets: ".close-messages-icon",
+      //   "z-index": 10,
+      //   opacity: 0
+      //   // delay:1000
+      // });
+      // this.$anime({
+      //   targets: ".open-messages-icon",
+      //   "z-index": 11
+      //   // delay:1000
+      // });
+      // this.$anime({
+      //   targets: ".all-chat-messages",
+      //   keyframes: [
+      //     { right: 0, duration: 100, easing: "linear" },
+      //     {
+      //       opacity: 1,
+      //       height: "0%",
+      //       width: "0%",
+      //       right: "-450px",
+      //       duration: 300,
+      //       easing: "linear",
+      //       padding: "0px"
+      //     }
+      //   ]
+      // });
+      // this.$anime({
+      //   targets: ".fa-chevron-down",
+      //   rotate: "0deg"
+      // });
+      // this.$anime({
+      //   targets: ".single-chat-main-heading",
+      //   keyframes: [
+      //     // {translateY:0, opacity:1},
+      //     { translateY: 20, opacity: 0, duration: 400, easing: "linear" }
+      //   ]
+      // });
+      // this.$anime({
+      //   targets: ".chat-main-heading",
+      //   translateY: 0,
+      //   opacity: 1,
+      //   duration: 100,
+      //   easing: "linear"
+      // });
+      // let userswrap = $(".users-wrap").width() + 50;
+      // this.$anime({
+      //   targets: ".users-wrap",
+      //   translateX: 0,
+      //   easing: "linear",
+      //   duration: 200,
+      //   delay: 250
+      // });
 
       $(".transparent-bg").removeClass("transparent-bg-visible");
 
@@ -239,9 +242,12 @@ export default {
       this.$anime({
         targets: ".chat-wrap",
         scale: 0,
-        borderRadius: "50px",
-        duration: 10,
-        easing: "cubicBezier(0.895, 0.030, 0.685, 0.220)"
+        // // height:0,
+        // // width:0,
+        // borderRadius: 50,
+        duration: 20,
+        visibility:'hidden',
+        easing: "linear"
       });
     },
 

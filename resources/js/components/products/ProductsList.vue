@@ -2,31 +2,35 @@
   <div class="products-list-wrap">
     <h2>Svi oglasi</h2>
     <v-touch
-      v-on:swipeleft.prevent="showOptions(product,$event)"
+      v-on:swipeleft="showOptions(product,$event)"
       v-on:swiperight.prevent="hideOptions(product,$event)"
       ref="target"
       v-for="product in products"
       :key="product.id"
     >
-     <div class="productitem">
+      <div class="productitem">
         <productitem :product="product"></productitem>
-     </div>
+      </div>
     </v-touch>
-    <infinite-loading @infinite="infiniteHandler" no-more="ucitali ste" :forceUseInfiniteWrapper="true">
-        <template slot="no-more">Ucitali ste sve podatke</template>
+    <infinite-loading
+      @infinite="infiniteHandler"
+      no-more="ucitali ste"
+      :forceUseInfiniteWrapper="true"
+    >
+      <template slot="no-more">Ucitali ste sve podatke</template>
     </infinite-loading>
   </div>
 </template>
 
 <script>
 import options from "./ProductOptions";
-import product from '../shared/product';
+import product from "../shared/product";
 import InfiniteLoading from "vue-infinite-loading";
 export default {
   components: {
     options: options,
     // productitem: () => import("../shared/product"),
-    productitem:product,
+    productitem: product,
     InfiniteLoading
   },
   data() {
@@ -72,30 +76,18 @@ export default {
       this.product_id.forEach(el => {
         if (product.id == el) {
           $(event.target.nextElementSibling).addClass("visible");
-          $(event.target.nextElementSibling.childNodes).addClass("visible");
           this.$anime({
             targets: event.target.nextElementSibling,
-            // scaleX:1,
             translateX: 0,
-            easing: "easeInSine",
-            width: "30%",
-            duration: 250
-          });
-          this.$anime({
-            targets: ".call",
-            translateX: 0,
-            duration: 250
-          });
-          this.$anime({
-            targets: ".message",
-            translateX: 0,
-            duration: 250
+            width: "35%",
+            easing: "linear",
+            duration: 200
           });
           this.$anime({
             targets: event.target,
             translateX: -20,
-            easing: "easeInSine",
-            duration: 250
+            easing: "linear",
+            duration: 200
           });
         }
       });
@@ -116,19 +108,20 @@ export default {
             easing: "easeOutSine",
             duration: 150
           });
-          this.$anime({
-            targets: ".call",
-            translateX: 13,
-            duration: 150
-          });
-          this.$anime({
-            targets: ".message",
-            translateX: -11,
-            duration: 150
-          });
+          // this.$anime({
+          //   targets: ".call",
+          //   translateX: 13,
+          //   duration: 150
+          // });
+          // this.$anime({
+          //   targets: ".message",
+          //   translateX: -11,
+          //   duration: 150
+          // });
         }
       });
     }
   }
 };
 </script>
+

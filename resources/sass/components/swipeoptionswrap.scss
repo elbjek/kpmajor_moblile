@@ -9,15 +9,17 @@
   position: relative;
   right: 0;
   transform-origin: 100% 100%;
-  .call{
-    transform: translateX(13px);
-  }
-  .message{
-    transform: translateX(-11px)
-  }
-  .option{
-    visibility: hidden;
-  }
+  // background:$light-gray;
+  transform: translate(30px);
+  // .call{
+  //   transform: translateX(13px);
+  // }
+  // .message{
+  //   transform: translateX(-11px)
+  // }
+  // .option{
+  //   visibility: hidden;
+  // }
   i{
     color: $white;
     background:$darkblue;

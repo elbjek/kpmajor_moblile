@@ -21,7 +21,7 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-          <router-link class="user-profile-header" :to="'/users/'+user.id" v-if="user">
+          <router-link class="user-profile-header" :to="'/users/'+user.id" v-if="user" v-on:click="hideNavigation">
             <div class="img">
               <img
                 v-if="user.profile_picture"
@@ -49,21 +49,21 @@
           </router-link>
         </div>
         <ul v-if="user" class="nav-list">
-          <li class="navigation-item">
-            <router-link :to="'/users/'+user.id">
+          <li class="navigation-item" >
+            <router-link :to="'/users/'+user.id" v-on:click="hideNavigation">
               <i class="far fa-user"></i>
               <span>Profile</span>
             </router-link>
           </li>
           <li class="navigation-item">
-            <router-link class to="/products/create">
+            <router-link class to="/products/create" v-on:click="hideNavigation">
               <i class="far fa-sticky-note"></i>
               <span>Postavi oglas</span>
             </router-link>
           </li>
           <li class="navigation-item logout">
             <a
-              href="#"
+              href="/logout"
               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
             >Odjavi se</a>
             <form id="logout-form" action="logout" method="POST" style="display: none;">
@@ -73,13 +73,13 @@
         </ul>
 
         <ul v-if="!user">
-          <li class="navigation-item" v-on:swipeleft="showNavigation">
+          <li class="navigation-item" v-on:click="hideNavigation">
             <router-link to="/login">
               <i class="fas fa-sign-in-alt"></i>
               <span>Prijavi se</span>
             </router-link>
           </li>
-          <li class="navigation-item" v-on:swipeleft="showNavigation">
+          <li class="navigation-item" v-on:click="hideNavigation">
             <router-link to="/register">
               <i class="far fa-list-alt"></i>
               <span>Registruj se</span>

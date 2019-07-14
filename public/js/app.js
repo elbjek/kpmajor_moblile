@@ -5165,7 +5165,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$anime({
         targets: ".message-button i",
         borderRadius: "8px",
-        duration: 150,
+        duration: 100,
         easing: "linear",
         backgroundColor: "#ffffff",
         rotate: 90
@@ -5176,108 +5176,105 @@ __webpack_require__.r(__webpack_exports__);
         easing: "linear",
         color: "#003368",
         opacity: 1
-      });
-      $(".close-messages-icon").css({
-        "z-index": "11"
-      });
-      $(".open-messages-icon").css({
-        "z-index": "10"
-      });
-      $('.message-button').css({
-        'z-index': '12'
-      });
+      }); // $(".close-messages-icon").css({ "z-index": "11" });
+      // $(".open-messages-icon").css({ "z-index": "10" });
+      // $('.message-button').css({'z-index':'14','visibility':'hidden'})
+
       $(".transparent-bg").addClass("transparent-bg-visible");
       $("body").addClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
-        height: "80%",
-        width: "100%",
         scale: 1,
         borderRadius: "4px",
-        duration: 100,
+        duration: 150,
+        visibility: 'visible',
         easing: "linear"
       });
     },
     closeMessages: function closeMessages() {
-      this.$anime({
-        targets: ".new-message-wrap",
-        translateX: $('.new-message-wrap').width(),
-        delay: 200,
-        duration: 1000,
-        opacity: 0
-      });
+      $('.message-button').css({
+        'z-index': '14',
+        'visibility': 'visible'
+      }); //       this.$anime({
+      //   targets: ".new-message-wrap",
+      //   translateX: $('.new-message-wrap').width(),
+      //   delay:200,
+      //   duration: 1000,
+      //   opacity: 0,
+      // });
+
       this.$anime({
         targets: ".message-button i",
         borderRadius: "50px",
-        duration: 150,
+        duration: 50,
         easing: "linear",
         rotate: 0,
+        delay: 200,
         backgroundColor: "#003368"
-      });
-      this.$anime({
-        targets: ".close-messages-icon",
-        "z-index": 10,
-        opacity: 0 // delay:1000
+      }); // this.$anime({
+      //   targets: ".close-messages-icon",
+      //   "z-index": 10,
+      //   opacity: 0
+      //   // delay:1000
+      // });
+      // this.$anime({
+      //   targets: ".open-messages-icon",
+      //   "z-index": 11
+      //   // delay:1000
+      // });
+      // this.$anime({
+      //   targets: ".all-chat-messages",
+      //   keyframes: [
+      //     { right: 0, duration: 100, easing: "linear" },
+      //     {
+      //       opacity: 1,
+      //       height: "0%",
+      //       width: "0%",
+      //       right: "-450px",
+      //       duration: 300,
+      //       easing: "linear",
+      //       padding: "0px"
+      //     }
+      //   ]
+      // });
+      // this.$anime({
+      //   targets: ".fa-chevron-down",
+      //   rotate: "0deg"
+      // });
+      // this.$anime({
+      //   targets: ".single-chat-main-heading",
+      //   keyframes: [
+      //     // {translateY:0, opacity:1},
+      //     { translateY: 20, opacity: 0, duration: 400, easing: "linear" }
+      //   ]
+      // });
+      // this.$anime({
+      //   targets: ".chat-main-heading",
+      //   translateY: 0,
+      //   opacity: 1,
+      //   duration: 100,
+      //   easing: "linear"
+      // });
+      // let userswrap = $(".users-wrap").width() + 50;
+      // this.$anime({
+      //   targets: ".users-wrap",
+      //   translateX: 0,
+      //   easing: "linear",
+      //   duration: 200,
+      //   delay: 250
+      // });
 
-      });
-      this.$anime({
-        targets: ".open-messages-icon",
-        "z-index": 11 // delay:1000
-
-      });
-      this.$anime({
-        targets: ".all-chat-messages",
-        keyframes: [{
-          right: 0,
-          duration: 100,
-          easing: "linear"
-        }, {
-          opacity: 1,
-          height: "0%",
-          width: "0%",
-          right: "-450px",
-          duration: 300,
-          easing: "linear",
-          padding: "0px"
-        }]
-      });
-      this.$anime({
-        targets: ".fa-chevron-down",
-        rotate: "0deg"
-      });
-      this.$anime({
-        targets: ".single-chat-main-heading",
-        keyframes: [// {translateY:0, opacity:1},
-        {
-          translateY: 20,
-          opacity: 0,
-          duration: 400,
-          easing: "linear"
-        }]
-      });
-      this.$anime({
-        targets: ".chat-main-heading",
-        translateY: 0,
-        opacity: 1,
-        duration: 100,
-        easing: "linear"
-      });
-      var userswrap = $(".users-wrap").width() + 50;
-      this.$anime({
-        targets: ".users-wrap",
-        translateX: 0,
-        easing: "linear",
-        duration: 200,
-        delay: 250
-      });
       $(".transparent-bg").removeClass("transparent-bg-visible");
       $("body").removeClass("overflow");
       this.$anime({
         targets: ".chat-wrap",
         scale: 0,
-        borderRadius: "50px",
-        duration: 10,
-        easing: "cubicBezier(0.895, 0.030, 0.685, 0.220)"
+        // // height:0,
+        // // width:0,
+        // borderRadius: 50,
+        duration: 20,
+        visibility: 'hidden',
+        easing: "linear"
       });
     },
     fetchData: function fetchData() {
@@ -6909,6 +6906,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -6966,34 +6967,20 @@ __webpack_require__.r(__webpack_exports__);
       this.product_id.forEach(function (el) {
         if (product.id == el) {
           $(event.target.nextElementSibling).addClass("visible");
-          $(event.target.nextElementSibling.childNodes).addClass("visible");
 
           _this2.$anime({
             targets: event.target.nextElementSibling,
-            // scaleX:1,
             translateX: 0,
-            easing: "easeInSine",
-            width: "30%",
-            duration: 250
-          });
-
-          _this2.$anime({
-            targets: ".call",
-            translateX: 0,
-            duration: 250
-          });
-
-          _this2.$anime({
-            targets: ".message",
-            translateX: 0,
-            duration: 250
+            width: "35%",
+            easing: "linear",
+            duration: 200
           });
 
           _this2.$anime({
             targets: event.target,
             translateX: -20,
-            easing: "easeInSine",
-            duration: 250
+            easing: "linear",
+            duration: 200
           });
         }
       });
@@ -7016,19 +7003,17 @@ __webpack_require__.r(__webpack_exports__);
             translateX: 0,
             easing: "easeOutSine",
             duration: 150
-          });
+          }); // this.$anime({
+          //   targets: ".call",
+          //   translateX: 13,
+          //   duration: 150
+          // });
+          // this.$anime({
+          //   targets: ".message",
+          //   translateX: -11,
+          //   duration: 150
+          // });
 
-          _this3.$anime({
-            targets: ".call",
-            translateX: 13,
-            duration: 150
-          });
-
-          _this3.$anime({
-            targets: ".message",
-            translateX: -11,
-            duration: 150
-          });
         }
       });
     }
@@ -7499,15 +7484,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UserProducts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserProducts */ "./resources/js/components/user_profile/UserProducts.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -7554,45 +7532,55 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    'user-products-list': _UserProducts__WEBPACK_IMPORTED_MODULE_0__["default"]
+    "user-products-list": _UserProducts__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
+    var _questions;
+
     return {
-      'user': [],
-      'currentUrl': window.location.pathname,
-      toggle: 'fa-toggle-on',
+      user: [],
+      currentUrl: window.location.pathname,
+      toggle: "fa-toggle-on",
       show: false,
       hide: true,
-      products: '',
-      ids: []
+      products: "",
+      ids: [],
+      questions: (_questions = {}, _defineProperty(_questions, 0, "Da li želite da se ovi lični podaci ubace i u već postavljene oglase?"), _defineProperty(_questions, 1, "Da li želite da ostali korisnici vide kada ste online?"), _defineProperty(_questions, 2, 'Da li želite da link "Svi oglasi" bude vidljiv u svakom vašem oglasu?'), _defineProperty(_questions, 3, "Da li želite da se ovi lični podaci ubace i u već postavljene oglase?"), _questions)
     };
   },
   mounted: function mounted() {
     this.fetchUser();
+    window.onscroll = this.scrollImage;
   },
   methods: {
     fetchUser: function fetchUser() {
       var _this = this;
 
-      axios.get('/api' + this.currentUrl).then(function (response) {
+      axios.get("/api" + this.currentUrl).then(function (response) {
         _this.user = response.data[0];
         _this.products = _this.user.products, _this.products.forEach(function (id) {
           _this.ids.push(id.id);
         });
       });
     },
-    showToggle: function showToggle() {
-      // this.show ? this.show=false : this.show=true
-      if (this.show = true) {
-        this.hide = false;
-        this.show = true;
-      }
+    toggleQuestion: function toggleQuestion(event) {
+      $(event.target).toggleClass("fa-toggle-on fa-toggle-off");
     },
-    reverseToggle: function reverseToggle() {
-      if (this.show = true) {
-        this.hide = true;
-        this.show = false;
-      }
+    scrollImage: function scrollImage() {
+      if (document.body.scrollTop > 37 || document.documentElement.scrollTop > 37) {
+        $('.user-profile-header .img').addClass('user-header-position'); //   this.$anime({
+        //       targets:'.user-profile-header .img',
+        //       scale:0.8,
+        //       easing:'linear',
+        //       duration:1000
+        //   })
+
+        this.$anime({
+          targets: '.user-profile-header',
+          opacity: 1,
+          'visibility': 'visible'
+        });
+      } else {}
     }
   },
   computed: {
@@ -66974,7 +66962,8 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "user-profile-header",
-                        attrs: { to: "/users/" + _vm.user.id }
+                        attrs: { to: "/users/" + _vm.user.id },
+                        on: { click: _vm.hideNavigation }
                       },
                       [
                         _c("div", { staticClass: "img" }, [
@@ -67038,7 +67027,10 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { attrs: { to: "/users/" + _vm.user.id } },
+                        {
+                          attrs: { to: "/users/" + _vm.user.id },
+                          on: { click: _vm.hideNavigation }
+                        },
                         [
                           _c("i", { staticClass: "far fa-user" }),
                           _vm._v(" "),
@@ -67053,11 +67045,18 @@ var render = function() {
                     "li",
                     { staticClass: "navigation-item" },
                     [
-                      _c("router-link", { attrs: { to: "/products/create" } }, [
-                        _c("i", { staticClass: "far fa-sticky-note" }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Postavi oglas")])
-                      ])
+                      _c(
+                        "router-link",
+                        {
+                          attrs: { to: "/products/create" },
+                          on: { click: _vm.hideNavigation }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-sticky-note" }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Postavi oglas")])
+                        ]
+                      )
                     ],
                     1
                   ),
@@ -67067,7 +67066,7 @@ var render = function() {
                       "a",
                       {
                         attrs: {
-                          href: "#",
+                          href: "/logout",
                           onclick:
                             "event.preventDefault(); document.getElementById('logout-form').submit();"
                         }
@@ -67102,7 +67101,7 @@ var render = function() {
                     "li",
                     {
                       staticClass: "navigation-item",
-                      on: { swipeleft: _vm.showNavigation }
+                      on: { click: _vm.hideNavigation }
                     },
                     [
                       _c("router-link", { attrs: { to: "/login" } }, [
@@ -67118,7 +67117,7 @@ var render = function() {
                     "li",
                     {
                       staticClass: "navigation-item",
-                      on: { swipeleft: _vm.showNavigation }
+                      on: { click: _vm.hideNavigation }
                     },
                     [
                       _c("router-link", { attrs: { to: "/register" } }, [
@@ -69910,7 +69909,6 @@ var render = function() {
             refInFor: true,
             on: {
               swipeleft: function($event) {
-                $event.preventDefault()
                 return _vm.showOptions(product, $event)
               },
               swiperight: function($event) {
@@ -70509,139 +70507,55 @@ var render = function() {
               })
         ]),
         _vm._v(" "),
-        _c("h5", [
-          _vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.lastname))
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.formatTime))])
+        _c("div", { staticClass: "user-heading" }, [
+          _c("h5", [
+            _vm._v(_vm._s(_vm.user.name) + " " + _vm._s(_vm.user.lastname))
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.formatTime))])
+        ])
       ]),
       _vm._v(" "),
       _c("router-link", { attrs: { to: "/products/edit" } }, [_vm._v("Edit")]),
       _vm._v(" "),
       _c("div", { staticClass: "user-info" }, [
         _c("label", { attrs: { for: "email" } }, [
-          _vm._v("\n           E-mail\n           "),
+          _vm._v("\n      E-mail\n      "),
           _c("p", [_vm._v(_vm._s(_vm.user.email))])
         ]),
         _vm._v(" "),
         _c("label", { attrs: { for: "city" } }, [
-          _vm._v("\n            Mesto/Grad\n           "),
+          _vm._v("\n      Mesto/Grad\n      "),
           _c("p", [_vm._v(_vm._s(_vm.user.city))])
         ]),
         _vm._v(" "),
         _c("label", { attrs: { for: "phone_number" } }, [
-          _vm._v("\n            Broj telefona\n           "),
+          _vm._v("\n      Broj telefona\n      "),
           _c("p", [_vm._v(_vm._s(_vm.user.phone_number))])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "settings" }, [
-        _c("div", { staticClass: "setting-item" }, [
-          _c("p", [
-            _vm._v(
-              "Da li želite da se ovi lični podaci ubace i u već postavljene oglase?"
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "switch" }, [
-            _c("i", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.show,
-                  expression: "show"
-                }
-              ],
-              staticClass: "fas fa-toggle-on",
-              on: { click: _vm.reverseToggle }
-            }),
+      _c(
+        "div",
+        { staticClass: "settings" },
+        _vm._l(_vm.questions, function(question) {
+          return _c("div", { key: question.id, staticClass: "setting-item" }, [
+            _c("p", [_vm._v(_vm._s(question))]),
             _vm._v(" "),
-            _c("i", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.hide,
-                  expression: "hide"
+            _c("div", { staticClass: "switch" }, [
+              _c("i", {
+                staticClass: "fas fa-toggle-off",
+                on: {
+                  click: function($event) {
+                    return _vm.toggleQuestion($event)
+                  }
                 }
-              ],
-              staticClass: "fas fa-toggle-off",
-              on: { click: _vm.showToggle }
-            })
+              })
+            ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "setting-item" }, [
-          _c("p", [
-            _vm._v("Da li želite da ostali korisnici vide kada ste online?")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "switch" }, [
-            _c("i", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.show,
-                  expression: "show"
-                }
-              ],
-              staticClass: "fas fa-toggle-on",
-              on: { click: _vm.reverseToggle }
-            }),
-            _vm._v(" "),
-            _c("i", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.hide,
-                  expression: "hide"
-                }
-              ],
-              staticClass: "fas fa-toggle-off",
-              on: { click: _vm.showToggle }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "setting-item" }, [
-          _c("p", [
-            _vm._v(
-              'Da li želite da link "Svi oglasi" bude vidljiv u svakom vašem oglasu?'
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "switch" }, [
-            _c("i", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.show,
-                  expression: "show"
-                }
-              ],
-              staticClass: "fas fa-toggle-on",
-              on: { click: _vm.reverseToggle }
-            }),
-            _vm._v(" "),
-            _c("i", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.hide,
-                  expression: "hide"
-                }
-              ],
-              staticClass: "fas fa-toggle-off",
-              on: { click: _vm.showToggle }
-            })
-          ])
-        ])
-      ]),
+        }),
+        0
+      ),
       _vm._v(" "),
       _c("user-products-list", {
         attrs: { products: _vm.products, ids: _vm.ids }
